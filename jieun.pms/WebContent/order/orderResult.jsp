@@ -15,6 +15,8 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	<div class="orderMsg">
 		<h2><b>송은영</b>고객님 상품주문이 <b>완료</b>되었습니다.</h2>
 		<h2>이용해주셔서 감사합니다.</h2>
+		<br><br>
+		<a href="../mypage/orderlist.jsp"><input type="button" value="주문내역확인"></a>
 	</div>
 	
 	<form method="get" action="./.jsp">
