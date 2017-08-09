@@ -39,7 +39,7 @@
 			<input type="submit" value="검색" /><br />
 			</div>
 			
-			<!-- 좌우버튼 -->
+			<!-- 좌우버튼 -->`
 			<div class="comu_button">
 			<input type="button" value="◀"/>
 			<input type="button" value="▶"/>

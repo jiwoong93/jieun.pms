@@ -6,16 +6,16 @@
 	if(currentId != null && currentId != ""){
 		if(currentId.equals("admin")){
 %>
-<jsp:include page="manageHeader.jsp" />
+			<jsp:include page="manageHeader.jsp" />
 <%
 		}else{
 %>
-<jsp:include page="header.jsp" />
+			<jsp:include page="header.jsp" />
 <%
 		}
 	}else{
 %>
-<jsp:include page="header.jsp" />
+		<jsp:include page="header.jsp" />
 <%
 	}
 %>
