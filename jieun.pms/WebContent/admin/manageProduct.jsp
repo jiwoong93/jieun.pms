@@ -1,18 +1,10 @@
+<jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link rel="stylesheet" href="../css/manager.css">
+<!DOCTYPE html>
+<link rel="stylesheet" href="../res/css/manager.css">
 <body>
-<%
-	String name = (String)session.getAttribute("sessionName");
-%>
-<div class="mngMain">
-<button name="mngSelling" onclick="javascript:location.href='managingSelling.jsp';"> 판매관리 </button>
-<button name="mngProducts" onclick="javascript:location.href='managingProduct.jsp';"> 상품관리 </button>
-<button name="mngMembers" onclick="javascript:location.href='managingMember.jsp';"> 회원관리 </button>
-&nbsp;&nbsp;&nbsp;&nbsp;<%= name %>관리자님 <button name="logout" onclick="javascript:location.href='login/logout.jsp';"> 로그아웃 </button>
-</div>
-	<div class="mngSelling">
+	<div class="mngSelling" style="margin-top:300px;">
 		<div>
 			<table class="mngSellingHeader">
 				<th>상품 관리 페이지</th>
