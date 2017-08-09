@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
-<!DOCTYPE html">
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -25,7 +25,7 @@ if(pageName.equals("main.jsp")){
 
 <header class="page-header" role="banner">
     <div class="top">
-	<hr border=3>
+	<hr>
 		<span id="search">
 			<input id="searchBox" type="text">
 			<img src="<%= path %>res/img/header/search.png" width="20px">
@@ -46,20 +46,20 @@ if(pageName.equals("main.jsp")){
 %>
                 <li><a href="<%= path %>mypage/cart.jsp">장바구니</a></li>
                 <li><a href="<%= path %>mypage/myinfo.jsp">마이페이지</a></li>
-                <li><a href="<%= path %>community/community.jsp">커뮤니티</a></li>
+                <li><a href="<%= path %>community/board/list.jsp">커뮤니티</a></li>
             </ul>
         </nav>
     </div>
 </header>
 <header class="page-logo" role="logo">
 	<div class="logo">
-	<hr border=2>
-			<a href="<%= path %>main.jsp"><img src="<%= path %>res/img/header/logo2.png" width="960px" height="150px"></a>
+	<hr>
+		<a href="<%= path %>main.jsp"><img src="<%= path %>res/img/header/logo2.png" width="960px" height="150px"></a>
 	</div>
 </header>
 <header class="page-category" role="category">
 	<div class="category">
-        <hr border=3>
+        <hr>
 		<nav class="category-nav" role="navigation">
             <ul>
                 <li><a href="<%= path %>product/productList.jsp?category=food">사료</a></li>
@@ -73,7 +73,7 @@ if(pageName.equals("main.jsp")){
             </ul>
         </nav>
 		<br>
-		<hr border=3>
+		<hr>
 	</div>
 </header>
 </head>

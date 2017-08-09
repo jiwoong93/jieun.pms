@@ -81,7 +81,7 @@
  </div>
 	<p class="findPwAsk">비밀번호를 잊어버리셨나요?</p>
 	<div class="findPw">
- 	<a href="./findPw.jsp"><button type="button">FIND PASSWORD</button></a>
+ 	<a href="./findPw.jsp?check=1"><button type="button">FIND PASSWORD</button></a>
  	</div>
  	</body>
 <br/><br/><br/><br/>
