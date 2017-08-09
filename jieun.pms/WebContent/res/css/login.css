@@ -1,0 +1,9 @@
+body {margin-top: 270px;}
+.no-border {border:0px;}
+
+table {
+		width:350px;
+		border-collapse: collapse;
+		align: center;
+		padding: 5px;
+	}

@@ -1,0 +1,54 @@
+
+/* ManagerManin */
+
+.mngMain{
+	margin-top: 20px;
+	margin-left: 130px;
+	margin-bottom: 50px;
+}
+
+button .mngProducts .mngMembers .mngSelling{
+	margin: 10px;
+	background-color: transparent;
+	border-color: lightgray;
+}
+
+/* 판매관리 */
+
+	/* 전체부분 */
+	
+.mngSelling{
+	margin-left: 170px;
+}
+
+.mngSelling tr, td{
+	padding: 10px;
+}
+
+	/* each table */
+	
+.mngSellingHeader{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.mngSellingCount{
+	margin-bottom: 20px;
+	border-style: solid;
+	border-color: gray;
+	border-width: thin;
+	width: 900px;
+	text-align: center;
+}
+
+.mngSellingDetails{
+	border-style: solid;
+	border-color: gray;
+	border-width: thin;
+	position: relative;
+	height:200px; 
+	border-collapse: collapse;
+	width: 900px;
+	text-align: center;
+}
+

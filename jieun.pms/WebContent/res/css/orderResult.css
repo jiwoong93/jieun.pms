@@ -1,0 +1,39 @@
+body {
+	margin-top: 400px;
+	height: 100%;
+}
+
+/* 전체div */
+.paymentCk {
+	
+}
+
+.orderMsg{
+	text-align: center;
+}
+
+b {
+	color: #4374D9;
+}
+
+/* 주문확인테이블 */
+.orderCkTable {
+	border-top: 1px solid #737373;
+	border-bottom: 1px solid #737373;
+	width: 900px;
+	margin: 0 auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+/* 기타(디자인) */
+#amount {
+	width: 40px;
+}
+
+.center{
+	text-align: center;
+}

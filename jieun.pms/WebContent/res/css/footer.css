@@ -1,0 +1,8 @@
+.footer {
+	font-size: 0.7em;
+}
+
+.footer ul li { 
+	list-style-type: none;
+	margin-left: 250px;
+}

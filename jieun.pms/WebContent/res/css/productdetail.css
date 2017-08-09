@@ -1,0 +1,92 @@
+body{
+	margin-top:340px; 
+}
+.itemImg{
+	float: left;
+	text-align: left;
+	width:300px;
+	height:300px;
+	margin-left : 500px;
+}
+
+.itemDetail{
+	padding: 20px;
+	overflow: hidden;
+	text-align: left;
+	margin-left:500px;
+}
+.itemInfo{
+}
+
+th, td{
+	height:30px;
+}
+
+.choose{
+	margin-top:30px;
+	margin-left:830px;
+}
+
+.itemDetail{
+	margin-top:50px;
+	margin-left : 380px;
+}
+
+.itemOrder{
+	margin-left : 10px;
+}
+
+/* community,q&a,review,admin */
+
+.community_table {
+	position: relative;
+	width:50%;
+	height:100px; 
+	border-collapse: collapse;
+	margin-left : 405px;
+	margin-top : 10px;
+}
+
+.comu_button{
+	margin-left:405px;
+	margin-top: 10px;
+}
+
+.comu_search{
+	margin-left: 997px;
+	margin-top: 10px;
+}
+
+.comu_write{
+	margin-left: 1134px;
+	margin-top: 10px;
+}
+
+.comu_delete{		
+}
+
+/* board */
+.board_table{
+	width:650px;
+	height:450px;
+	border-collapse: collapse;
+	position: relative;
+}
+
+.board_table2{
+	width:600px;
+	height:450px; 
+	border-collapse: collapse;
+	position: relative;
+	margin-top : 20px;
+	margin-bottom : 20px;
+}
+
+.board_head{
+	margin-left : 20px;
+	margin-top : 10px;
+}
+
+.border_button{
+	margin-top:10px;
+}

@@ -1,0 +1,58 @@
+body {
+	margin-top: 350px;
+	height: 100%;
+}
+
+/* 메뉴기본틀 */
+ul li { list-style-type: none; }
+
+a { color: inherit; text-decoration: none; }
+
+.mypage {
+	width: 900px;
+	margin: 0 auto;
+}
+
+.mypageTitle {
+	margin-left: 180px;
+	margin-right: 630px; /* 타이틀에 맞춰줄것 (길면줄이고 짧으면늘리기) */
+	text-align: left;
+}
+
+.mypageMenu {
+	float: left;
+	width: 150px;
+	height: 100%;
+	text-align: left;
+}
+
+.mypageContents {
+	height: 100%;
+	padding: 20px;
+	overflow: hidden;
+	border-left: 1px solid #000;
+	text-align: left;
+}
+
+/* contents 부분시작 */
+#wishlistTable {
+	border-top: 1px solid #737373;
+	border-bottom: 1px solid #737373;
+	width: 700px;
+	margin-top: 10px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-align: center;
+}
+
+#amount {
+	width: 40px;
+}
+
+.buttonTable {
+	width: 700px;
+}
+
+.right {
+	text-align: right;
+}
