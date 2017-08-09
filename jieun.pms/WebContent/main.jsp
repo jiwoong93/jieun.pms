@@ -21,7 +21,7 @@
 
 
 <div class="item">
-<center>내가 제일 잘나가asdadadsadsadsadad</center>
+<center>내가 제일 잘나가</center>
 <hr border=3 width="83%">
 <center>
 <ul>

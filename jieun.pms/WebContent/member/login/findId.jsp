@@ -1,8 +1,8 @@
-<%@ include file="../../common/header.jsp" %>
+<jsp:include page="../../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link rel="stylesheet" href="../../res/css/login.css">
+<link rel="stylesheet" href="../../res/css/login.css?ver=2">
 <script Language='JavaScript'>
 	function check(ck){
 		if(ck == 1){
@@ -24,13 +24,6 @@
 	}
 %>
 <br/><br/><br/><br/>
-<div class="find_method">
-<center>
-    <a href="./findPw.jsp">FIND PWASSWORD</a>
-</center>
-</div>
-
-<br/><br/>
 
 <div class="find_id_box"> 
 <center>
@@ -83,9 +76,13 @@
  </form>
  
 <br/>
- <button type="submit" value="Submit" >FIND ID</button>
- 
+ <button type="submit" value="Submit" class="findId">FIND ID</button>
  </center>
- </div> 
+ </div>
+	<p class="findPwAsk">비밀번호를 잊어버리셨나요?</p>
+	<div class="findPw">
+ 	<a href="./findPw.jsp?check=1"><button type="button">FIND PASSWORD</button></a>
+ 	</div>
+ 	</body>
 <br/><br/><br/><br/>
  <%@ include file="../../common/footer.jsp"%>

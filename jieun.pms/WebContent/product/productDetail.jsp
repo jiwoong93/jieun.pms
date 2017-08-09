@@ -1,11 +1,14 @@
-<%@ include file="../common/header.jsp"%>
+<jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
+<%
+	String itemNo = request.getParameter("no");
+%>
 <link rel="stylesheet" href="../res/css/productdetail.css"></link>
 <body style="margin-top: 350px;">
 	<div class="itemImg">
-			<img src="../res/img/best_item/best_1.jpg" width="300px" height="300px">
+			<img src="../res/img/new_item/new_<%=itemNo%>.jpg" width="300px" height="300px">
 		</div>
 
 		<div class="itemDetail">
@@ -13,12 +16,12 @@
 				<tr align="left">
 					<th>상품명</th>
 					<td>:</td>
-					<td></td>
+					<td><input type="text" name="itemname" /></td>
 				</tr>
 				<tr align="left">
 					<th>가격</th>
 					<td>:</td>
-					<td></td>
+					<td><input type="number" name="itemprice" /></td>
 				</tr>
 				<tr align="left">
 					<th>사이즈</th>
@@ -43,13 +46,13 @@
 		<br />
 		<table class="itemOrder">
 			<tr>
-				<td>선택옵션&nbsp;</td>
-				<td>수량&nbsp;</td>
-				<td>가격&nbsp;</td>
+				<td>선택옵션</td>
+				<td>수량</td>
+				<td>가격</td>
 			</tr>
 			<tr>
-				<td>&nbsp;&nbsp;&nbsp;&nbsp;M</td>
-				<td>&nbsp;2</td>
+				<td>&nbsp옵션</td>
+				<td>2</td>
 				<td>65,000</td>
 			</tr>
 			<tr>
@@ -66,9 +69,8 @@
 		</div>
 		<br>
 		<hr width="61%">
-		<center>상품설명</center>
 		<div class="itemDetail">
-			<a href="#"><img src="../res/img/best_item/best_1.jpg" width="800px"
+			<a href="#"><img src="../res/img/new_item/new_<%=itemNo%>.jpg" width="800px"
 				height="500px"></a>
 		</div>
 		<div class="mypageTitle">

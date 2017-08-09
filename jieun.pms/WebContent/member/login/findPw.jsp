@@ -1,8 +1,8 @@
-<%@ include file="../../common/header.jsp" %>
+<jsp:include page="../../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link rel="stylesheet" href="../../res/css/login.css">
+<link rel="stylesheet" href="../../res/css/login.css?ver=2">
 <script Language='JavaScript'>
 	function check(ck){
 		if(ck == 1){
@@ -24,24 +24,15 @@
 	}
 %>
 <br/><br/><br/><br/>
-<div class="find_method">
-<center>
-    <a href="./findId.jsp">FIND ID</a>
-</center>
-</div>
-
-<br/><br/>
 
 <div class="find_pw_box"> 
 <center>
  <form action="">
  
  <table>
- 
-  <tr>
+   <tr>
    <td colspan="2"> <h2>FIND PASSWORD</h2> <hr> </td>
   </tr>
-  
   <tr>
    <td colspan="2">
     <a href="./findPw.jsp?check=1"><input type="radio" name="find_type" value="method_email" <%= checked1 %> onclick="javascript:check(1);">이메일</a>
@@ -90,11 +81,13 @@
   
  </table>
  </form>
- 
 <br/>
- <button type="submit" value="Submit" >FIND PASSWORD</button>
- 
- </center>
- </div> 
+ <button type="submit" value="Submit" class="findId" >FIND PASSWORD</button>
+  </center>
+   </div>
+ <p class="findIdAsk">아이디를 잊어버리셨나요?</p>
+ <a href="./findId.jsp?check=1"><button type="button" class="findIdButt">FIND ID</button></a>
+ 	</body>
+
 <br/><br/><br/><br/>
 <%@ include file="../../common/footer.jsp"%>
