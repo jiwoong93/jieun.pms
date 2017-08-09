@@ -86,7 +86,7 @@
   </center>
    </div>
  <p class="findIdAsk">아이디를 잊어버리셨나요?</p>
- <a href="./findId.jsp"><button type="button" class="findIdButt">FIND ID</button></a>
+ <a href="./findId.jsp?check=1"><button type="button" class="findIdButt">FIND ID</button></a>
  	</body>
 
 <br/><br/><br/><br/>

@@ -1,0 +1,27 @@
+body {
+	margin-top: 270px;
+}
+
+table{
+	 height : 100;
+	 border-collapse : collapse;
+	 border : 1px solid black;
+	 margin-top: 300px;
+}
+
+td{
+	height : 30px;
+	border : 1px solid black;
+	padding: 8px;
+}
+
+td .search{
+	width:100%; 
+	height:100%;
+	padding:0px;
+}
+
+#category, #sort{
+	width:100px;
+	height:30px;
+}
