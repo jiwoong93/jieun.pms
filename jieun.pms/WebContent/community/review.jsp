@@ -1,5 +1,5 @@
-<%@page import="jieun.pms.community.service.PostServiceImpl"%>
 <%@page import="jieun.pms.community.service.PageServiceImpl"%>
+<%@page import="jieun.pms.community.service.PostServiceImpl"%>
 <%@page import="jieun.pms.community.service.PostService"%>
 <%@page import="jieun.pms.community.service.PageService"%>
 <%@page import="jieun.pms.community.domain.Page"%>
