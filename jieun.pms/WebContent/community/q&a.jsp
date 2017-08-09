@@ -1,4 +1,4 @@
-<%@ include file="../common/header.jsp"%>
+<%@ include file="../common/actionHeader.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
