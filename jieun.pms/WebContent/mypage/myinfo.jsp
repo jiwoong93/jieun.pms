@@ -32,7 +32,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 			<li><a href="./cart.jsp">장바구니</a><hr></li>
 			<li><a href="./wishlist.jsp">위시리스트</a><hr></li>
 			<li><a href="./mypost.jsp">내 게시물</a><hr></li>
-			<li><a href="./myinfo.jsp">나의 정보</a><hr></li>
+			<li><a href="./passwordCheck.jsp">나의 정보</a><hr></li>
 		</ul>
 	</div>
 	

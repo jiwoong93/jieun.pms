@@ -48,7 +48,7 @@ if(pageName.equals("main.jsp")){
 %>
                 <li><a href="<%= path %>mypage/cart.jsp">장바구니</a></li>
                 <li><a href="<%= path %>mypage/orderlist.jsp">마이페이지</a></li>
-                <li><a href="<%= path %>community/board/list.jsp">커뮤니티</a></li>
+                <li><a href="<%= path %>community/community.jsp">커뮤니티</a></li>
             </ul>
         </nav>
     </div>

@@ -16,8 +16,8 @@
 	Member member = memberService.getMember(memId);
 %>	
 <% 	
-	if(member.getMemId().equals(memId)){ %>
-<% 		if(member.getMemPw().equals(memPw)){  
+	if(member.getMemId().equals(memId)){
+ 		if(member.getMemPw().equals(memPw)){  
 			session.setAttribute("sessionId", member.getMemId());
 			session.setAttribute("sessionPw", member.getMemPw());
 			
