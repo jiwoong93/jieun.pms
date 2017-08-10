@@ -4,11 +4,14 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="../../res/css/login.css">
 <body>
-<% request.setCharacterEncoding("UTF-8"); %>
+<% 
+	request.setCharacterEncoding("UTF-8"); 
+	String currentPage = request.getParameter("page");
+%>
 <br/><br/><br/>
 <center>
 <div class="loginbox">
- <form method="post" action="actionLogin.jsp">
+ <form method="post" action="actionLogin.jsp?page=<%=currentPage%>">
  
  <table>
  

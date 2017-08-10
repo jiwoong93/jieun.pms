@@ -10,6 +10,8 @@
 	
 	String memId = request.getParameter("mem_id");
 	String memPw = request.getParameter("mem_pw");
+	String currentPage = request.getParameter("page");
+	
 	MemberService memberService = new MemberServiceImpl();
 	Member member = memberService.getMember(memId);
 %>	
@@ -18,7 +20,15 @@
 <% 		if(member.getMemPw().equals(memPw)){  
 			session.setAttribute("sessionId", member.getMemId());
 			session.setAttribute("sessionPw", member.getMemPw());
-			response.sendRedirect("../../main.jsp");
+			
+			if(currentPage.equals("cart")){
+				response.sendRedirect("../../mypage/cart.jsp");
+			}else if(currentPage.equals("mypage")){
+				response.sendRedirect("../../mypage/orderlist.jsp");
+			}else{
+				response.sendRedirect("../../main.jsp");
+			}
+			
  		} else { 
 %>			<script>alert('비밀번호를 확인하세요.'); location.href = 'login.jsp';</script>
 <%			

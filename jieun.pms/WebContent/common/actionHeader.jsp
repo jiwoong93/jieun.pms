@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <%
 	String currentId =(String)session.getAttribute("sessionId");
-	
+
 	if(currentId != null && currentId != ""){
 		if(currentId.equals("admin")){
 %>
