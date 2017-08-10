@@ -17,7 +17,7 @@
 <%		} else { %>
 			<div style="float:left;">
 <%		} %>
-			<a href="../productdetail.jsp?no=<%= i %>" class="" id="best_<%=i%>"><img src="../res/img/new_item/new_<%=i%>.jpg"></a>
+			<a href="./productdetail.jsp?no=<%= i %>" class="" id="best_<%=i%>"><img src="../res/img/new_item/new_<%=i%>.jpg"></a>
 			<div>상품명</div>
 			<div>가격</div>
 		</div>
