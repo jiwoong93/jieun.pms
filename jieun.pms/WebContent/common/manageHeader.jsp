@@ -48,7 +48,7 @@
 
 				<li><a href="<%=path%>admin/manageSelling.jsp">판매관리</a></li>
 				<li><a href="<%=path%>admin/manageProduct.jsp">상품관리</a></li>
-				<li><a href="<%=path%>admin/manageMember.jsp">회원관리</a></li>
+				<li><a href="<%=path%>admin/manageMem.jsp">회원관리</a></li>
 				<li><a href="<%=path%>community/community.jsp">커뮤니티</a></li>
 			</ul>
 		</nav>
