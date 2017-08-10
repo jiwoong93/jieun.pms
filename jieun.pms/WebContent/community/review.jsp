@@ -128,12 +128,37 @@
 					</div>
 				</div>
 
+<<<<<<< HEAD
+			<!-- 검색 -->
+			<div class="comu_search">
+				<input type="text" class="textbox" size="18"> <input
+					type="submit" value="검색" /><br />
+			</div>
+<<<<<<< HEAD
+			
+			<!-- 좌우버튼 -->`
+			<div class="comu_button">
+			<input type="button" value="◀"/>
+			<input type="button" value="▶"/>
+=======
+=======
 				<!-- 검색 -->
 				<div class="comu_search">
 					<input type="text" class="textbox" size="18"> <input
 						type="submit" value="검색" /><br />
 				</div>
+>>>>>>> branch 'master' of https://github.com/jiwoong93/jieun.pms.git
 
+<<<<<<< HEAD
+			<!-- 삭제버튼 -->
+			<div class="comu_delete">
+				<input type="submit" value="삭제" />
+>>>>>>> branch 'master' of https://github.com/jiwoong93/jieun.pms.git
+			</div>
+			<!-- 글쓰기 -->
+			<div class="comu_write">
+				<a href="./board.jsp"><input type="button" value="글쓰기"></a>
+=======
 				<%
 					if (currentId != null && currentId != "") {
 						if (currentId.equals("admin")) {
@@ -156,6 +181,7 @@
 				<%
 					}
 				%>
+>>>>>>> branch 'master' of https://github.com/jiwoong93/jieun.pms.git
 			</div>
 		</div>
 		<br /> <br /> <br /> <br />
