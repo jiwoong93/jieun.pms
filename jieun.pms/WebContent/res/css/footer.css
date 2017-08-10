@@ -1,8 +1,9 @@
 .footer {
-	font-size: 0.7em;
+	font-size: 12px;
+	background-color: rgb(234, 234, 234);
 }
 
-.footer ul li { 
+.footer li { 
 	list-style-type: none;
-	margin-left: 250px;
+	margin-left: 210px;
 }

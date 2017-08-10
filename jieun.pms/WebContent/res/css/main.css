@@ -1,18 +1,11 @@
-body { color: rgb(0, 0, 0); min-width: 960px; margin-top: 270px; width: 100%;
-		background-image: url(../img/background.jpg);
-        background-position: 0 150px;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        overflow-y: auto;
-}
-img { vertical-align: middle; horizontal-align: center;}
+body { color: rgb(0, 0, 0); min-width: 960px; margin-top: 270px; width: 100%; overflow-y: auto; }
+
 /* 슬라이드 부분 */
 .slideshow { background-color: rgb(255, 255, 255); height: 330px; overflow: hidden; position: relative; }
 
 .slideshow .slideshow-slides { height: 100%; position: absolute; width: 100%; }
 .slideshow .slideshow-slides .slide { height: 100%; overflow: hidden; position: absolute; width: 100%; }
-.slideshow .slideshow-slides .slide img { left: 60%; margin-left: -800px; position: absolute; }
+.slideshow .slideshow-slides .slide img { left: 60%; margin-left: -800px; position: absolute; width:1300px; height: 400px; }
 
 .slideshow .slideshow-nav a, .slideshow .slideshow-indicator a { overflow: hidden; }
 .slideshow .slideshow-nav a:before,
@@ -32,21 +25,40 @@ img { vertical-align: middle; horizontal-align: center;}
 /* 슬라이드 부분 끝 */
 
 /*item*/
-.item {
-    background-color: rgb(255, 255, 255);
+.item, .item2 {
     position: relative;
-    width: 100%;
-    height: 450px;
+    width: 1300px;
+    height: 500px;
+    text-align: center;
+    margin: 0 auto;
+	padding-top: 20px;
+}
+
+.itemImg {
+	float:left;
+}
+
+.item img, .item2 img {
+	width: 300px;
+	height: 300px;
+	margin: 10px;
+}
+
+.item h3, .item2 h3 {
+	color: #5D5D5D;
+}
+
+.background {
+	height: 500px;
+	background-image: url(../img/background.jpg);
+    background-position: 0 150px;
+  	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
 .item2 {
-    background-color: rgb(255, 255, 255);
-    position: relative;
-    width: 100%;
-    height: 450px;
-    margin-top: 300px;
+	margin-bottom: 100px;
 }
-
-
 
 /*item 끝*/

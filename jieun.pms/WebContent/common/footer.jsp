@@ -13,9 +13,9 @@ if(pageNameFooter.equals("main.jsp")){
 	pathFooter = "../";
 }
 %>
-	<link rel="stylesheet" href="<%= pathFooter %>res/css/footer.css">
+	<link rel="stylesheet" href="<%= pathFooter %>res/css/footer.css?var=3">
 
-<div class="footer" style="background-color:rgb(234, 234, 234)">
+<div class="footer">
 	<ul>
 		<li> Copyright ⓒ Coong's corp.</li>
 		<li> Owner : 쿵 </li>
@@ -25,5 +25,4 @@ if(pageNameFooter.equals("main.jsp")){
 	<br><br/>
 </div>
 
-</body>
 </html>
