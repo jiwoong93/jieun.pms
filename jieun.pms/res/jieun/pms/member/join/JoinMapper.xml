@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="jieun.pms.member.join.dao.mapper.JoinMapper">
+	<insert id="addMember" parameterType="jieun.pms.member.join.domain.Member" >
+		insert into members values (#{memId,jdbcType=VARCHAR}, #{memLevel,jdbcType=VARCHAR},
+		#{memName,jdbcType=VARCHAR}, #{memPw,jdbcType=VARCHAR}, #{memEmail,jdbcType=VARCHAR},
+		#{memBirth,jdbcType=VARCHAR}, #{memPhone,jdbcType=VARCHAR}, #{memGender,jdbcType=VARCHAR},
+		#{memZipcode,jdbcType=VARCHAR}, #{memStreet,jdbcType=VARCHAR}, #{memAddr,jdbcType=VARCHAR},
+		#{dogCode,jdbcType=VARCHAR})
+	</insert>
+</mapper>
