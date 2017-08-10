@@ -5,7 +5,7 @@
 <%@page import="jieun.pms.config.Configuration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
-<!DOCTYPE html">
+<!DOCTYPE html>
 <%
 	
 	String memId = request.getParameter("mem_id");
