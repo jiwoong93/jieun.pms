@@ -3,30 +3,20 @@
 <!DOCTYPE html>
 <%
 	String currentId =(String)session.getAttribute("sessionId");
-	String cururl = request.getRequestURI().toString();
-	String pageName = cururl.substring(cururl.lastIndexOf("/") + 1, cururl.length());
-	String path = "";
-	if(pageName.equals("main.jsp")){
-		path = "./";
-	} else if(pageName.equals("login.jsp") || pageName.equals("findId.jsp") || pageName.equals("findPw.jsp") || pageName.equals("join.jsp")) {
-		path = "../../";
-	} else {
-		path = "../";
-	}
 	
 	if(currentId != null && currentId != ""){
 		if(currentId.equals("admin")){
 %>
-			<jsp:include page="<%=path %>common/manageHeader.jsp" />
+			<jsp:include page="manageHeader.jsp"/>
 <%
 		}else{
 %>
-			<jsp:include page="<%=path %>common/header.jsp" />
+			<jsp:include page="header.jsp" />
 <%
 		}
 	}else{
 %>
-			<jsp:include page="<%=path %>common/header.jsp" />
+			<jsp:include page="header.jsp" />
 <%
 	}
 %>
