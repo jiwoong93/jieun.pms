@@ -19,7 +19,7 @@ if(pageNameCart.equals("main.jsp")){
 <%
 if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
 %>
-	<script>alert('로그인 후에 이용해주세요.'); location.href = '<%=pathCart%>member/login/login.jsp';</script>
+	<script>alert('로그인 후에 이용해주세요.'); location.href = '<%=pathCart%>member/login/login.jsp?page=cart';</script>
 <%
 } else {
 %>
@@ -28,6 +28,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
  
 	<div class="mypageMenu">
 		<ul>
+		
 			<li><a href="./orderlist.jsp">주문내역</a><hr></li>
 			<li><a href="./cart.jsp">장바구니</a><hr></li>
 			<li><a href="./wishlist.jsp">위시리스트</a><hr></li>

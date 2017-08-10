@@ -19,7 +19,7 @@ if(pageNameOrder.equals("main.jsp")){
 <%
 if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
 %>
-	<script>alert('로그인 후에 이용해주세요.'); location.href = '<%=pathOrder%>member/login/login.jsp';</script>
+	<script>alert('로그인 후에 이용해주세요.'); location.href = '<%=pathOrder%>member/login/login.jsp?page=mypage';</script>
 <%
 } else {
 %>
