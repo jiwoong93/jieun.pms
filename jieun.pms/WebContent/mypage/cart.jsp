@@ -28,6 +28,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
  
 	<div class="mypageMenu">
 		<ul>
+		
 			<li><a href="./orderlist.jsp">주문내역</a><hr></li>
 			<li><a href="./cart.jsp">장바구니</a><hr></li>
 			<li><a href="./wishlist.jsp">위시리스트</a><hr></li>
