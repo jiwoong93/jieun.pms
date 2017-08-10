@@ -24,12 +24,14 @@ if(pageName.equals("main.jsp")){
 	<script src="<%= path %>res/js/header.js"></script>
 
 <header class="page-header" role="banner">
-    <div class="top">
+    <div class="top" >
 	<hr>
-		<span id="search">
+		<span id="search">	
 			<input id="searchBox" type="text">
-			<img src="<%= path %>res/img/header/search.png" width="20px">
+			<a href="<%= path %>product/productSearch.jsp"><img src="<%= path %>res/img/header/search.png" width="20px"></a> 
+			<!--<input  TYPE="image" src="<%= path %>res/img/header/search.png" name="Submit" value="Submit" width="20px">-->
 		</span>
+
         <nav class="primary-nav" role="navigation">
             <ul>
 <%
