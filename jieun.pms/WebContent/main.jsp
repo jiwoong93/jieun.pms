@@ -1,6 +1,6 @@
-<%@ include file="./common/actionHeader.jsp" %>
+<jsp:include page="./common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html">
 <link rel="stylesheet" href="./res/css/main.css?ver=2">
 <script src="./res/js/main.js"></script>

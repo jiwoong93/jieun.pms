@@ -1,9 +1,8 @@
 <jsp:include page="../common/actionHeader.jsp"/>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/productSearch.css"></link>
-
+<link rel="stylesheet" href="../res/css/productSearch.css">
 <body style="margin-top: 350px;">
 <div class="item" style="margin-bottom: 500px">
 <center>
@@ -25,3 +24,6 @@
 </center>
 </div>
 </body>
+<br/><br/>
+<%@ include file="../common/footer.jsp"%>
+
