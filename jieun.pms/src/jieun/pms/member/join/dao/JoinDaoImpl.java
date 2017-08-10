@@ -16,4 +16,9 @@ public class JoinDaoImpl implements JoinDao {
 		return joinMapper.addMember(member);
 	}
 
+	@Override
+	public int countMember(String memId) {
+		return joinMapper.countMember(memId);
+	}
+
 }

@@ -3,6 +3,12 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html">
 <link rel="stylesheet" href="../../res/css/join.css">
+<script>
+function check(){
+    var id = document.getElementById("mem_id");
+    location.href="./memIdCheck.jsp?id="+id.value;
+}
+</script>
 <body>
 <br/><br/><br/><br/>
 <center>
@@ -16,7 +22,7 @@
    			<td> 아이디 </td>
    			<td> 
 			   <input type="text" name="mem_id" id="mem_id" required="required">
-			   <input type = "button" value = "중복확인"/>
+			   <input type = "button" value = "중복확인" onclick="check()"/>
    			</td>
   		</tr>
 

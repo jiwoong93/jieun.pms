@@ -9,4 +9,8 @@
 		#{memZipcode,jdbcType=VARCHAR}, #{memStreet,jdbcType=VARCHAR}, #{memAddr,jdbcType=VARCHAR},
 		#{dogCode,jdbcType=VARCHAR})
 	</insert>
+	
+	<select id="countMember" parameterType="string" resultType="int">
+		select count(*) from members where mem_id=#{memId}
+	</select>
 </mapper>
