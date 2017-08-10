@@ -21,4 +21,9 @@ public class JoinServiceImpl implements JoinService {
 		return joinDao.countMember(memId);
 	}
 
+	@Override
+	public int delMember(String memId) {
+		return joinDao.delMember(memId);
+	}
+
 }

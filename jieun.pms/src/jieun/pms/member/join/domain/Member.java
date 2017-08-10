@@ -13,11 +13,12 @@ public class Member {
 	private String memStreet;
 	private String memAddr;
 	private String dogCode;
+	private String regDate;
 	
 	public Member() { super(); }
 
 	public Member(String memId, String memLevel, String memName, String memPw, String memEmail, String memBirth,
-			String memPhone, String memGender, String memZipcode, String memStreet, String memAddr, String dogCode) {
+			String memPhone, String memGender, String memZipcode, String memStreet, String memAddr, String dogCode, String regDate) {
 		super();
 		this.memId = memId;
 		this.memLevel = memLevel;
@@ -31,6 +32,7 @@ public class Member {
 		this.memStreet = memStreet;
 		this.memAddr = memAddr;
 		this.dogCode = dogCode;
+		this.regDate = regDate;
 	}
 
 	public String getMemId() {
@@ -128,4 +130,13 @@ public class Member {
 	public void setDogCode(String dogCode) {
 		this.dogCode = dogCode;
 	}
+
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	
 }

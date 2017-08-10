@@ -21,4 +21,9 @@ public class JoinDaoImpl implements JoinDao {
 		return joinMapper.countMember(memId);
 	}
 
+	@Override
+	public int delMember(String memId) {
+		return joinMapper.delMember(memId);
+	}
+
 }

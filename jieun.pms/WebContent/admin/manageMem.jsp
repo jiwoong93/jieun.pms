@@ -1,9 +1,27 @@
+<%@page import="jieun.pms.member.list.service.MemberServiceImpl"%>
+<%@page import="jieun.pms.member.list.service.PageServiceImpl"%>
+<%@page import="jieun.pms.member.list.service.MemberService"%>
+<%@page import="jieun.pms.member.list.service.PageService"%>
+<%@page import="jieun.pms.member.list.domain.Page"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manageMem.css?var">
+<link rel="stylesheet" href="../res/css/manageMem.css?">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <body>
+<%
+	Page myPage = null;
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
+	else myPage = new Page();
+	
+	PageService pageService = new PageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", pageService);
+	MemberService memberService = new MemberServiceImpl();
+	pageContext.setAttribute("members", memberService.listMembers(myPage));
+%>
 <div class="memSearch">
 	<div class="searchMenu">
 		<div class="menuTitle">
@@ -59,7 +77,6 @@
 				<td>성별</td>
 				<td>가입일</td>
 				<td>구매금액</td>
-				<td>방문</td>
 				<td>이메일</td>
 				<td>핸드폰</td>
 				<td>삭제</td>
@@ -67,18 +84,20 @@
 			
 			<tr><td colspan="10" id="line"><hr></td></tr>
 			
+		<c:forEach var="jieun.pms.member.list.domain.Member" items="${members}">
 			<tr>
-				<td>1</td>
-				<td>eunyoung</td>
-				<td><a href="./memInfo.jsp">송은영</a></td>
-				<td>여</td>
-				<td>2017.00.00</td>
-				<td>200,000</td>
-				<td>50</td>
-				<td>eunyoung@naver.com</td>
-				<td>010-8885-0409</td>
+				<td>${member.rnum}</td>
+				<td>${member.memId}</td>
+				<td><a href="./memInfo.jsp">${member.memName}</a></td>
+				<td>${member.memGender}</td>
+				<td>${member.regDate}</td>
+				<td></td>
+				<td>${member.memEmail}</td>
+				<td>${member.memPhone}</td>
 				<td><input type="button" name="delete" value="X"></td>
 			</tr>
+		</c:forEach>
+     	
 		</table>
 	</div>
 </div>

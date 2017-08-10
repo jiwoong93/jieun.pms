@@ -7,10 +7,14 @@
 		#{memName,jdbcType=VARCHAR}, #{memPw,jdbcType=VARCHAR}, #{memEmail,jdbcType=VARCHAR},
 		#{memBirth,jdbcType=VARCHAR}, #{memPhone,jdbcType=VARCHAR}, #{memGender,jdbcType=VARCHAR},
 		#{memZipcode,jdbcType=VARCHAR}, #{memStreet,jdbcType=VARCHAR}, #{memAddr,jdbcType=VARCHAR},
-		#{dogCode,jdbcType=VARCHAR})
+		#{dogCode,jdbcType=VARCHAR}, #{regDate,jdbcType=VARCHAR})
 	</insert>
 	
 	<select id="countMember" parameterType="string" resultType="int">
 		select count(*) from members where mem_id=#{memId}
 	</select>
+	
+	<delete id="delMember" parameterType="string">
+		update members set mem_level='9' where mem_id=#{memId}
+	</delete>
 </mapper>

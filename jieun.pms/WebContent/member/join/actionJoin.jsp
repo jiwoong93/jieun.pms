@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="jieun.pms.member.join.service.JoinServiceImpl"%>
 <%@page import="jieun.pms.member.join.service.JoinService"%>
 <%@page import="jieun.pms.member.join.domain.Member"%>
@@ -19,8 +21,9 @@
 	String memStreet = request.getParameter("mem_street");
 	String memAddr = request.getParameter("mem_addr");
 	String dogCode = request.getParameter("dog_code");
+	String regDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 	
-	Member member = new Member(memId, memLevel, memName, memPw, memEmail, memBirth, memPhone, memGender, memZipcode, memStreet, memAddr, dogCode);
+	Member member = new Member(memId, memLevel, memName, memPw, memEmail, memBirth, memPhone, memGender, memZipcode, memStreet, memAddr, dogCode, regDate);
 	JoinService joinService = new JoinServiceImpl();
 	if(joinService.addMember(member) == 1){
 %>
