@@ -7,8 +7,8 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <%
-	
-	String memId = request.getParameter("mem_id");
+	String memId = "";
+	memId = request.getParameter("mem_id");
 	String memPw = request.getParameter("mem_pw");
 	String currentPage = request.getParameter("page");
 	
