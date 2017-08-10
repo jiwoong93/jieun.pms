@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
+
 <link rel="stylesheet" href="../res/css/productdetail.css"></link>
 <body style="margin-top: 350px;">
 	<div class="itemImg">
