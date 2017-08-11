@@ -2,17 +2,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manager.css">
+<link rel="stylesheet" href="../res/css/manager.css?ver=8">
+<link rel="stylesheet" href="../res/css/search.css?ver=5">
 <body>
-	<div class="mngSelling" style="margin-top:300px;">
-		<div>
-			<table class="mngSellingHeader">
-				<th>상품 관리 페이지</th>
-			</table>
+	<div class="mngSelling">
+		<div class="mngSellingHeader">
+			<h2>상품 관리 페이지<hr></h2>
 		</div>
-		<div>
-			검색테이블
-		</div>
+	<form  class="search" action="#" method="get">
+		<table >
+			<tr>
+		 		<td align="center" rowspan="5" width="100">상세검색</td>
+				<td align="left">검색어</td><td><input type="text" name="itemname"/></td>
+				<td rowspan="5" width="100"><input class="search" type="submit" value="검색" ></td>
+			</tr>
+			<tr align="left">
+		 		<td >상품분류</td>
+		 			<td>
+		 				<select id="category" name="category">
+		 					<option value="food">사료</option>
+		 					<option value="snack">간식</option>
+		 					<option value="bath">위생</option>
+		 					<option value="beauty">미용</option>
+		 					<option value="cloth">의류</option>
+		 					<option value="accessory">악세사리</option>
+		 					<option value="toy">장난감</option>
+		 					<option value="house">하우스</option>
+		 				</select>
+		 			</td>
+			</tr> 
+			<tr align="left">
+		 		<td>판매가격대</td>
+		 		<td><input type="number" name="rowprice"/>원 ~ <input type="number" name="highprice"/>원</td>
+			</tr> 
+			<tr align="left">
+		 		<td>검색정렬기준</td>
+		 			<td>
+		 				<select id="sort" name="sort" >
+		 					<option value="new">신상품순</option>
+		 					<option value="popular">인기순</option>
+		 					<option value="row">낮은가격순</option>
+		 					<option value="high">높은가격순</option>
+		 					<option value="name">이름순</option>
+		 				</select>
+		 			</td>
+			</tr> 
+		</table>
+	</form>
 		<div>
 			<table class="mngSellingDetails" border="1">
 				<tr height="30px"> 
@@ -51,3 +87,4 @@
 			</table>	
 		</div>
 	</div>
+<%@ include file="../common/footer.jsp"%>

@@ -44,7 +44,7 @@
 			</tr>
 			<tr>
 				<td>판매가</td>
-				<td><%=products.get(0).getItemPrice()%></td>
+				<td><%=products.get(0).getItemPrice()%> 원</td>
 			</tr>
 			<tr>
 <%

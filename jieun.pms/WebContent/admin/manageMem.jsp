@@ -2,12 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manageMem.css?var">
+<link rel="stylesheet" href="../res/css/manageMem.css?ver=1">
 <body>
 <div class="memSearch">
 	<div class="searchMenu">
 		<div class="menuTitle">
-		<h2>회원관리<hr></h2>
+			<h2>회원관리<hr></h2>
 		</div>
 		<table id="searchTable">
 			<tr>
@@ -59,7 +59,6 @@
 				<td>성별</td>
 				<td>가입일</td>
 				<td>구매금액</td>
-				<td>방문</td>
 				<td>이메일</td>
 				<td>핸드폰</td>
 				<td>삭제</td>
@@ -69,12 +68,11 @@
 			
 			<tr>
 				<td>1</td>
-				<td>eunyoung</td>
-				<td><a href="./memInfo.jsp">송은영</a></td>
+				<td><a href="./manageMemInfo.jsp">eunyoung</td>
+				<td><a href="./manageMemInfo.jsp">송은영</a></td>
 				<td>여</td>
 				<td>2017.00.00</td>
 				<td>200,000</td>
-				<td>50</td>
 				<td>eunyoung@naver.com</td>
 				<td>010-8885-0409</td>
 				<td><input type="button" name="delete" value="X"></td>
@@ -83,3 +81,4 @@
 	</div>
 </div>
 </body>
+<%@ include file="../common/footer.jsp"%>
