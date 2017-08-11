@@ -19,4 +19,9 @@ public class ProductDaoImpl implements ProductDao {
 		
 	}
 
+	@Override
+	public List<Product> getProduct(String itemName) {
+		return productMapper.getProduct(itemName);
+	}
+
 }

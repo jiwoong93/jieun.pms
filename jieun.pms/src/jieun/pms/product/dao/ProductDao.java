@@ -6,4 +6,5 @@ import jieun.pms.product.domain.Product;
 
 public interface ProductDao {
 	List<Product> getProducts(String Category);
+	List<Product> getProduct(String ItemName);
 }

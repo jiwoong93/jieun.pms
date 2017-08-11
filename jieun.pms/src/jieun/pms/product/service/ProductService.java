@@ -6,4 +6,5 @@ import jieun.pms.product.domain.Product;
 
 public interface ProductService {
 	List<Product> getProducts(String category);
+	List<Product> getProduct(String itemName);
 }

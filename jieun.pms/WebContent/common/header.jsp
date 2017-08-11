@@ -64,14 +64,14 @@ if(pageName.equals("main.jsp")){
         <hr>
 		<nav class="category-nav" role="navigation">
             <ul>
-                <li><a href="<%= path %>product/productList.jsp?category=food">사료</a></li>
-                <li><a href="<%= path %>product/productList.jsp?category=snack">간식</a></li>
-                <li><a href="<%= path %>product/productList.jsp?category=bath">위생</a></li>
-                <li><a href="<%= path %>product/productList.jsp?category=beauth">미용</a></li>
-                <li><a href="<%= path %>product/productList.jsp?category=clothe">의류</a></li>
-				<li><a href="<%= path %>product/productList.jsp?category=accessory">악세사리</a></li>
-				<li><a href="<%= path %>product/productList.jsp?category=toy">장난감</a></li>
-				<li><a href="<%= path %>product/productList.jsp?category=house">하우스</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=10">사료</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=20">간식</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=30">위생</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=40">미용</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=50">의류</a></li>
+				<li><a href="<%= path %>product/productList.jsp?category=60">악세사리</a></li>
+				<li><a href="<%= path %>product/productList.jsp?category=70">장난감</a></li>
+				<li><a href="<%= path %>product/productList.jsp?category=80">하우스</a></li>
             </ul>
         </nav>
 		<br>
