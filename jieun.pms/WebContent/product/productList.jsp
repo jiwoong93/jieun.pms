@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/productList.css">
+<link rel="stylesheet" href="../res/css/productList.css?var=1">
 <%
 	ProductService productService = new ProductServiceImpl();
 	String requestCategory = request.getParameter("category");
