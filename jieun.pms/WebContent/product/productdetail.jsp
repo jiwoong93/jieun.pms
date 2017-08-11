@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/productdetail.css?var"></link>
+<link rel="stylesheet" href="../res/css/productdetail.css?var=6"></link>
 <%
 
 	ProductService productService = new ProductServiceImpl();
@@ -29,13 +29,13 @@
 				<td colspan="2"> <hr> </td>
 			</tr>
 			<tr>
-				<td colspan="2"> <p><%=products.get(0).getItemName()%></p> </td>
+				<td colspan="2" class="center"> <%=products.get(0).getItemName()%> </td>
 			</tr>
 			<tr>
 				<td colspan="2"> <hr> </td>
 			</tr>
 			<tr>
-				<td colspan="2"> <h1><%=products.get(0).getItemPrice()%><b>\</b></h1> </td>
+				<td colspan="2" class="center"> <h1><%=products.get(0).getItemPrice()%>&nbsp;<b>\</b></h1> </td>
 			</tr>
 			<tr><td colspan="2"></td></tr>
 			<tr>
@@ -44,7 +44,7 @@
 			</tr>
 			<tr>
 				<td>판매가</td>
-				<td><%=products.get(0).getItemPrice()%></td>
+				<td><%=products.get(0).getItemPrice()%>원</td>
 			</tr>
 			<tr>
 <%
@@ -64,6 +64,30 @@
 <%
 				}
 %>	
+			</tr>
+		</table>
+		<table class="itemInfoTable2">
+			<tr>
+				<td colspan="3"> <hr> </td>
+			</tr>
+			<tr>
+				<td width="220px">상품명</td>
+				<td width="80px">수량</td>
+				<td width="100px">판매가</td>
+			</tr>
+			<tr>
+				<td colspan="3"> <hr> </td>
+			</tr>
+			<tr>
+				<td><%=products.get(0).getItemName()%></td>
+				<td><input type="number" name="amount" id="amount" value="1"></td>
+				<td><%=products.get(0).getItemPrice()%>원</td>
+			</tr>
+			<tr>
+				<td colspan="3"> <hr> </td>
+			</tr>
+			<tr>
+				<td colspan="3" class="right"> <h2><b>TOTAL</b> 30,000원</h2> </td>
 			</tr>
 		</table>
 		
