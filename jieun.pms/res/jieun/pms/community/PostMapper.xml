@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jieun.pms.community.dao.mapper.PostMapper">
+	
 	<select id="getPosts" parameterType="page" resultMap="postMap">
 		<![CDATA[
 		select * from(
@@ -12,6 +13,22 @@
 		)where rnum>#{rowCnt}*(#{currentPage}-1)
 		]]>
 	</select>
+	
+	<select id="getReview" parameterType="page" resultMap="postMap">
+		<![CDATA[
+		select rev_no, mem_id, rev_subject, rev_contents, rev_view
+		from reviews
+		where rev_no = #{revNo}		
+		]]>
+	</select>
+	
+	<select id="getNotice" parameterType="page" resultMap="noticeMap">
+		<![CDATA[
+		select notice_no, notice_subject, notice_contents, notice_view
+		from notices
+		where notice_no = #{noticeNo}			
+		]]>
+	</select>
 
 	<resultMap id="postMap" type="post">
 		<id property="revNo" column="rev_no" />
@@ -19,5 +36,13 @@
 		<result property="contents" column="rev_contents" />
 		<result property="regDate" column="rev_date" />
 		<result property="view" column="rev_view" />
+	</resultMap>
+	
+	<resultMap id="noticeMap" type="post">
+		<id property="noticeNo" column="notice_no" />
+		<result property="subject" column="notice_subject" />
+		<result property="contents" column="notice_contents" />
+		<result property="regDate" column="notice_date" />
+		<result property="view" column="notice_view" />
 	</resultMap>
 </mapper>
