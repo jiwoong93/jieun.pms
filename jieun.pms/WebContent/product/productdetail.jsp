@@ -47,14 +47,23 @@
 				<td><%=products.get(0).getItemPrice()%></td>
 			</tr>
 			<tr>
-				<td>사이즈</td>
-				<td><select id="select">
-						<option value="">선택</option>
-						<option value="S">S</option>
-						<option value="M">M</option>
-						<option value="L">L</option>
-						<option value="XL">XL</option>
-				</select></td>
+<%
+				if(products.get(0).getItemSize() == null || products.get(0).getItemSize().equals("")){
+
+				}
+				else{
+%>
+					<td>사이즈</td>
+					<td><select id="select">
+							<option value="">선택</option>
+							<option value="S">S</option>
+							<option value="M">M</option>
+							<option value="L">L</option>
+							<option value="XL">XL</option>
+					</select></td>
+<%
+				}
+%>	
 			</tr>
 		</table>
 		
@@ -115,7 +124,7 @@
 		</div>
 		<!-- 글쓰기 -->
 		<div class="comu_write">
-				<a href="./board.jsp"><input type="button" value="글쓰기"></a>
+				<a href="../community/board.jsp"><input type="button" value="글쓰기"></a>
 		</div>
 		
 	</div>
