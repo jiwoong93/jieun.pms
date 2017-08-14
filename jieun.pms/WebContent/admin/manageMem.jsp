@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@page import="jieun.pms.member.list.service.MemberServiceImpl"%>
 <%@page import="jieun.pms.member.list.service.PageServiceImpl"%>
 <%@page import="jieun.pms.member.list.service.MemberService"%>
@@ -102,3 +103,4 @@
 	</div>
 </div>
 </body>
+<%@ include file="../common/footer.jsp"%>

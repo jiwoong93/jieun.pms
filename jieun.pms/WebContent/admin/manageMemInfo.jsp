@@ -2,9 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manageMemInfo.css">
+<link rel="stylesheet" href="../res/css/manageMemInfo.css?ver=2">
 <body>
-
 <div class="memInfo">
 	<div class="menuTitle">
 		<h2>회원관리<hr></h2>
@@ -103,3 +102,4 @@
 		</form>
 	</div>
 </body>
+<%@ include file="../common/footer.jsp"%>

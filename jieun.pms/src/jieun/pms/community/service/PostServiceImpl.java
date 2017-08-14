@@ -17,4 +17,12 @@ public class PostServiceImpl implements PostService {
 	public List<Post> listPosts(Page page) {
 		return postDao.getPosts(page);
 	}
+	
+	public Post getReview(int revNo){
+		return postDao.getReview(revNo);
+	}
+	
+	public Post getNotice(int noticeNo){
+		return postDao.getNotice(noticeNo);
+	}
 }

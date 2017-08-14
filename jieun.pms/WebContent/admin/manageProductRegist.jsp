@@ -1,8 +1,8 @@
 <jsp:include page="../common/actionHeader.jsp"/>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manager.css">
+<link rel="stylesheet" href="../res/css/manager.css?ver=2">
 <script language="javascript">
 	function showSub(obj) {
 		f = document.forms.select_machine;
@@ -27,7 +27,8 @@
 	}
 </script>
 <body>
-<form class="select_machine" action="./03.html">
+<div class="modiDelProd">
+	<form action="./03.html">
 	<h2>상품 등록</h2><br>
 		<table class="regProduct">
 			<tr>
@@ -105,4 +106,6 @@
 		<button type="submit">등록</button>
 		<a href="./03.html"><button type="button">취소</button></a>
 	</form>
+</div>
 </body>
+<%@ include file="../common/footer.jsp"%>

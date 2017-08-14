@@ -2,13 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manager.css">
+<link rel="stylesheet" href="../res/css/manager.css?var=1">
 <body>
-	<div class="mngSelling" style="margin-top:300px;">
-		<div>
-			<table class="mngSellingHeader">
-				<th>판매 관리 페이지</th>
-			</table>
+	<div class="mngSelling">
+		<div class="mngSellingHeader">
+				<h2>판매 관리 페이지<hr></h2>
 		</div>
 		<div>
 			<table class="mngSellingCount" border="1">
@@ -58,3 +56,4 @@
 			</table>	
 		</div>
 	</div>
+<%@ include file="../common/footer.jsp"%>

@@ -7,4 +7,7 @@ import jieun.pms.community.domain.Post;
 
 public interface PostMapper {
 	List<Post> getPosts(Page page);
+	
+	Post getReview(int revNo);
+	Post getNotice(int noticeNo);
 }

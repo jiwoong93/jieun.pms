@@ -4,11 +4,20 @@ import java.sql.Date;
 
 public class Post {
 	private int revNo;
+	private int noticeNo;
 	private String subject;
 	private String contents;
 	private String memId;
 	private Date regDate;
 	private int view;
+
+	public int getNoticeNo() {
+		return noticeNo;
+	}
+
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
+	}
 
 	public int getRevNo() {
 		return revNo;
