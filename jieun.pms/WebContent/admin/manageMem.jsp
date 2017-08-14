@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+<%@page import="jieun.pms.member.list.domain.Member"%>
+<%@page import="java.util.List"%>
 <%@page import="jieun.pms.member.list.service.MemberServiceImpl"%>
 <%@page import="jieun.pms.member.list.service.PageServiceImpl"%>
 <%@page import="jieun.pms.member.list.service.MemberService"%>
@@ -20,9 +21,12 @@
 	
 	PageService pageService = new PageServiceImpl(5, myPage);
 	pageContext.setAttribute("pageMaker", pageService);
-	MemberService memberService = new MemberServiceImpl();
-	pageContext.setAttribute("members", memberService.listMembers(myPage));
+	 MemberService memberService = new MemberServiceImpl();
+	/*pageContext.setAttribute("members", memberService.listMembers(myPage)); */
+	List<Member> members = memberService.listMembers(myPage);
+
 %>
+
 <div class="memSearch">
 	<div class="searchMenu">
 		<div class="menuTitle">
@@ -84,22 +88,30 @@
 			</tr>
 			
 			<tr><td colspan="10" id="line"><hr></td></tr>
-			
-		<c:forEach var="jieun.pms.member.list.domain.Member" items="${members}">
+<%
+String option = "width=500, height=500, top=100, left=100";
+if(members.size() != 0){
+	for(int i=0; i<members.size(); i++){
+%>			
 			<tr>
-				<td>${member.rnum}</td>
-				<td>${member.memId}</td>
-				<td><a href="./memInfo.jsp">${member.memName}</a></td>
-				<td>${member.memGender}</td>
-				<td>${member.regDate}</td>
+				<td><%=i+1 %></td>
+				<td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=<%=members.get(i).getMemId()%>', '회원정보', <%=option%> );"><%=members.get(i).getMemId() %></span></td>
+				<td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=<%=members.get(i).getMemId()%>', '회원정보', <%=option%> );"><%=members.get(i).getMemName() %></span></td>
+				<td><%=members.get(i).getMemGender() %></td>
+				<td><%=members.get(i).getRegDate() %></td>
 				<td></td>
-				<td>${member.memEmail}</td>
-				<td>${member.memPhone}</td>
+				<td><%=members.get(i).getMemEmail() %></td>
+				<td><%=members.get(i).getMemPhone() %></td>
 				<td><input type="button" name="delete" value="X"></td>
 			</tr>
-		</c:forEach>
-     	
+<%
+	}
+} else {
+	out.println("등록된 회원이 없습니다.");
+}
+%>
 		</table>
+		
 	</div>
 </div>
 </body>

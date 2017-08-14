@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="jieun.pms.member.update.dao.mapper.UpdateMapper">
+	<update id="updateMember" parameterType="jieun.pms.member.update.domain.UpdateMember">
+		update members 
+		<set>
+			<if test="memLevel != null">mem_level = #{memLevel},</if>
+			<if test="memName != null">mem_name = #{memName},</if>
+			<if test="memPw != null">mem_name = mem_pw = #{memPw},</if>
+			<if test="memEmail != null">mem_email = #{memEmail},</if>
+			<if test="memBirth != null">mem_birth = #{memBirth},</if>
+			<if test="memPhone != null">mem_phone = #{memPhone},</if>
+			<if test="memGender != null">mem_gender = #{memGender},</if>
+			<if test="memZipcode != null">mem_zipcode = #{memZipcode},</if>
+			<if test="memStreet != null">mem_street = #{memStreet},</if>
+			<if test="memAddr != null">mem_addr = #{memAddr},</if>
+			<if test="dogCode != null">dog_code = #{dogCode}</if>
+		</set>
+		where mem_id = #{memId}
+	</update>
+	
+	<select id="selectMember" parameterType="string" resultType="jieun.pms.member.update.domain.UpdateMember">
+		select mem_id memId, mem_level memLevel, mem_name memName, mem_pw memPw, mem_email memEmail, reg_date regDate,
+		mem_birth memBirth, mem_phone memPhone, mem_gender memGender, mem_zipcode memZipcode,
+		mem_street memStreet, mem_addr memAddr, dog_code dogCode
+		from members
+		where mem_id = #{mem_id}
+	</select>
+</mapper>

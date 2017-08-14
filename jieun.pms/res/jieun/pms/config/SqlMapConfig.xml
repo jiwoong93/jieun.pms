@@ -8,6 +8,8 @@
 	<typeAliases>
 		<typeAlias alias="post" type="jieun.pms.community.domain.Post"></typeAlias>
 		<typeAlias alias="Page" type="jieun.pms.community.domain.Page"></typeAlias>
+		<typeAlias alias="member" type="jieun.pms.member.list.domain.Member"></typeAlias>
+		<typeAlias alias="memPage" type="jieun.pms.member.list.domain.Page"></typeAlias>
 		<typeAlias alias="Product" type="jieun.pms.product.domain.Product"></typeAlias>
 	</typeAliases>
 	
@@ -26,6 +28,7 @@
 	<mappers>
 		<mapper resource="jieun/pms/member/login/LoginMapper.xml" />
 		<mapper resource="jieun/pms/member/join/JoinMapper.xml" />
+		<mapper resource="jieun/pms/member/update/UpdateMapper.xml" />
 		<mapper resource="jieun/pms/member/list/MemberMapper.xml" />
 		<mapper resource="jieun/pms/member/list/PageMapper.xml" />
 		<mapper resource="jieun/pms/community/PostMapper.xml" />
