@@ -1,3 +1,6 @@
+<%@page import="jieun.pms.member.update.service.UpdateServiceImpl"%>
+<%@page import="jieun.pms.member.update.domain.UpdateMember"%>
+<%@page import="jieun.pms.member.update.service.UpdateService"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
@@ -23,6 +26,11 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 <%
 } else {
 %>
+<%
+	String memId = request.getParameter("id");
+	UpdateService updateService = new UpdateServiceImpl();
+	UpdateMember updateMember = updateService.selectMember(memId);
+%>
 <div class="mypage">
 	<div class="mypageTitle"> 나의 정보<hr></div>
 
@@ -41,17 +49,17 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		 <table>
 		   <tr>
 		   <td> 이름 </td>
-		   <td> <input type="text" name="name" id="name" required="required" value="송은영"> </td>
+		   <td> <input type="text" name="name" id="name" required="required" value="<%=updateMember.getMemId()%>"> </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 비밀번호 </td>
-		   <td> <input type="password" name="passwd" id="passwd" required="required" value=""> </td>
+		   <td> <input type="password" name="passwd" id="passwd" required="required" value="<%=updateMember.getMemPw()%>"> </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 비밀번호 확인 </td>
-		   <td> <input type="password" name="pwcheck" id="pwcheck" required="required" value=""> </td>
+		   <td> <input type="password" name="pwcheck" id="pwcheck" required="required" value="<%=updateMember.getMemPw()%>"> </td>
 		  </tr>
 		 
 		
@@ -65,7 +73,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		  
 		  <tr>
 		   <td> 생년월일 </td>
-		   <td> <input type="text" name="birth" id="birth" value="19941023"> </td>
+		   <td> <input type="text" name="birth" id="birth" value="<%=updateMember.getMemBirth()%>"> </td>
 		  </tr>
 		
 		  <tr>
@@ -84,7 +92,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		  <tr>
 		   <td> 주소 </td>
 		   <td>
-		    <input type = "text" name="zipcode" id="zipcode" value="12345">
+		    <input type = "text" name="zipcode" id="zipcode" value="<%=updateMember.getMemZipcode()%>">
 		    <input type = "button" value = "우편번호"/>
 		   </td>
 		  </tr>
@@ -92,18 +100,14 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		  <tr>
 		   <td> </td>
 		   <td>
-		    <input type="text" size="30" name="streetadd" id="streetadd" value="도로명주소">
-		    <input type="text" size="30" name="add" id="add" value="상세주소">
+		    <input type="text" size="30" name="streetadd" id="streetadd" value="<%=updateMember.getMemStreet()%>">
+		    <input type="text" size="30" name="add" id="add" value="<%=updateMember.getMemAddr()%>">
 		   </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 휴대폰 </td>
 		   <td> 
-		    <input type="radio" name="phone" id="SKT" checked="checked"> SKT 
-		    <input type="radio" name="phone" id="KT"> KTF 
-		    <input type="radio" name="phone" id="LG"> LGU+
-		   <br/>
 		    <select>
 		     <option value="010"> 010 </option>
 		     <option value="011"> 011 </option>
