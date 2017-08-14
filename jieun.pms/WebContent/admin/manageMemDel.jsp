@@ -7,10 +7,20 @@
 	String memId = request.getParameter("id");
 
 	JoinService joinService = new JoinServiceImpl();
-	joinService.delMember(memId);
 	
+	if(joinService.delMember(memId) == 1){
 %>
-<script>
-	alert('탈퇴 성공');
-	location.href="./manageMem.jsp?ck=1";
-</script>
+		<script>
+			alert('탈퇴 성공');
+			location.href="./manageMem.jsp?ck=1";
+		</script>
+<%	
+	} else {
+%>
+		<script>
+			alert('탈퇴 실패 관리자에게 문의 하세요.');
+			location.href="./manageMem.jsp?ck=1";
+		</script>
+<%
+	}
+%>

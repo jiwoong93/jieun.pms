@@ -28,7 +28,14 @@
 %>
 		<script>
 			alert('수정성공');
-			window.close();
+			window.opener.location.reload(); self.close();
+		</script>
+<%
+	} else {
+%>
+		<script>
+			alert('수정실패 개발자에게 문의 하세요.');
+			window.opener.location.reload(); self.close();
 		</script>
 <%
 	}
