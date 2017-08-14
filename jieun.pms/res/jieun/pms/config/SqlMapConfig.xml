@@ -9,6 +9,7 @@
 		<typeAlias alias="post" type="jieun.pms.community.domain.Post"></typeAlias>
 		<typeAlias alias="Page" type="jieun.pms.community.domain.Page"></typeAlias>
 		<typeAlias alias="Product" type="jieun.pms.product.domain.Product"></typeAlias>
+		<typeAlias alias="ProductPage" type="jieun.pms.product.domain.ProductPage"></typeAlias>
 	</typeAliases>
 	
 	<environments default="development">
@@ -31,5 +32,7 @@
 		<mapper resource="jieun/pms/community/PostMapper.xml" />
 		<mapper resource="jieun/pms/community/PageMapper.xml" />
 		<mapper resource="jieun/pms/product/ProductMapper.xml" />
+		<mapper resource="jieun/pms/product/ProductPageMapper.xml" />
+		<mapper resource="jieun/pms/product/ProductPostMapper.xml" />
 	</mappers>
 </configuration>

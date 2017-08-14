@@ -1,3 +1,7 @@
+<%@page import="jieun.pms.product.domain.Category"%>
+<%@page import="jieun.pms.product.domain.Product"%>
+<%@page import="jieun.pms.product.service.ProductServiceImpl"%>
+<%@page import="jieun.pms.product.service.ProductService"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -26,27 +30,33 @@
 		}
 	}
 </script>
+<%
+	ProductService productService = new ProductServiceImpl();
+	int itemNo = Integer.parseInt(request.getParameter("no").trim());
+	Product product = productService.getProductNo(itemNo);
+
+	Category category = new Category(Integer.parseInt(product.getCategory()));
+%>
 <body>
 <div class="modiDelProd">
 	<form>
 		<h2>상품 수정/삭제</h2><br>
 			<table class="regProduct">
 				<tr>
+					<td>상품번호</td>
+					<td><input type="text" name="itemName" value="<%=product.getItemNo()%>"></td>
+				</tr>
+				<tr>
 					<td>상품이름</td>
-					<td><input type="text" name="" placeholder="상품 이름을 입력해주세요"></td>
+					<td><input type="text" name="itemName" value="<%=product.getItemName() %>"></td>
 				</tr>
 				<tr>
 					<td>상품이미지</td>
-					<td><input type="file" name="" value="사진첨부"></td>
+					<td><input type="file" name="itemImg" value="<%=product.getItemImg()%>"></td>
 				</tr>
 				<tr>
 					<td>상품상세이미지</td>
-					<td><input type="file" name="" value="사진첨부"></td>
-				</tr>
-				<tr>
-					<td>상세설명</td>
-					<td><input type="text" name=""
-						placeholder="상품에 대한 상세설명을 작성해주세요"></td>
+					<td><input type="file" name="itemImgDetail" value="<%=product.getItemImgDetail()%>"></td>
 				</tr>
 				<tr>
 					<td>카테고리</td>
@@ -84,27 +94,21 @@
 					</td>
 				</tr>
 				<tr>
-					<td>판매가격</td>
-					<td><input type="select" name="" placeholder="판매 가격을 입력해주세요">원</td>
+					<td>상품수량</td>
+					<td><input type="select" name="itemPrice" value="<%=product.getItemAmount()%>" >개</td>
 				</tr>
 				<tr>
-					<td>판매수량</td>
-					<td><input type="text" name="" placeholder="판매 수량을 입력해주세요">개</td>
+					<td>판매가격</td>
+					<td><input type="select" name="itemPrice" value="<%=product.getItemPrice()%>">원</td>
 				</tr>
 				<tr>
 					<td>사이즈</td>
-					<td><input type="checkbox" name="" value="xs">xs &nbsp;
-						<input type="checkbox" name="" value="s">s &nbsp; <input
-						type="checkbox" name="" value="m">m &nbsp; <input
-						type="checkbox" name="" value="l">l &nbsp; <input
-						type="checkbox" name="" value="xl">xl &nbsp; <input
-						type="text" name="">kg &nbsp; <input type="text" name="">g
-					</td>
+					<td><%=product.getItemSize()%></td>
 				</tr>
 			</table>
 			<button type="button">미리보기</button>
 			<button type="submit">수정</button>
-			<a href="managingProduct.jsp"><button type="button">취소</button></a>
+			<a href="./manageProduct.jsp"><button type="button">취소</button></a>
 			<button type="button">삭제</button>
 		</form>
 	</div>

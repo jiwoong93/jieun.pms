@@ -28,4 +28,11 @@
 		where item_name = #{itemName}
 		order by item_no
 	</select>
+	
+	<select id="getProductNo" parameterType="int" resultType="product" resultMap="productMap">
+		select * 
+		from items
+		where item_no = #{itemNo}
+	</select>
+	
 </mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jieun.pms.product.dao.mapper.ProductPostMapper">
+	
+	<select id="getProductList" parameterType="ProductPage" resultMap="productMap">
+		<![CDATA[
+		select * from(
+		select rownum as rnum, x.* from(
+			select * from items
+			order by item_no
+		)x where rownum <=#{rowCnt}*#{currentPage}
+		)where rnum>#{rowCnt}*(#{currentPage}-1)
+		]]>
+	</select>
+
+	<resultMap id="productMap" type="product">
+		<id		property="itemNo"	column="item_no"/>
+		<result	property="itemId"	column="item_id"/>
+		<result	property="category"	column="category"/>
+		<result	property="itemName"	column="item_name"/>
+		<result	property="itemAmount"	column="item_amount"/>
+		<result	property="itemPrice"	column="item_price"/>
+		<result	property="itemSize"		column="item_size"/>
+		<result	property="itemImg"		column="item_img"/>
+		<result	property="itemImgDetail"	column="item_img_detail"/>
+		<result	property="itemUpdate"	column="item_update"/>
+	</resultMap>
+</mapper>

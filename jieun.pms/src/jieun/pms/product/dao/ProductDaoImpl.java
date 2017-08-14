@@ -24,4 +24,9 @@ public class ProductDaoImpl implements ProductDao {
 		return productMapper.getProduct(itemName);
 	}
 
+	@Override
+	public Product getProductNo(int itemNo) {
+		return productMapper.getProductNo(itemNo);
+	}
+
 }
