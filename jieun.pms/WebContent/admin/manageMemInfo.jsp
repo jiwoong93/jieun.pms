@@ -15,13 +15,22 @@
 	<div class="menuTitle">
 		<h2>회원관리<hr></h2>
 	</div>
-	<form method="get" action="./myinfo.jsp">
+	<form method="get" action="./manageMemUpdate.jsp">
 		 <table id="memInfoTable">
 			<tr>
 				<td> 아이디 </td>
-				<td> <input type="text" name="memId" required="required" value="<%=updateMember.getMemId()%>" disabled> </td>
+				<td> <input type="text" name="memId" required="required" value="<%=updateMember.getMemId()%>" enabled="false"> </td>
 			</tr>
-			
+			<tr>
+				<td> 상태 </td>
+				<td>  
+					<select name="memLevel" value="<%=updateMember.getMemLevel()%>">
+						<option value="1">일반회원</option>
+						<option value="0">관리자</option>
+						<option value="9">탈퇴회원</option>
+					</select>
+				</td>
+			</tr>
 			<tr>
 				<td> 비밀번호 </td>
 				<td> <input type="text" name="memPw" required="required" value="<%=updateMember.getMemPw()%>" > </td>
@@ -29,7 +38,7 @@
 		  
 		  <tr>
 		   <td> 이름 </td>
-		   <td> <input type="text" name="name" required="required" value="<%=updateMember.getMemName()%>" > </td>
+		   <td> <input type="text" name="memName" required="required" value="<%=updateMember.getMemName()%>" > </td>
 		  </tr>
 		
 		  <tr>
@@ -44,19 +53,19 @@
 		   			genderW = "checked";
 		   		}
 		   	%>
-		    <input type="radio" name="gender" value="male" <%=genderM %>>남자
-		    <input type="radio" name="gender" value="female" <%=genderW %>>여자
+		    <input type="radio" name="memGender" value="M" <%=genderM %>>남자
+		    <input type="radio" name="memGender" value="W" <%=genderW %>>여자
 		   </td>
 		  </tr>
 		  
 		  <tr>
 		   <td> 가입일 </td>
-		   <td> <input type="text" name="joinDate" value="<%=updateMember.getRegDate() %>"> </td>
+		   <td> <input type="text" name="regDate" value="<%=updateMember.getRegDate() %>"> </td>
 		  </tr>
 		  
 		  <tr>
 		   <td> 생년월일 </td>
-		   <td> <input type="text" name="birth" value="<%=updateMember.getMemBirth() %>"> </td>
+		   <td> <input type="text" name="memBirth" value="<%=updateMember.getMemBirth() %>"> </td>
 		  </tr>
 		
 		  <tr>
@@ -65,15 +74,15 @@
 		   <%
 		   		String[] email = updateMember.getMemEmail().split("@");
 		   %>
-		    <input type = "text" name="email_id" value="<%=email[0]%>"> 
-		     @ <input type = "text" name="email" value="<%=email[1]%>">
+		    <input type = "text" name="memEmail1" value="<%=email[0]%>"> 
+		     @ <input type = "text" name="memEmail2" value="<%=email[1]%>">
 		   </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 주소 </td>
 		   <td>
-		    <input type = "text" name="zipcode" value="<%=updateMember.getMemZipcode()%>">
+		    <input type = "text" name="memZipcode" value="<%=updateMember.getMemZipcode()%>">
 		    <input type = "button" value = "우편번호"/>
 		   </td>
 		  </tr>
@@ -81,8 +90,8 @@
 		  <tr>
 		   <td> </td>
 		   <td>
-		    <input type="text" size="30" name="street" value="<%=updateMember.getMemStreet()%>">
-		    <input type="text" size="30" name="addr" value="<%=updateMember.getMemAddr()%>">
+		    <input type="text" size="30" name="memStreet" value="<%=updateMember.getMemStreet()%>">
+		    <input type="text" size="30" name="memAddr" value="<%=updateMember.getMemAddr()%>">
 		   </td>
 		  </tr>
 		
@@ -95,9 +104,9 @@
 		   		String phone2 = phone.substring(3, 7);
 		   		String phone3 = phone.substring(7, 11);
 		   %>
-		    <input type="text" name="phone_num" size="6" value="<%=phone1%>"> 
-		    - <input type="text" name="phone_num" size="6" value="<%=phone2%>"> 
-		    - <input type="text" name="phone_num" size="6" value="<%=phone3%>">
+		    <input type="text" name="memPhone1" size="6" value="<%=phone1%>"> 
+		    - <input type="text" name="memPhone2" size="6" value="<%=phone2%>"> 
+		    - <input type="text" name="memPhone3" size="6" value="<%=phone3%>">
 		   </td>
 		  </tr>
 		  
@@ -106,7 +115,7 @@
 		   <tr>
 		   <td> 강아지품종 </td>
 		   <td>
-		    <select name="dog_code" value="<%=updateMember.getDogCode()%>">
+		    <select name="dogCode" value="<%=updateMember.getDogCode()%>">
 				<option value="002">슈나우저</option>
 		    	<option value="003">푸들</option>
 			    <option value="004">차우차우</option>

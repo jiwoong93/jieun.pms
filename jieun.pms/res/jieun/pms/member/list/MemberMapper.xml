@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="jieun.pms.member.list.dao.mapper.MemberMapper">    
-    <select id="getMembers" resultMap="memberMap">
-        select rownum rnum, mem_id memId, mem_name memName, mem_gender memGender, reg_date regDate, mem_email memEmail, mem_phone memPhone from members where mem_level !=0 and mem_level !=9 order by rownum asc
+    <select id="getMembers" parameterType="string" resultMap="memberMap">
+        select rownum rnum, mem_id memId, mem_name memName, mem_gender memGender, reg_date regDate, mem_email memEmail, mem_phone memPhone from members where mem_level = #{memLevel} order by rownum asc
     </select>
     
     <resultMap id="memberMap" type="member">

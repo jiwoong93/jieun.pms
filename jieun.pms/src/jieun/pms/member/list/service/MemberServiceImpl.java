@@ -14,8 +14,8 @@ public class MemberServiceImpl implements MemberService {
         this.memberDao = new MemberDaoImpl();
     }
 	@Override
-	public List<Member> listMembers(Page page) {
-		return memberDao.getMembers(page);
+	public List<Member> listMembers(String memLevel) {
+		return memberDao.getMembers(memLevel);
 	}
 	
 }

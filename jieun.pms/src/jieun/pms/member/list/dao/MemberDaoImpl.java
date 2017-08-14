@@ -15,7 +15,7 @@ public class MemberDaoImpl implements MemberDao {
     }
 
 	@Override
-	public List<Member> getMembers(Page page) {
-		return memberMapper.getMembers(page);
+	public List<Member> getMembers(String memLevel) {
+		return memberMapper.getMembers(memLevel);
 	}
 }

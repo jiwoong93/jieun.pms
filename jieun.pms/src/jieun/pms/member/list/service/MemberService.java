@@ -6,5 +6,5 @@ import jieun.pms.member.list.domain.Member;
 import jieun.pms.member.list.domain.Page;
 
 public interface MemberService {
-	List<Member> listMembers(Page page);
+	List<Member> listMembers(String memLevel);
 }

@@ -5,17 +5,18 @@
 	<update id="updateMember" parameterType="jieun.pms.member.update.domain.UpdateMember">
 		update members 
 		<set>
-			<if test="memLevel != null">mem_level = #{memLevel},</if>
-			<if test="memName != null">mem_name = #{memName},</if>
-			<if test="memPw != null">mem_name = mem_pw = #{memPw},</if>
-			<if test="memEmail != null">mem_email = #{memEmail},</if>
-			<if test="memBirth != null">mem_birth = #{memBirth},</if>
-			<if test="memPhone != null">mem_phone = #{memPhone},</if>
-			<if test="memGender != null">mem_gender = #{memGender},</if>
-			<if test="memZipcode != null">mem_zipcode = #{memZipcode},</if>
-			<if test="memStreet != null">mem_street = #{memStreet},</if>
-			<if test="memAddr != null">mem_addr = #{memAddr},</if>
-			<if test="dogCode != null">dog_code = #{dogCode}</if>
+			<if test="memLevel != null">mem_level = #{memLevel,jdbcType=VARCHAR},</if>
+			<if test="memName != null">mem_name = #{memName,jdbcType=VARCHAR},</if>
+			<if test="memPw != null">mem_pw = #{memPw,jdbcType=VARCHAR},</if>
+			<if test="memEmail != null">mem_email = #{memEmail,jdbcType=VARCHAR},</if>
+			<if test="memBirth != null">mem_birth = #{memBirth,jdbcType=VARCHAR},</if>
+			<if test="memPhone != null">mem_phone = #{memPhone,jdbcType=VARCHAR},</if>
+			<if test="memGender != null">mem_gender = #{memGender,jdbcType=VARCHAR},</if>
+			<if test="memZipcode != null">mem_zipcode = #{memZipcode,jdbcType=VARCHAR},</if>
+			<if test="memStreet != null">mem_street = #{memStreet,jdbcType=VARCHAR},</if>
+			<if test="memAddr != null">mem_addr = #{memAddr,jdbcType=VARCHAR},</if>
+			<if test="dogCode != null">dog_code = #{dogCode,jdbcType=VARCHAR},</if>
+			<if test="regDate != null">reg_date = #{regDate,jdbcType=VARCHAR}</if>
 		</set>
 		where mem_id = #{memId}
 	</update>

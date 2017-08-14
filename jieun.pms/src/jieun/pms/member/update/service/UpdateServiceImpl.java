@@ -17,7 +17,7 @@ public class UpdateServiceImpl implements UpdateService {
 	}
 
 	@Override
-	public UpdateMember updateMember(UpdateMember updateMember) {
+	public int updateMember(UpdateMember updateMember) {
 		return updateDao.updateMember(updateMember);
 	}
 

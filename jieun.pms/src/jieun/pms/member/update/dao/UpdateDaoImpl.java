@@ -18,7 +18,7 @@ public class UpdateDaoImpl implements UpdateDao {
 	}
 
 	@Override
-	public UpdateMember updateMember(UpdateMember updateMember) {
+	public int updateMember(UpdateMember updateMember) {
 		return updateMapper.updateMember(updateMember);
 	}
 
