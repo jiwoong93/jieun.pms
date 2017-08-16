@@ -15,11 +15,12 @@
 	<div class="menuTitle">
 		<h2>회원관리<hr></h2>
 	</div>
-	<form method="get" action="./manageMemUpdate.jsp">
+	<form method="post" action="./action/manageMemUpdate.jsp">
+		<input type="hidden" name="memId" required="required" value="<%=updateMember.getMemId()%>">
 		 <table id="memInfoTable">
 			<tr>
 				<td> 아이디 </td>
-				<td> <input type="text" name="memId" required="required" value="<%=updateMember.getMemId()%>" enabled="false"> </td>
+				<td> <input type="text" name="memIdtxt" required="required" value="<%=updateMember.getMemId()%>" disabled> </td>
 			</tr>
 			<tr>
 				<td> 상태 </td>
@@ -35,6 +36,7 @@
 				<td> 비밀번호 </td>
 				<td> <input type="text" name="memPw" required="required" value="<%=updateMember.getMemPw()%>" > </td>
 			</tr>
+			
 		  
 		  <tr>
 		   <td> 이름 </td>
@@ -45,8 +47,8 @@
 		   <td> 성별 </td>
 		   <td>
 		   	<%
-		   		String genderM = null;
-		   		String genderW = null;
+		   		String genderM = "";
+		   		String genderW = "";
 		   		if(updateMember.getMemGender().equals("M")){
 		   			genderM = "checked";
 		   		} else {

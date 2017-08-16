@@ -27,7 +27,7 @@
 	</div>
 	
 	<div class="mypageContents">
-	<form action="./actionPassword.jsp" method="post">
+	<form action="./action/actionPassword.jsp" method="post">
 			<p>비밀번호를 한번 더 입력해 주세요<p><br>
 			<input type="password" required="required" name="check_pw" id="check_pw">
 			<input type="submit" >

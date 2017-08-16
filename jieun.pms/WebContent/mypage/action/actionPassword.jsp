@@ -14,14 +14,14 @@
 	if(member.getMemPw().equals(memPw)){
 %>
 		<script>
-			location.href='./myinfo.jsp?id=<%=memId%>';
+			location.href='../myinfo.jsp?id=<%=memId%>';
 		</script>
 <%		
 	} else {
 %>
 		<script>
 			alert('비밀번호를 확인해주세요.');
-			location.href='./passwordCheck.jsp';
+			location.href='../passwordCheck.jsp';
 		</script>
 <%
 	}
