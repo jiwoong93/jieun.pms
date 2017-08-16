@@ -27,7 +27,7 @@
 	if(updateService.updateMember(updateMember) == 1){
 %>
 		<script>
-			alert('수정성공');
+			alert('수정되었습니다.');
 			location.href="../myinfo.jsp?id=<%=updateMember.getMemId()%>";
 		</script>
 <%
