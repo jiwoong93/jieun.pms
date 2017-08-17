@@ -37,7 +37,7 @@
 %>
 <body>
 <div class="modiDelProd">
-	<form action="./actionProductModify.jsp" name="form1" >
+	<form action="./action/actionProductModify.jsp" name="form1" >
 		<h2>상품 수정/삭제</h2><br>
 			<table class="regProduct">
 				<tr>

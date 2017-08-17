@@ -28,7 +28,7 @@
 </script>
 <body>
 <div class="modiDelProd">
-	<form action="./actionProductRegist.jsp"  name="form1" >
+	<form action="./action/actionProductRegist.jsp"  name="form1" >
 	<h2>상품 등록</h2><br>
 		<table class="regProduct">
 			<tr>

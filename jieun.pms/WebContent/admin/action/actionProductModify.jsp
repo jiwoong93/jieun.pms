@@ -39,12 +39,12 @@
 	
 	if(update == true){
 %>		
-		<script>alert('상품 정보가 수정되었습니다.'); location.href = 'manageProduct.jsp';</script>
+		<script>alert('상품 정보가 수정되었습니다.'); location.href = '../manageProduct.jsp';</script>
 <%
 	}
 	else{
 %>
-		<script>alert('상품 정보 수정에 실패 하였습니다.'); location.href = 'manageProductModify.jsp';</script>
+		<script>alert('상품 정보 수정에 실패 하였습니다.'); location.href = '../manageProductModify.jsp';</script>
 <%	
 	}
 	

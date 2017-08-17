@@ -10,12 +10,12 @@
 	
 	if(delete == true){
 %>		
-		<script>alert('상품이 삭제 되었습니다.'); location.href = 'manageProduct.jsp';</script>
+		<script>alert('상품이 삭제 되었습니다.'); location.href = '../manageProduct.jsp';</script>
 <%
 	}
 	else{
 %>
-		<script>alert('상품 삭제에 실패 하였습니다.'); location.href = 'manageProduct.jsp';</script>
+		<script>alert('상품 삭제에 실패 하였습니다.'); location.href = '../manageProduct.jsp';</script>
 <%	
 	}
 			

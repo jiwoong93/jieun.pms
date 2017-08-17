@@ -97,7 +97,7 @@
 					<td>${productPost.itemAmount}</td>
 					<td>판매수량</td>
 					<td ><a href="./manageProductModify.jsp?no=${productPost.itemNo}&category=${productPost.category}"><button name="modifyPrd" >수정</button></a></td>
-					<td ><a href="./actionProductDelete.jsp?no=${productPost.itemNo}"><button name="deletePrd" >삭제</button></a></td>
+					<td ><a href="./action/actionProductDelete.jsp?no=${productPost.itemNo}"><button name="deletePrd" >삭제</button></a></td>
 				</tr>
 				</c:forEach>
 				</tbody>

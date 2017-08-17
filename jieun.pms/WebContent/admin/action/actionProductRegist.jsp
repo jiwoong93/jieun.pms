@@ -35,12 +35,12 @@
 	boolean insert = productService.insertProduct(product);
 	if(insert == true){
 %>		
-		<script>alert('상품이 등록되었습니다.'); location.href = 'manageProduct.jsp';</script>
+		<script>alert('상품이 등록되었습니다.'); location.href = '../manageProduct.jsp';</script>
 <%
 	}
 	else{
 %>
-		<script>alert('상품 등록이 실패 하였습니다. 상품 정보를 다시 입력하세요.'); location.href = 'manageProductRegist.jsp';</script>
+		<script>alert('상품 등록이 실패 하였습니다. 상품 정보를 다시 입력하세요.'); location.href = '../manageProductRegist.jsp';</script>
 <%	
 	}
 %>
