@@ -15,11 +15,11 @@ body{
 }
 
 .titleImg img {
-	margin-top: 120px;
+	margin-top: 80px;
 }
 
 .itemInfo {
-	height: 600px;
+	height: 700px;
 	overflow: hidden;
 	text-align: left;
 }
@@ -71,8 +71,8 @@ body{
 /* itemDetail Part */
 .itemDetail {
 	text-align: center;
-	padding-top: 20px;
-	padding-bottom: 20px;	
+	padding-top: 100px;
+	padding-bottom: 20px;
 }
 
 
