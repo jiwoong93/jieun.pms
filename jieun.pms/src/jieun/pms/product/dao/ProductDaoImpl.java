@@ -24,4 +24,24 @@ public class ProductDaoImpl implements ProductDao {
 		return productMapper.getProduct(itemName);
 	}
 
+	@Override
+	public Product getProductNo(int itemNo) {
+		return productMapper.getProductNo(itemNo);
+	}
+
+	@Override
+	public int updateProduct(Product product) {
+		return productMapper.updateProduct(product);
+	}
+
+	@Override
+	public int deleteProduct(int itemNo) {
+		return productMapper.deleteProduct(itemNo);
+	}
+
+	@Override
+	public int insertProduct(Product product) {
+		return productMapper.insertProduct(product);
+	}
+
 }

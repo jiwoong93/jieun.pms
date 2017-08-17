@@ -28,4 +28,34 @@
 		where item_name = #{itemName}
 		order by item_no
 	</select>
+	
+	<select id="getProductNo" parameterType="int" resultType="product" resultMap="productMap">
+		select * 
+		from items
+		where item_no = #{itemNo}
+	</select>
+	
+	<update id="updateProduct" parameterType="product" >
+		update items
+		<set>
+			<if test="itemName != null">item_name =#{itemName},</if>
+			<if test="itemImg != null">item_img =#{itemImg},</if>
+			<if test="itemImgDetail != null">item_img_detail =#{itemImgDetail},</if>
+			<if test="category != null ">category =#{category},</if>
+			<if test="itemAmount != null">item_amount =#{itemAmount},</if>
+			<if test="itemPrice != null">item_price =#{itemPrice},</if>
+		</set>
+		where item_no = #{itemNo}
+	</update>
+	
+	<delete id="deleteProduct" parameterType="int">
+		delete items
+		where item_no = #{itemNo}
+	</delete>
+	
+	<insert id="insertProduct" parameterType="product">
+		insert into items
+		values(seq_items_no.nextval, #{itemId,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{itemAmount,jdbcType=INTEGER},#{itemPrice,jdbcType=INTEGER},#{itemSize,jdbcType=VARCHAR},#{itemImg,jdbcType=VARCHAR},#{itemImgDetail,jdbcType=VARCHAR},sysdate)
+	</insert>
+	
 </mapper>

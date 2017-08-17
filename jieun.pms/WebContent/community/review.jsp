@@ -94,7 +94,7 @@
 										}
 								%>
 								<td height="30" align="center">${post.revNo}</td>
-								<td align="center"><a href="${post.contents}">${post.subject}</a></td>
+								<td align="center"><a href="./reviewview.jsp?revNo=${post.revNo}">${post.subject}</a></td>
 								<td align="center">${post.memId}</td>
 								<td align="center">${post.regDate}</td>
 								<td align="center">${post.view}</td>
@@ -151,7 +151,7 @@
 				%>
 				<!-- 글쓰기 -->
 				<div class="comu_write">
-					<a href="./board.jsp"><input type="button" value="글쓰기"></a>
+					<a href="./reviewboard.jsp"><input type="button" value="글쓰기"></a>
 				</div>
 				<%
 					}

@@ -58,7 +58,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .comu_write{
-	margin-left: 653px;
+	margin-left: 646px;
 	margin-top: 10px;
 }
 
@@ -89,6 +89,22 @@ a { color: inherit; text-decoration: none; }
 	margin-top : 10px;
 }
 
-.border_button{
+.review_button{
 	margin-top:10px;
+	margin-left:496px;
+}
+
+.managerborder_button{
+	margin-top:10px;
+	margin-left:510px;
+}
+
+.qnaborder_button{
+	margin-top:10px;
+	margin-left:550px;
+}
+
+.communityborder_button{
+	margin-top:10px;
+	margin-left:550px;
 }

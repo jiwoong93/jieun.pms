@@ -1,9 +1,57 @@
+<%@page import="jieun.pms.member.list.domain.Member"%>
+<%@page import="java.util.List"%>
+<%@page import="jieun.pms.member.list.service.MemberServiceImpl"%>
+<%@page import="jieun.pms.member.list.service.PageServiceImpl"%>
+<%@page import="jieun.pms.member.list.service.MemberService"%>
+<%@page import="jieun.pms.member.list.service.PageService"%>
+<%@page import="jieun.pms.member.list.domain.Page"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manageMem.css?var">
+<link rel="stylesheet" href="../res/css/manageMem.css?">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$( document ).ready(function() {
+		var url = new Array();
+		var ck = new Array();
+		url = location.search.split("?");
+		ck = url[1].split("=");
+		 $("#mem_level option").each(function() {
+		     if ($(this).val() === ck[1]) {
+		         $(this).prop("selected", true);
+		     }    
+		 });
+	});
+
+ function delchk(id){
+	 if(confirm("정말로 탈퇴시키겠습니까?")){
+		 location.href = "./action/manageMemDel.jsp?id=" + id;
+	 }
+ }
+ function gubun(){
+	 var ck = document.getElementById('mem_level').value;
+	 location.href="./manageMem.jsp?ck="+ck;
+ }
+ 
+</script>
 <body>
+<%
+	String memLevel = request.getParameter("ck");
+	/* Page myPage = null;
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
+	else myPage = new Page(); */
+	
+	/* PageService pageService = new PageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", pageService); */
+	 MemberService memberService = new MemberServiceImpl();
+	/*pageContext.setAttribute("members", memberService.listMembers(myPage)); */
+	List<Member> members = memberService.listMembers(memLevel);
+	
+%>
+
 <div class="memSearch">
 	<div class="searchMenu">
 		<div class="menuTitle">
@@ -11,7 +59,13 @@
 		</div>
 		<table id="searchTable">
 			<tr>
-				<td rowspan="2" class="detail"> DETAIL SEARCH </td>
+				<td rowspan="2" class="detail"> DETAIL SEARCH
+					<select name="mem_level" id="mem_level" onchange="gubun();">
+						<option value="1">일반회원</option>
+						<option value="0">관리자</option>
+						<option value="9">탈퇴회원</option>
+					</select>
+				</td>
 				<td class="center" width="100px">이름</td>
 				<td width="180px"><input type="text"></td>
 				<td class="center">성별</td>
@@ -59,27 +113,38 @@
 				<td>성별</td>
 				<td>가입일</td>
 				<td>구매금액</td>
-				<td>방문</td>
 				<td>이메일</td>
 				<td>핸드폰</td>
 				<td>삭제</td>
 			</tr>
 			
 			<tr><td colspan="10" id="line"><hr></td></tr>
-			
+<%
+if(members.size() != 0){
+	for(int i=0; i<members.size(); i++){
+%>			
 			<tr>
-				<td>1</td>
-				<td>eunyoung</td>
-				<td><a href="./memInfo.jsp">송은영</a></td>
-				<td>여</td>
-				<td>2017.00.00</td>
-				<td>200,000</td>
-				<td>50</td>
-				<td>eunyoung@naver.com</td>
-				<td>010-8885-0409</td>
-				<td><input type="button" name="delete" value="X"></td>
+				<td><%=i+1 %></td>
+				<td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=<%=members.get(i).getMemId()%>', '회원정보', 'width=500, height=450, top=100, left=400' );"><%=members.get(i).getMemId() %></span></td>
+				<td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=<%=members.get(i).getMemId()%>', '회원정보', 'width=500, height=450, top=100, left=400' );"><%=members.get(i).getMemName() %></span></td>
+				<td><%=members.get(i).getMemGender() %></td>
+				<td><%=members.get(i).getRegDate() %></td>
+				<td></td>
+				<td><%=members.get(i).getMemEmail() %></td>
+				<td><%=members.get(i).getMemPhone() %></td>
+				<td><input type="button" name="delete" value="X" onclick="javascript:delchk('<%=members.get(i).getMemId()%>');" ></td>
 			</tr>
+<%
+	}
+} else {
+%>
+	<tr><td align="center" colspan="9">등록된 회원이 없습니다.</td></tr>
+<%
+}
+%>
 		</table>
+		
 	</div>
 </div>
 </body>
+<%@ include file="../common/footer.jsp"%>

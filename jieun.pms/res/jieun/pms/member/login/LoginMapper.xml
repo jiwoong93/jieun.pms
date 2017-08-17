@@ -5,10 +5,11 @@
 	<resultMap id="userMap" type="jieun.pms.member.login.domain.Member">
 		<id		property="memId"	column="mem_id"/>
 		<result	property="memPw"	column="mem_pw"/>
+		<result	property="memLevel"	column="mem_level"/>
 	</resultMap>
 	
 	<select id="getMember" parameterType="string" resultType="jieun.pms.member.login.domain.Member" resultMap="userMap">
-		select mem_id memId, mem_pw memPw
+		select mem_id memId, mem_pw memPw, mem_level memLevel
 		from members where mem_id=#{memId}
 	</select>
 </mapper>

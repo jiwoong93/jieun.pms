@@ -1,10 +1,7 @@
-body {
-	margin-top: 350px;
-}
-
+html, body {overflow:hidden;}
 .memInfo {
 	width: 900px;
-	height: 900px;
+	height: 600px;
 	margin: 0 auto;
 }
 

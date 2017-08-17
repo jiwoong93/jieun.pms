@@ -49,7 +49,10 @@
 			<tr>
 <%
 				if(products.get(0).getItemSize() == null || products.get(0).getItemSize().equals("")){
-
+%>
+					<td>수량</td>
+					<td><input type="number" name="amount" id="amount" value="1"></td>
+<%
 				}
 				else{
 %>
@@ -61,7 +64,11 @@
 							<option value="L">L</option>
 							<option value="XL">XL</option>
 					</select></td>
-<%
+				</tr>
+				<tr>
+					<td>수량</td>
+					<td><input type="number" name="amount" id="amount" value="1"></td>
+<%					
 				}
 %>	
 			</tr>
@@ -89,14 +96,20 @@
 			<tr>
 				<td colspan="3" class="right"> <h2><b>TOTAL</b> 30,000원</h2> </td>
 			</tr>
+			<div id="totalPrice" style="display:none;">
+				<tr>
+					<td colspan="2" align="center">
+						총 금액 : <b><span id="totalPriceHtml"></span>\</b>
+					</td>
+				</tr>
+			</div>
 		</table>
-		
+		<!-- 상품번호 가격 수량  -->
 		<div class="Button">
 			<a href="../order/order.jsp"><input type="button" id="orderButton" value="BUY NOW"></a><br>
-			<a href="../mypage/wishlist.jsp"><input type="button" id="wishlistButton" value="위시리스트"></a>
-			<a href="../mypage/cart.jsp"><input type="button" id="cartButton" value="장바구니"></a>
+			<a href="../mypage/action/actionWishAdd.jsp?name=<%=products.get(0).getItemName()%>&amount="><input type="button" id="wishlistButton" value="위시리스트"></a>
+			<a href="../mypage/action/actionCartAdd.jsp?name=<%=products.get(0).getItemName()%>&amount="><input type="button" id="cartButton" value="장바구니"></a>
 		</div>
-		
 	</div>
 	
 <hr width="1300px">
@@ -153,4 +166,7 @@
 	</div>
 </div>
 </body>
+<script>
+	
+</script>
 <%@ include file="../common/footer.jsp"%>

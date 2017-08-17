@@ -17,4 +17,12 @@ public class PostDaoImpl implements PostDao {
 	public List<Post> getPosts(Page page) {
 		return postMapper.getPosts(page);
 	}
+	
+	public Post getReview(int revNo){
+		return postMapper.getReview(revNo);
+	}
+	
+	public Post getNotice(int noticeNo){
+		return postMapper.getNotice(noticeNo);
+	}
 }

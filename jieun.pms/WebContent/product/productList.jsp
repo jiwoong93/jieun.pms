@@ -1,4 +1,9 @@
 
+<%@page import="jieun.pms.product.service.ProductPageServiceImpl"%>
+<%@page import="jieun.pms.product.service.ProductPostServiceImpl"%>
+<%@page import="jieun.pms.product.service.ProductPostService"%>
+<%@page import="jieun.pms.product.service.ProductPageService"%>
+<%@page import="jieun.pms.product.domain.ProductPage"%>
 <%@page import="jieun.pms.product.domain.Category"%>
 <%@page import="jieun.pms.product.domain.Product"%>
 <%@page import="java.util.List"%>
@@ -8,13 +13,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/productList.css">
+<link rel="stylesheet" href="../res/css/productList.css?var=1">
 <%
 	ProductService productService = new ProductServiceImpl();
 	String requestCategory = request.getParameter("category");
 	List<Product> products = productService.getProducts(requestCategory);
 	
 	Category category = new Category(Integer.parseInt(requestCategory));
+	
+	/* ProductPage productPage = null;
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage != null) productPage = new ProductPage(Integer.parseInt(currentPage));
+	else productPage = new ProductPage();
+	
+	ProductPageService productPageService = new ProductPageServiceImpl(12,productPage);
+	pageContext.setAttribute("productPageMaker", productPageService);
+	ProductPostService productPostService = new ProductPostServiceImpl();
+	pageContext.setAttribute("productPosts", productPostService.listProducts(productPage)); */
 %>
 <body>
 <div class="item">

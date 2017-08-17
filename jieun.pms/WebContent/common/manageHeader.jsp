@@ -27,7 +27,12 @@
 
 <header class="page-header" role="banner">
 	<div class="top">
-		<hr border=3>
+		<hr >
+		<span id="search">	
+			<input id="searchBox" type="text">
+			<a href="<%= path %>product/productSearch.jsp"><img src="<%= path %>res/img/header/search.png" width="20px"></a> 
+			<!--<input  TYPE="image" src="<%= path %>res/img/header/search.png" name="Submit" value="Submit" width="20px">-->
+		</span>
 		<nav class="primary-nav" role="navigation">
 			<ul>
 				<%-- <%
@@ -48,7 +53,7 @@
 
 				<li><a href="<%=path%>admin/manageSelling.jsp">판매관리</a></li>
 				<li><a href="<%=path%>admin/manageProduct.jsp">상품관리</a></li>
-				<li><a href="<%=path%>admin/manageMem.jsp">회원관리</a></li>
+				<li><a href="<%=path%>admin/manageMem.jsp?ck=1">회원관리</a></li>
 				<li><a href="<%=path%>community/community.jsp">커뮤니티</a></li>
 			</ul>
 		</nav>
@@ -66,16 +71,15 @@
 		<hr border=3>
 		<nav class="category-nav" role="navigation">
 			<ul>
-				<li><a href="<%=path%>product/productList.jsp?category=food">사료</a></li>
-				<li><a href="<%=path%>product/productList.jsp?category=snack">간식</a></li>
-				<li><a href="<%=path%>product/productList.jsp?category=bath">위생</a></li>
-				<li><a href="<%=path%>product/productList.jsp?category=beauth">미용</a></li>
-				<li><a href="<%=path%>product/productList.jsp?category=clothe">의류</a></li>
-				<li><a
-					href="<%=path%>product/productList.jsp?category=accessory">악세사리</a></li>
-				<li><a href="<%=path%>product/productList.jsp?category=toy">장난감</a></li>
-				<li><a href="<%=path%>product/productList.jsp?category=house">하우스</a></li>
-			</ul>
+                <li><a href="<%= path %>product/productList.jsp?category=10">사료</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=20">간식</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=30">위생</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=40">미용</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=50">의류</a></li>
+				<li><a href="<%= path %>product/productList.jsp?category=60">악세사리</a></li>
+				<li><a href="<%= path %>product/productList.jsp?category=70">장난감</a></li>
+				<li><a href="<%= path %>product/productList.jsp?category=80">하우스</a></li>
+            </ul>
 		</nav>
 		<br>
 		<hr border=3>
