@@ -191,28 +191,28 @@
 					<tr id="sizeS">
 						<td colspan="2" width="220px"><span id="itemName"><%=products.get(0).getItemName()%></span></td>
 						<td align="center"><span id="itemSize">S</span></td>
-						<td align="center"><span id="itemAmount"><input type="number" style="width:25px" name="amounts" id="amounts" min="0" value="1" oninput="amounts(this);"></span></td>
+						<td align="center"><span id="itemAmount"><input type="number" style="width:35px" name="amounts" id="amounts" min="0" value="1" oninput="amounts(this);"></span></td>
 						<td align="center"><span id="itemPrice"><%=products.get(0).getItemPrice()%>원</span></td>
 						<td align="center"><span id="itemDel">x</span></td>
 					</tr>
 					<tr id="sizeM">
 						<td colspan="2"><span id="itemName"><%=products.get(0).getItemName()%></span></td>
 						<td align="center"><span id="itemSize">M</span></td>
-						<td align="center"><span id="itemAmount"><input type="number" style="width:25px" name="amountm" id="amountm" min="0" value="1" oninput="amountm(this);"></span></td>
+						<td align="center"><span id="itemAmount"><input type="number" style="width:35px" name="amountm" id="amountm" min="0" value="1" oninput="amountm(this);"></span></td>
 						<td align="center"><span id="itemPrice"><%=products.get(0).getItemPrice()%>원</span></td>
 						<td align="center"><span id="itemDel">x</span></td>
 					</tr>
 					<tr id="sizeL">
 						<td colspan="2"><span id="itemName"><%=products.get(0).getItemName()%></span></td>
 						<td align="center"><span id="itemSize">L</span></td>
-						<td align="center"><span id="itemAmount"><input type="number" style="width:25px" name="amountl" id="amountl" min="0" value="1" oninput="amountl(this);"></span></td>
+						<td align="center"><span id="itemAmount"><input type="number" style="width:35px" name="amountl" id="amountl" min="0" value="1" oninput="amountl(this);"></span></td>
 						<td align="center"><span id="itemPrice"><%=products.get(0).getItemPrice()%>원</span></td>
 						<td align="center"><span id="itemDel">x</span></td>
 					</tr>
 					<tr id="sizeXL">
 						<td colspan="2"><span id="itemName"><%=products.get(0).getItemName()%></span></td>
 						<td align="center"><span id="itemSize">XL</span></td>
-						<td align="center" ><span id="itemAmount"><input type="number" style="width:25px" name="amountxl" id="amountxl" min="0" value="1" oninput="amountxl(this);"></span></td>
+						<td align="center" ><span id="itemAmount"><input type="number" style="width:35px" name="amountxl" id="amountxl" min="0" value="1" oninput="amountxl(this);"></span></td>
 						<td align="center"><span id="itemPrice"><%=products.get(0).getItemPrice()%>원</span></td>
 						<td align="center"><span id="itemDel">x</span></td>
 					</tr>
