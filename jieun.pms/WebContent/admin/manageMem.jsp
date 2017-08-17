@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+<%@page import="jieun.pms.member.list.domain.Member"%>
+<%@page import="java.util.List"%>
 <%@page import="jieun.pms.member.list.service.MemberServiceImpl"%>
 <%@page import="jieun.pms.member.list.service.PageServiceImpl"%>
 <%@page import="jieun.pms.member.list.service.MemberService"%>
@@ -11,18 +12,46 @@
 <link rel="stylesheet" href="../res/css/manageMem.css?">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$( document ).ready(function() {
+		var url = new Array();
+		var ck = new Array();
+		url = location.search.split("?");
+		ck = url[1].split("=");
+		 $("#mem_level option").each(function() {
+		     if ($(this).val() === ck[1]) {
+		         $(this).prop("selected", true);
+		     }    
+		 });
+	});
+
+ function delchk(id){
+	 if(confirm("정말로 탈퇴시키겠습니까?")){
+		 location.href = "./action/manageMemDel.jsp?id=" + id;
+	 }
+ }
+ function gubun(){
+	 var ck = document.getElementById('mem_level').value;
+	 location.href="./manageMem.jsp?ck="+ck;
+ }
+ 
+</script>
 <body>
 <%
-	Page myPage = null;
+	String memLevel = request.getParameter("ck");
+	/* Page myPage = null;
 	String currentPage = request.getParameter("currentPage");
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
-	else myPage = new Page();
+	else myPage = new Page(); */
 	
-	PageService pageService = new PageServiceImpl(5, myPage);
-	pageContext.setAttribute("pageMaker", pageService);
-	MemberService memberService = new MemberServiceImpl();
-	pageContext.setAttribute("members", memberService.listMembers(myPage));
+	/* PageService pageService = new PageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", pageService); */
+	 MemberService memberService = new MemberServiceImpl();
+	/*pageContext.setAttribute("members", memberService.listMembers(myPage)); */
+	List<Member> members = memberService.listMembers(memLevel);
+	
 %>
+
 <div class="memSearch">
 	<div class="searchMenu">
 		<div class="menuTitle">
@@ -30,7 +59,13 @@
 		</div>
 		<table id="searchTable">
 			<tr>
-				<td rowspan="2" class="detail"> DETAIL SEARCH </td>
+				<td rowspan="2" class="detail"> DETAIL SEARCH
+					<select name="mem_level" id="mem_level" onchange="gubun();">
+						<option value="1">일반회원</option>
+						<option value="0">관리자</option>
+						<option value="9">탈퇴회원</option>
+					</select>
+				</td>
 				<td class="center" width="100px">이름</td>
 				<td width="180px"><input type="text"></td>
 				<td class="center">성별</td>
@@ -84,22 +119,31 @@
 			</tr>
 			
 			<tr><td colspan="10" id="line"><hr></td></tr>
-			
-		<c:forEach var="jieun.pms.member.list.domain.Member" items="${members}">
+<%
+if(members.size() != 0){
+	for(int i=0; i<members.size(); i++){
+%>			
 			<tr>
-				<td>${member.rnum}</td>
-				<td>${member.memId}</td>
-				<td><a href="./memInfo.jsp">${member.memName}</a></td>
-				<td>${member.memGender}</td>
-				<td>${member.regDate}</td>
+				<td><%=i+1 %></td>
+				<td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=<%=members.get(i).getMemId()%>', '회원정보', 'width=500, height=450, top=100, left=400' );"><%=members.get(i).getMemId() %></span></td>
+				<td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=<%=members.get(i).getMemId()%>', '회원정보', 'width=500, height=450, top=100, left=400' );"><%=members.get(i).getMemName() %></span></td>
+				<td><%=members.get(i).getMemGender() %></td>
+				<td><%=members.get(i).getRegDate() %></td>
 				<td></td>
-				<td>${member.memEmail}</td>
-				<td>${member.memPhone}</td>
-				<td><input type="button" name="delete" value="X"></td>
+				<td><%=members.get(i).getMemEmail() %></td>
+				<td><%=members.get(i).getMemPhone() %></td>
+				<td><input type="button" name="delete" value="X" onclick="javascript:delchk('<%=members.get(i).getMemId()%>');" ></td>
 			</tr>
-		</c:forEach>
-     	
+<%
+	}
+} else {
+%>
+	<tr><td align="center" colspan="9">등록된 회원이 없습니다.</td></tr>
+<%
+}
+%>
 		</table>
+		
 	</div>
 </div>
 </body>

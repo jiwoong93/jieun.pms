@@ -1,65 +1,90 @@
-<jsp:include page="../common/actionHeader.jsp"/>
+<%@page import="jieun.pms.member.update.domain.UpdateMember"%>
+<%@page import="jieun.pms.member.update.service.UpdateServiceImpl"%>
+<%@page import="jieun.pms.member.update.service.UpdateService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manageMemInfo.css?ver=2">
+<link rel="stylesheet" href="../res/css/manageMemInfo.css?ver=3">
 <body>
+<%
+	String memId = request.getParameter("id");
+	UpdateService updateService = new UpdateServiceImpl();
+	UpdateMember updateMember = updateService.selectMember(memId);
+%>
 <div class="memInfo">
 	<div class="menuTitle">
 		<h2>회원관리<hr></h2>
 	</div>
-	<form method="get" action="./myinfo.jsp">
+	<form method="post" action="./action/manageMemUpdate.jsp">
+		<input type="hidden" name="memId" required="required" value="<%=updateMember.getMemId()%>">
 		 <table id="memInfoTable">
 			<tr>
 				<td> 아이디 </td>
-				<td> <input type="text" name="memId" required="required" value="eunyoung" disabled> </td>
+				<td> <input type="text" name="memIdtxt" required="required" value="<%=updateMember.getMemId()%>" disabled> </td>
 			</tr>
+			<tr>
+				<td> 상태 </td>
+				<td>  
+					<select name="memLevel" value="<%=updateMember.getMemLevel()%>">
+						<option value="1">일반회원</option>
+						<option value="0">관리자</option>
+						<option value="9">탈퇴회원</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td> 비밀번호 </td>
+				<td> <input type="text" name="memPw" required="required" value="<%=updateMember.getMemPw()%>" > </td>
+			</tr>
+			
 		  
 		  <tr>
 		   <td> 이름 </td>
-		   <td> <input type="text" name="name" required="required" value="송은영" disabled> </td>
+		   <td> <input type="text" name="memName" required="required" value="<%=updateMember.getMemName()%>" > </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 성별 </td>
 		   <td>
-		    <input type="radio" name="gender" value="male" disabled>남자
-		    <input type="radio" name="gender" value="female" checked="checked" disabled>여자
+		   	<%
+		   		String genderM = "";
+		   		String genderW = "";
+		   		if(updateMember.getMemGender().equals("M")){
+		   			genderM = "checked";
+		   		} else {
+		   			genderW = "checked";
+		   		}
+		   	%>
+		    <input type="radio" name="memGender" value="M" <%=genderM %>>남자
+		    <input type="radio" name="memGender" value="W" <%=genderW %>>여자
 		   </td>
 		  </tr>
 		  
 		  <tr>
 		   <td> 가입일 </td>
-		   <td> <input type="text" name="joinDate" value="2017-00-00" disabled> </td>
-		  </tr>
-		  
-		  <tr>
-		   <td> 구매금액 </td>
-		   <td> <input type="text" name="totamount" value="200,000"> </td>
-		  </tr>
-		  
-		  <tr>
-		   <td> 방문횟수 </td>
-		   <td> <input type="text" name="visitCnt" value="50" disabled> </td>
+		   <td> <input type="text" name="regDate" value="<%=updateMember.getRegDate() %>"> </td>
 		  </tr>
 		  
 		  <tr>
 		   <td> 생년월일 </td>
-		   <td> <input type="text" name="birth" value="1994-10-23" disabled> </td>
+		   <td> <input type="text" name="memBirth" value="<%=updateMember.getMemBirth() %>"> </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 이메일 </td>
 		   <td>
-		    <input type = "text" name="email_id" value="eunyoung"> 
-		     @ <input type = "text" name="email" value="naver.com">
+		   <%
+		   		String[] email = updateMember.getMemEmail().split("@");
+		   %>
+		    <input type = "text" name="memEmail1" value="<%=email[0]%>"> 
+		     @ <input type = "text" name="memEmail2" value="<%=email[1]%>">
 		   </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 주소 </td>
 		   <td>
-		    <input type = "text" name="zipcode" value="12345">
+		    <input type = "text" name="memZipcode" value="<%=updateMember.getMemZipcode()%>">
 		    <input type = "button" value = "우편번호"/>
 		   </td>
 		  </tr>
@@ -67,17 +92,23 @@
 		  <tr>
 		   <td> </td>
 		   <td>
-		    <input type="text" size="30" name="streetadd" value="도로명주소">
-		    <input type="text" size="30" name="add" value="상세주소">
+		    <input type="text" size="30" name="memStreet" value="<%=updateMember.getMemStreet()%>">
+		    <input type="text" size="30" name="memAddr" value="<%=updateMember.getMemAddr()%>">
 		   </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 휴대폰 </td>
 		   <td>
-		    <input type="text" name="phone_num" size="6" value="010"> 
-		    - <input type="text" name="phone_num" size="6" value="8885"> 
-		    - <input type="text" name="phone_num" size="6" value="0409">
+		   <%
+		   		String phone = updateMember.getMemPhone();
+		   		String phone1 = phone.substring(0, 3);
+		   		String phone2 = phone.substring(3, 7);
+		   		String phone3 = phone.substring(7, 11);
+		   %>
+		    <input type="text" name="memPhone1" size="6" value="<%=phone1%>"> 
+		    - <input type="text" name="memPhone2" size="6" value="<%=phone2%>"> 
+		    - <input type="text" name="memPhone3" size="6" value="<%=phone3%>">
 		   </td>
 		  </tr>
 		  
@@ -86,20 +117,19 @@
 		   <tr>
 		   <td> 강아지품종 </td>
 		   <td>
-		    <select>
-				<option value="poodle">푸들</option>
-		    	<option value="maltese" selected="selected">말티즈</option>
-			    <option value="pomeranian">포메라니안</option>
-			    <option value="yorkshireTerrier">요크셔테리어</option>
-			    <option value="bichonFrise">비숑프리제</option>
-			    <option value="welshCorgi">웰시코기</option>
+		    <select name="dogCode" value="<%=updateMember.getDogCode()%>">
+				<option value="002">슈나우저</option>
+		    	<option value="003">푸들</option>
+			    <option value="004">차우차우</option>
+			    <option value="005">달마티안</option>
+			    <option value="006">그레이하운드</option>
+			    <option value="007">콜리</option>
 			 </select>
 		   </td>
 		  </tr>
 		</table><br/><br/><br/>
-			<input type="button" value="삭제하기">
-			<input type="button" value="취소하기" onclick="javascript:location.href='memSearch.jsp';">
+			<input type="submit" value="수정하기">
+			<input type="button" value="취소하기" onclick="window.close();">
 		</form>
 	</div>
 </body>
-<%@ include file="../common/footer.jsp"%>

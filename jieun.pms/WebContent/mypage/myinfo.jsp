@@ -1,8 +1,18 @@
+<%@page import="jieun.pms.member.update.service.UpdateServiceImpl"%>
+<%@page import="jieun.pms.member.update.domain.UpdateMember"%>
+<%@page import="jieun.pms.member.update.service.UpdateService"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <link rel="stylesheet" href="../res/css/myinfo.css">
+<script>
+function delchk(id){
+	 if(confirm("정말로 탈퇴하시겠습니까?")){
+		 location.href = "./action/memDel.jsp?id=" + id;
+	 }
+}
+</script>
 <body>
 <%
 String cururlInfo = request.getRequestURI().toString();
@@ -23,6 +33,11 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 <%
 } else {
 %>
+<%
+	String memId = request.getParameter("id");
+	UpdateService updateService = new UpdateServiceImpl();
+	UpdateMember updateMember = updateService.selectMember(memId);
+%>
 <div class="mypage">
 	<div class="mypageTitle"> 나의 정보<hr></div>
 
@@ -37,54 +52,71 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	</div>
 	
 	<div class="mypageContents">
-		<form method="get" action="./myinfo.jsp">
+		<form method="post" action="./action/memUpdate.jsp">
+		 <input type="hidden" name="memLevel" value="<%=updateMember.getMemLevel()%>" />
+		 <input type="hidden" name="memId" required="required" value="<%=updateMember.getMemId()%>">
+		 <input type="hidden" name="regDate" required="required" value="<%=updateMember.getRegDate()%>">
 		 <table>
-		   <tr>
+			<tr>
+				<td> 아이디 </td>
+				<td> <input type="text" name="memIdtxt" required="required" value="<%=updateMember.getMemId()%>" disabled> </td>
+			</tr>
+			<tr>
+				<td> 비밀번호 </td>
+				<td> <input type="password" name="memPw" required="required" value="<%=updateMember.getMemPw()%>" > </td>
+			</tr>
+			<tr>
+				<td> 비밀번호 확인 </td>
+				<td> <input type="password" name="memPwc" required="required" value="<%=updateMember.getMemPw()%>" > </td>
+			</tr>
+		  
+		  <tr>
 		   <td> 이름 </td>
-		   <td> <input type="text" name="name" id="name" required="required" value="송은영"> </td>
+		   <td> <input type="text" name="memName" required="required" value="<%=updateMember.getMemName()%>" > </td>
 		  </tr>
-		
-		  <tr>
-		   <td> 비밀번호 </td>
-		   <td> <input type="password" name="passwd" id="passwd" required="required" value=""> </td>
-		  </tr>
-		
-		  <tr>
-		   <td> 비밀번호 확인 </td>
-		   <td> <input type="password" name="pwcheck" id="pwcheck" required="required" value=""> </td>
-		  </tr>
-		 
 		
 		  <tr>
 		   <td> 성별 </td>
 		   <td>
-		    <input type="radio" name="gender" value="male">남자
-		    <input type="radio" name="gender" value="female" checked="checked">여자
+		   	<%
+		   		String genderM = "";
+		   		String genderW = "";
+		   		if(updateMember.getMemGender().equals("M")){
+		   			genderM = "checked";
+		   		} else {
+		   			genderW = "checked";
+		   		}
+		   	%>
+		    <input type="radio" name="memGender" value="M" <%=genderM %>>남자
+		    <input type="radio" name="memGender" value="W" <%=genderW %>>여자
 		   </td>
 		  </tr>
 		  
 		  <tr>
+		   <td> 가입일 </td>
+		   <td> <input type="text" name="regDatetxt" value="<%=updateMember.getRegDate() %>" disabled> </td>
+		  </tr>
+		  
+		  <tr>
 		   <td> 생년월일 </td>
-		   <td> <input type="text" name="birth" id="birth" value="19941023"> </td>
+		   <td> <input type="text" name="memBirth" value="<%=updateMember.getMemBirth() %>"> </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 이메일 </td>
 		   <td>
-		    <input type = "text" name="email_id" id="email_id" value="eunyoung"> @ <input type = "text" name="email" id="email" value="naver.com"> &nbsp;&nbsp; 
-		    <select>
-		     <option> 직접입력 </option>
-		     <option value="naver" selected="selected"> naver.com </option>
-		     <option value="daum"> daum.net </option>
-		     <option value="nate"> nate.com </option>
-		    </select>
+		   <%
+		   		String[] email = updateMember.getMemEmail().split("@");
+		   %>
+		    <input type = "text" name="memEmail1" value="<%=email[0]%>"> 
+		     @ <input type = "text" name="memEmail2" value="<%=email[1]%>">
 		   </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 주소 </td>
 		   <td>
-		    <input type = "text" name="zipcode" id="zipcode" value="12345">
+		    <input type = "text" name="memZipcode" value="<%=updateMember.getMemZipcode()%>">
 		    <input type = "button" value = "우편번호"/>
 		   </td>
 		  </tr>
@@ -92,26 +124,23 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		  <tr>
 		   <td> </td>
 		   <td>
-		    <input type="text" size="30" name="streetadd" id="streetadd" value="도로명주소">
-		    <input type="text" size="30" name="add" id="add" value="상세주소">
+		    <input type="text" size="30" name="memStreet" value="<%=updateMember.getMemStreet()%>">
+		    <input type="text" size="30" name="memAddr" value="<%=updateMember.getMemAddr()%>">
 		   </td>
 		  </tr>
 		
 		  <tr>
 		   <td> 휴대폰 </td>
-		   <td> 
-		    <input type="radio" name="phone" id="SKT" checked="checked"> SKT 
-		    <input type="radio" name="phone" id="KT"> KTF 
-		    <input type="radio" name="phone" id="LG"> LGU+
-		   <br/>
-		    <select>
-		     <option value="010"> 010 </option>
-		     <option value="011"> 011 </option>
-		     <option value="016"> 016 </option>
-		     <option value="018"> 018 </option>
-		    </select> 
-		    <input type="text" name="phone_num" id="phone_num2" size = "6" value="8885"/> 
-		    - <input type="text" name="phone_num" id="phone_num3" size = "6" value="0409"/>
+		   <td>
+		   <%
+		   		String phone = updateMember.getMemPhone();
+		   		String phone1 = phone.substring(0, 3);
+		   		String phone2 = phone.substring(3, 7);
+		   		String phone3 = phone.substring(7, 11);
+		   %>
+		    <input type="text" name="memPhone1" size="6" value="<%=phone1%>"> 
+		    - <input type="text" name="memPhone2" size="6" value="<%=phone2%>"> 
+		    - <input type="text" name="memPhone3" size="6" value="<%=phone3%>">
 		   </td>
 		  </tr>
 		  
@@ -120,21 +149,19 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		   <tr>
 		   <td> 강아지품종 </td>
 		   <td>
-		    <select>
-				<option value="poodle">푸들</option>
-		    	<option value="maltese" selected="selected">말티즈</option>
-			    <option value="pomeranian">포메라니안</option>
-			    <option value="yorkshireTerrier">요크셔테리어</option>
-			    <option value="bichonFrise">비숑프리제</option>
-			    <option value="welshCorgi">웰시코기</option>
+		    <select name="dogCode" value="<%=updateMember.getDogCode()%>">
+				<option value="002">슈나우저</option>
+		    	<option value="003">푸들</option>
+			    <option value="004">차우차우</option>
+			    <option value="005">달마티안</option>
+			    <option value="006">그레이하운드</option>
+			    <option value="007">콜리</option>
 			 </select>
 		   </td>
 		  </tr>
 		</table><br/><br/><br/>
-		
-			<input type="button" value="탈퇴하기">
 			<input type="submit" value="수정하기">
-		 	<input type="reset" value="다시입력">
+			<input type="button" name="delete" value="탈퇴하기" onclick="javascript:delchk('<%=updateMember.getMemId()%>');" >
 		</form>
 		
 	</div>

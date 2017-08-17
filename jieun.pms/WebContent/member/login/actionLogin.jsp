@@ -17,18 +17,23 @@
 %>	
 <% 	
 	if(member.getMemId().equals(memId)){
- 		if(member.getMemPw().equals(memPw)){  
-			session.setAttribute("sessionId", member.getMemId());
-			session.setAttribute("sessionPw", member.getMemPw());
-			
-			if(currentPage.equals("cart")){
-				response.sendRedirect("../../mypage/cart.jsp");
-			}else if(currentPage.equals("mypage")){
-				response.sendRedirect("../../mypage/orderlist.jsp");
-			}else{
-				response.sendRedirect("../../main.jsp");
-			}
-			
+ 		if(member.getMemPw().equals(memPw)){
+ 			if(member.getMemLevel().equals("9")){
+%>
+				<script>alert('탈퇴한 회원 입니다. 관리자에게 문의 하세요.'); location.href = 'login.jsp';</script>
+<%
+ 			} else {
+ 				session.setAttribute("sessionId", member.getMemId());
+				session.setAttribute("sessionPw", member.getMemPw());
+				
+				if(currentPage.equals("cart")){
+					response.sendRedirect("../../mypage/cart.jsp");
+				}else if(currentPage.equals("mypage")){
+					response.sendRedirect("../../mypage/orderlist.jsp");
+				}else{
+					response.sendRedirect("../../main.jsp");
+				}
+ 			}
  		} else { 
 %>			<script>alert('비밀번호를 확인하세요.'); location.href = 'login.jsp';</script>
 <%			

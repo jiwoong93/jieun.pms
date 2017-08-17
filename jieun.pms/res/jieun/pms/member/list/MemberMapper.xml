@@ -2,18 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="jieun.pms.member.list.dao.mapper.MemberMapper">    
-    <select id="getMembers" parameterType="jieun.pms.member.list.domain.Page" resultMap="memberMap">
-        <![CDATA[
-        select * from (
-            select rownum as rnum, x.* from(
-                  select mem_id, mem_name, mem_gender, reg_date, mem_email, mem_phone from members
-                  order by mem_id desc
-            )x where rownum <= #{rowCnt}*#{currentPage}
-        ) where rnum > #{rowCnt}*(#{currentPage}-1)
-        ]]>
+    <select id="getMembers" parameterType="string" resultMap="memberMap">
+        select rownum rnum, mem_id memId, mem_name memName, mem_gender memGender, reg_date regDate, mem_email memEmail, mem_phone memPhone from members where mem_level = #{memLevel} order by rownum asc
     </select>
     
-    <resultMap id="memberMap" type="jieun.pms.member.list.domain.Member">
+    <resultMap id="memberMap" type="member">
         <id property="memId"      column="mem_id"/>
         <result property="memName"   column="mem_name"/>
         <result property="memGender" column="mem_gender"/>
