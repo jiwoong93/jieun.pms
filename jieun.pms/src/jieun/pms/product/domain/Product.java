@@ -30,8 +30,7 @@ public class Product {
 		this.itemUpdate = itemUpdate;
 	}
 	
-	public Product(String itemId, String category, String itemName, int itemAmount, int itemPrice,
-			String itemSize, String itemImg, String itemImgDetail) {
+	public Product(String itemId,String itemName,String itemImg, String itemImgDetail,String category,int itemPrice, int itemAmount, String itemSize) {
 		this.itemId = itemId;
 		this.category = category;
 		this.itemName = itemName;

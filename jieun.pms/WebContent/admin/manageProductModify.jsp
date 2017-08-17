@@ -115,7 +115,6 @@
 			<button type="button">미리보기</button>
 			<button type="submit">수정</button>
 			<a href="./manageProduct.jsp"><button type="button">취소</button></a>
-			<button type="button">삭제</button>
 		</form>
 	</div>
 </body>

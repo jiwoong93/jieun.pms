@@ -81,15 +81,15 @@
 			</tr>
 			<tr>
 				<td>판매가격</td>
-				<td><input type="number" name="itemPrice" placeholder="판매 가격을 입력해주세요" required="required" min="0">원</td>
+				<td><input type="number" name="itemPrice" placeholder="판매 가격을 입력해주세요" required="required" min="0" max="999999">원</td>
 			</tr>
 			<tr>
 				<td>판매수량</td>
-				<td><input type="number" name="itemAmount" placeholder="판매 수량을 입력해주세요" required="required" min="0">개</td>
+				<td><input type="number" name="itemAmount" placeholder="판매 수량을 입력해주세요" required="required" min="0" max="999">개</td>
 			</tr>
 			<tr>
 				<td>사이즈</td>
-				<td>
+				<td><input type="radio" name="itemSize" value="">없음 &nbsp; 
 					<input type="radio" name="itemSize" value="s">s &nbsp; 
 					<input type="radio" name="itemSize" value="m">m &nbsp; 
 					<input type="radio" name="itemSize" value="l">l &nbsp; 
