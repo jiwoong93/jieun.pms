@@ -150,7 +150,6 @@
 		<div class="comu_write">
 				<a href="../community/board.jsp"><input type="button" value="글쓰기"></a>
 		</div>
-		
 	</div>
 </div>
 </body>
