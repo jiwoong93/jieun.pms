@@ -10,30 +10,41 @@ body{
 .titleImg {
 	float: left;
 	width: 800px;
-	height: 400px;
+	height: 600px;
 	text-align: center;
 }
 
+.titleImg img {
+	margin-top: 80px;
+}
+
 .itemInfo {
-	height: 500px;
-	padding: 20px;
+	height: 700px;
 	overflow: hidden;
 	text-align: left;
 }
 
-.itemInfoTable {
+.itemInfo .itemInfoTable {
 	width: 400px;
-	height: 300px;
-	margin-bottom: 20px;
+	height: 280px;
+}
+
+.itemInfo .itemInfoTable2 {
+	width: 400px;
+	height: px;
+	margin-bottom: 10px;
 }
 
 /* title È¿°ú */
-
-.itemInfoTable h1, p {
+.center {
 	text-align: center;
 }
 
-.itemInfoTable b {
+.right{
+	text-align: right;
+}
+
+.itemInfoTable b, .itemInfoTable2 b {
 	color: #8C8C8C;
 	font-size: 20px;
 }
@@ -53,11 +64,15 @@ body{
 	height: 50px;
 }
 
+#amount {
+	width: 40px;
+}
+
 /* itemDetail Part */
 .itemDetail {
 	text-align: center;
-	padding-top: 20px;
-	padding-bottom: 20px;	
+	padding-top: 100px;
+	padding-bottom: 20px;
 }
 
 
