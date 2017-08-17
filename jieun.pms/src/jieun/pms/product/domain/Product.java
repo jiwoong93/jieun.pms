@@ -29,6 +29,18 @@ public class Product {
 		this.itemImgDetail = itemImgDetail;
 		this.itemUpdate = itemUpdate;
 	}
+	
+	public Product(String itemId, String category, String itemName, int itemAmount, int itemPrice,
+			String itemSize, String itemImg, String itemImgDetail) {
+		this.itemId = itemId;
+		this.category = category;
+		this.itemName = itemName;
+		this.itemAmount = itemAmount;
+		this.itemPrice = itemPrice;
+		this.itemSize = itemSize;
+		this.itemImg = itemImg;
+		this.itemImgDetail = itemImgDetail;
+	}
 	public int getItemNo() {
 		return itemNo;
 	}

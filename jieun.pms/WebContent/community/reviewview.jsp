@@ -6,7 +6,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?ver=19">
+<link rel="stylesheet" href="../res/css/community.css?ver=8">
 <%
 	PostService postService = new PostServiceImpl();
 	String revNum = request.getParameter("revNo");
@@ -44,7 +44,7 @@
 							<div class="board_head">
 								<table width="604" border="1">
 									<tr>
-										<td width="109">제목</td>
+										<td width="180">제목</td>
 										<td colspan="3"><%=post.getSubject()%></td>
 									</tr>
 									<tr>
@@ -53,9 +53,13 @@
 									</tr>
 									<tr>
 										<td>작성일</td>
-										<td width="134"><%=post.getRegDate()%></td>
+										<td width="180"><%=post.getRegDate()%></td>
 										<td width="117">조회수</td>
 										<td width="512"><%=post.getView()%></td>
+									</tr>
+									<tr>
+										<td>상품 이름</td>
+										<td colspan="3"></td>
 									</tr>
 								</table>
 							</div>

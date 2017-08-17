@@ -28,4 +28,19 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.getProductNo(itemNo);
 	}
 
+	@Override
+	public boolean updateProduct(Product product) {
+		return productDao.updateProduct(product)>0;
+	}
+
+	@Override
+	public boolean deleteProduct(int itemNo) {
+		return productDao.deleteProduct(itemNo)>0;
+	}
+
+	@Override
+	public boolean insertProduct(Product product) {
+		return productDao.insertProduct(product)>0;
+	}
+
 }

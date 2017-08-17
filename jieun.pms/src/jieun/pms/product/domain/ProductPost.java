@@ -10,14 +10,16 @@ public class ProductPost {
 	private int itemPrice;
 	private String itemSize;
 	private Date itemUpdate;
+	private Category categoryStr;
 	
 	public ProductPost() {}
 
 	public ProductPost(int itemNo, String category, String itemName, int itemAmount, int itemPrice, String itemSize,
 			Date itemUpdate) {
-		super();
+		categoryStr = new Category(Integer.parseInt(category));
+		
 		this.itemNo = itemNo;
-		this.category = category;
+		this.category = categoryStr.getCategoryStr();
 		this.itemName = itemName;
 		this.itemAmount = itemAmount;
 		this.itemPrice = itemPrice;
@@ -38,7 +40,8 @@ public class ProductPost {
 	}
 
 	public void setCategory(String category) {
-		this.category = category;
+		categoryStr = new Category(Integer.parseInt(category));
+		this.category = categoryStr.getCategoryStr();
 	}
 
 	public String getItemName() {

@@ -17,9 +17,7 @@
 <%
 	/* ProductService productService = new ProductServiceImpl();
 	String requestCategory = request.getParameter("category");
-	List<Product> products = productService.getProducts(requestCategory);
-
-	Category category = new Category(Integer.parseInt(requestCategory)); */
+	List<Product> products = productService.getProducts(requestCategory);*/
 
 	ProductPage productPage = null;
 	String currentPage = request.getParameter("currentPage");
@@ -98,8 +96,8 @@
 					<td>${productPost.itemSize}</td>
 					<td>${productPost.itemAmount}</td>
 					<td>판매수량</td>
-					<td ><a href="./manageProductModify.jsp?no=${productPost.itemNo}"><button name="modifyPrd" >수정</button></a></td>
-					<td ><button name="deletePrd" >삭제</button></td>
+					<td ><a href="./manageProductModify.jsp?no=${productPost.itemNo}&category=${productPost.category}"><button name="modifyPrd" >수정</button></a></td>
+					<td ><a href="./actionProductDelete.jsp?no=${productPost.itemNo}"><button name="deletePrd" >삭제</button></a></td>
 				</tr>
 				</c:forEach>
 				</tbody>

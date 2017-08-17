@@ -8,4 +8,7 @@ public interface ProductService {
 	List<Product> getProducts(String category);
 	List<Product> getProduct(String itemName);
 	Product getProductNo(int itemNo);
+	boolean updateProduct(Product product);
+	boolean deleteProduct(int itemNo);
+	boolean insertProduct(Product product);
 }
