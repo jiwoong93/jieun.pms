@@ -18,7 +18,6 @@ if(pageName.equals("main.jsp")){
 	path = "../";
 }
 %>
-
 	<link rel="stylesheet" href="<%= path %>res/css/header.css?ver=11">
 	<script src="<%= path %>res/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="<%= path %>res/js/header.js"></script>
