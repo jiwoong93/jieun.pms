@@ -58,7 +58,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 			<tr><td colspan="6" id="line"><hr></td></tr>
 			
 			<tr>
-				<td><input type="checkbox" name="select"></td>
+				
 				<%
 					for(int i=0; i<carts.size();i++){
 				%>

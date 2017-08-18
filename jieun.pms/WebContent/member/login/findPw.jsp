@@ -12,7 +12,6 @@
 		}
 	}
 	
-	var a = "";
 	function emailcheck() {      
 	   var email = document.getElementById("email").value;
 	   var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -92,8 +91,8 @@
   <% } else { %>
    <td>휴대폰번호</td>
    <td> <input type="text" name="phone_num" id="phone_num1" size="6"/>
-    - <input type="text" name="phone_num" id="phone_num2" size="6"/>
-    - <input type="text" name="phone_num" id="phone_num3"size="6"/> </td>
+    - <input type="text" name="phone_num" id="phone_num2" size="6" maxlength="4"/>
+    - <input type="text" name="phone_num" id="phone_num3"size="6" maxlength="4"/> </td>
   <% } %>
   </tr>
   
