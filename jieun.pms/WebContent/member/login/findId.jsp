@@ -11,6 +11,26 @@
 			location.href="findId.jsp?check=2";
 		}
 	}
+	
+	var a = "";
+	function emailcheck() {      
+	   var email = document.getElementById("email").value;
+	   var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	         if(exptext.test(email)==false){
+	      //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐경우         
+	      document.getElementById('Check').innerHTML = "이메일 형식에 맞춰 입력해 주세요";
+	      document.getElementById('Check').style.color = "red";
+	      document.addjoin.email.focus();
+
+	      return false;
+	   }
+	         else if(exptext.test(email)==true){
+	            document.getElementById('Check').innerHTML = "올바르게 입력했습니다.";
+	            document.getElementById('Check').style.color = "green";
+	            document.addjoin.email.focus();
+	   }
+	            
+	}
 </script>
 <body>
 <%
@@ -64,7 +84,8 @@
    </td>
   <% } else { %>
    <td>이메일</td>
-   <td> <input type="password" class="no-border" name="email" id="email" required="required"> </td>
+   <td> <input type="text" class="no-border" name="email" id="email" required="required" onkeyup="emailcheck()" > 
+   <span id = "Check"></span></td>
   <% } %>
   </tr>
   

@@ -1,3 +1,7 @@
+<%@page import="jieun.pms.mypage.cart.domain.Cart"%>
+<%@page import="java.util.List"%>
+<%@page import="jieun.pms.mypage.cart.service.CartServiceImpl"%>
+<%@page import="jieun.pms.mypage.cart.service.CartService"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
@@ -22,6 +26,9 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	<script>alert('로그인 후에 이용해주세요.'); location.href = '<%=pathCart%>member/login/login.jsp?page=cart';</script>
 <%
 } else {
+	
+	CartService cartService = new CartServiceImpl();
+	List<Cart> carts = cartService.getCarts((String)session.getAttribute("sessionId"));
 %>
  <div class="mypage">
 	<div class="mypageTitle">장바구니<hr></div>
@@ -52,11 +59,17 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 			
 			<tr>
 				<td><input type="checkbox" name="select"></td>
-				<td>곰돌이배낭</td>
-				<td>S</td>
-				<td><input type="number" name="amount" id="amount" value="1"></td>
-				<td>20,000원</td>
-				<td><input type="button" name="delete" value="X"></td>
+				<%
+					for(int i=0; i<carts.size();i++){
+				%>
+						<td><%=carts.get(0).getItemName()%></td>
+						<td><%=carts.get(0).getItemSize()%></td>
+						<td><input type="number" name="amount" id="amount" value="1"></td>
+						<td><%=carts.get(0).getItemPrice()%>
+						<td><input type="button" name="delete" value="X"></td>
+				<%
+					}
+				%>	
 			</tr>
 			<tr>
 				<td><input type="checkbox" name="select"></td>
