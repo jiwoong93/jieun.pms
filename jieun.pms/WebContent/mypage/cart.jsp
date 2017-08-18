@@ -62,22 +62,14 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 				<%
 					for(int i=0; i<carts.size();i++){
 				%>
-						<td><%=carts.get(0).getItemName()%></td>
-						<td><%=carts.get(0).getItemSize()%></td>
+						<td><%=carts.get(0).getProduct().getItemName()%></td>
+						<td><%=carts.get(0).getProduct().getItemSize()%></td>
 						<td><input type="number" name="amount" id="amount" value="1"></td>
-						<td><%=carts.get(0).getItemPrice()%>
+						<td><%=carts.get(0).getProduct().getItemPrice()%>
 						<td><input type="button" name="delete" value="X"></td>
 				<%
 					}
 				%>	
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="select"></td>
-				<td>헬로도기 핀브러쉬</td>
-				<td></td>
-				<td><input type="number" name="amount" id="amount" value="1"></td>
-				<td>6,000원</td>
-				<td><input type="button" name="delete" value="X"></td>
 			</tr>
 		</table><br/><br/>
 		

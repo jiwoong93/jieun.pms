@@ -7,7 +7,7 @@
 		<result	property="memId"	column="mem_id"/>
 		<result	property="itemNo"	column="item_no"/>
 		<result	property="amount"	column="amount"/>
-		<collection property="items" columnPrefix="item_" resultMap="itemMap"/>
+		<collection property="product" resultMap="itemMap"/>
 	</resultMap>
 	
 	<resultMap id="itemMap" type="product">
@@ -19,9 +19,6 @@
 	</resultMap>
 	
 	<select id="getCarts" parameterType="string" resultMap="cartMap">
-		select item_name, item_size, amount, item_price
-		from carts join items
-		on (carts.item_no = items.ITEM_NO) 
-		where carts.mem_Id = #{memId}
+		select * from carts
 	</select>
 </mapper>

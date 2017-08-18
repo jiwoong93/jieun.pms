@@ -84,7 +84,7 @@
    </td>
   <% } else { %>
    <td>이메일</td>
-   <td> <input type="text" class="no-border" name="email" id="email" required="required" onkeyup="emailcheck()" > 
+   <td> <input type="text" class="no-border" name="email" id="email" required="required" onkeyup="emailcheck()" > <br>
    <span id = "Check"></span></td>
   <% } %>
   </tr>

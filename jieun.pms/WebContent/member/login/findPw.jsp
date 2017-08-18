@@ -87,7 +87,7 @@
   <tr>
   <% if(check == "1" ||check.equals("1")){ %>
    <td>이메일</td>
-   <td> <input type="text" class="no-border" name="email" id="email" required="required" onkeyup="emailcheck()" > 
+   <td> <input type="text" class="no-border" name="email" id="email" required="required" onkeyup="emailcheck()" > <br>
    <span id = "Check"></span></td>
   <% } else { %>
    <td>휴대폰번호</td>

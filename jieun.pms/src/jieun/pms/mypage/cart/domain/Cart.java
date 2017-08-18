@@ -1,25 +1,23 @@
 package jieun.pms.mypage.cart.domain;
 
+import jieun.pms.product.domain.Product;
+
 public class Cart {
 	private int cartNo;
 	private String memId;
 	private int itemNo;
 	private int amount;
-	private String itemName;
-	private String itemSize;
-	private int itemPrice;
+	private Product product;
 	
 	public Cart() {}
 
-	public Cart(int cartNo, String memId, int itemNo, int amount, String itemName, String itemSize, int itemPrice) {
+	public Cart(int cartNo, String memId, int itemNo, int amount, Product product) {
 		super();
 		this.cartNo = cartNo;
 		this.memId = memId;
 		this.itemNo = itemNo;
 		this.amount = amount;
-		this.itemName = itemName;
-		this.itemSize = itemSize;
-		this.itemPrice = itemPrice;
+		this.product = product;
 	}
 
 	public int getCartNo() {
@@ -54,27 +52,11 @@ public class Cart {
 		this.amount = amount;
 	}
 
-	public String getItemName() {
-		return itemName;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
-	}
-
-	public String getItemSize() {
-		return itemSize;
-	}
-
-	public void setItemSize(String itemSize) {
-		this.itemSize = itemSize;
-	}
-
-	public int getItemPrice() {
-		return itemPrice;
-	}
-
-	public void setItemPrice(int itemPrice) {
-		this.itemPrice = itemPrice;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 }
