@@ -39,16 +39,16 @@
 <body>
 <%
 	String memLevel = request.getParameter("ck");
-	/* Page myPage = null;
+	Page myPage = null;
 	String currentPage = request.getParameter("currentPage");
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
-	else myPage = new Page(); */
+	else myPage = new Page();
 	
-	/* PageService pageService = new PageServiceImpl(5, myPage);
-	pageContext.setAttribute("pageMaker", pageService); */
-	 MemberService memberService = new MemberServiceImpl();
-	/*pageContext.setAttribute("members", memberService.listMembers(myPage)); */
-	List<Member> members = memberService.listMembers(memLevel);
+	PageService pageService = new PageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", pageService);
+	MemberService memberService = new MemberServiceImpl();
+	pageContext.setAttribute("members", memberService.listMembers(myPage));
+	//List<Member> members = memberService.listMembers(memLevel);
 	
 %>
 
@@ -119,11 +119,30 @@
 			</tr>
 			
 			<tr><td colspan="10" id="line"><hr></td></tr>
+			
+			<c:forEach var="member" items="${members}">
+	          <tr>
+	            <td></td>
+	            <td>${member.memId}</td>
+	            <td>${member.memName}</td>
+	            <td>${member.memGender}</td>
+	            <td>${member.regDate}</td>
+	            <td></td>
+	            <td>${member.memEmail}</td>
+	            <td>${member.memPhone}</td>
+	            <td>x</td>
+	          </tr>
+	        </c:forEach>
+			
+			
+			
+
 <%
-if(members.size() != 0){
-	for(int i=0; i<members.size(); i++){
+//=========================================================================================
+/* if(members.size() != 0){
+	for(int i=0; i<members.size(); i++){ */
 %>			
-			<tr>
+			<%-- <tr>
 				<td><%=i+1 %></td>
 				<td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=<%=members.get(i).getMemId()%>', '회원정보', 'width=500, height=450, top=100, left=400' );"><%=members.get(i).getMemId() %></span></td>
 				<td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=<%=members.get(i).getMemId()%>', '회원정보', 'width=500, height=450, top=100, left=400' );"><%=members.get(i).getMemName() %></span></td>
@@ -133,17 +152,43 @@ if(members.size() != 0){
 				<td><%=members.get(i).getMemEmail() %></td>
 				<td><%=members.get(i).getMemPhone() %></td>
 				<td><input type="button" name="delete" value="X" onclick="javascript:delchk('<%=members.get(i).getMemId()%>');" ></td>
-			</tr>
+			</tr> --%>
 <%
-	}
-} else {
+/* 	}
+} else { */
 %>
-	<tr><td align="center" colspan="9">등록된 회원이 없습니다.</td></tr>
+	<!-- <tr><td align="center" colspan="9">등록된 회원이 없습니다.</td></tr> -->
 <%
-}
+/* } */
+//======================================================================================
 %>
+
+
+
+
 		</table>
 		
+		<!-- 페이징 -->
+	    <div class="text-center">
+	      <ul class="pagination">
+	        <c:if test="${pageMaker.prev}">     
+	          <a href="list.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a>
+	        </c:if>
+	        
+	        <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+	          <li <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' : ''}"/>>
+	            <a href="list.jsp?currentPage=${idx}">${idx}</a>
+	          </li>
+	        </c:forEach>
+	        
+	        <c:if test="${pageMaker.next}">     
+	          <a href="list.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a>
+	        </c:if>  
+	      </ul>
+	    </div>    
+    
+    
+    
 	</div>
 </div>
 </body>

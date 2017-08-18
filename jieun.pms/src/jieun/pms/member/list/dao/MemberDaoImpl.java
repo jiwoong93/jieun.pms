@@ -14,8 +14,13 @@ public class MemberDaoImpl implements MemberDao {
         this.memberMapper = Configuration.getMapper(MemberMapper.class);
     }
 
-	@Override
+	/*@Override
 	public List<Member> getMembers(String memLevel) {
 		return memberMapper.getMembers(memLevel);
+	}*/
+
+	@Override
+	public List<Member> getMembers(Page page) {
+		return memberMapper.getMembers(page);
 	}
 }

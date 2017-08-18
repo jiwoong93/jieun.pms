@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="jieun.pms.mypage.cart.dao.mapper.CartMapper">
+	<resultMap id="cartMap" type="jieun.pms.mypage.cart.domain.Cart">
+		<id		property="cartNo"	column="cart_no"/>
+		<result	property="memId"	column="mem_id"/>
+		<result	property="itemNo"	column="item_no"/>
+		<result	property="amount"	column="amount"/>
+		<collection property="product" resultMap="itemMap"/>
+	</resultMap>
+	
+	<resultMap id="itemMap" type="product">
+		<id		property="itemNo"	column="item_no"/>
+		<result	property="itemName"	column="item_name"/>
+		<result	property="itemAmount"	column="item_amount"/>
+		<result	property="itemPrice"	column="item_price"/>
+		<result	property="itemSize"		column="item_size"/>
+	</resultMap>
+	
+	<select id="getCarts" parameterType="string" resultMap="cartMap">
+		select * from carts
+	</select>
+</mapper>

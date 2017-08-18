@@ -11,6 +11,26 @@
 			location.href="findPw.jsp?check=2";
 		}
 	}
+	
+	function emailcheck() {      
+	   var email = document.getElementById("email").value;
+	   var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	         if(exptext.test(email)==false){
+	      //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐경우         
+	      document.getElementById('Check').innerHTML = "이메일 형식에 맞춰 입력해 주세요";
+	      document.getElementById('Check').style.color = "red";
+	      document.addjoin.email.focus();
+
+	      return false;
+	   }
+	         else if(exptext.test(email)==true){
+	            document.getElementById('Check').innerHTML = "올바르게 입력했습니다.";
+	            document.getElementById('Check').style.color = "green";
+	            document.addjoin.email.focus();
+	   }
+	            
+	}
+
 </script>
 <body>
 <%
@@ -66,12 +86,13 @@
   <tr>
   <% if(check == "1" ||check.equals("1")){ %>
    <td>이메일</td>
-   <td> <input type="password" class="no-border" name="email" id="email" required="required"> </td>
+   <td> <input type="text" class="no-border" name="email" id="email" required="required" onkeyup="emailcheck()" > <br>
+   <span id = "Check"></span></td>
   <% } else { %>
    <td>휴대폰번호</td>
    <td> <input type="text" name="phone_num" id="phone_num1" size="6"/>
-    - <input type="text" name="phone_num" id="phone_num2" size="6"/>
-    - <input type="text" name="phone_num" id="phone_num3"size="6"/> </td>
+    - <input type="text" name="phone_num" id="phone_num2" size="6" maxlength="4"/>
+    - <input type="text" name="phone_num" id="phone_num3"size="6" maxlength="4"/> </td>
   <% } %>
   </tr>
   
