@@ -47,7 +47,7 @@
 				<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 				<img src="../res/img/product/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
 				<div><%=products.get(i).getItemName() %></div>
-				<div><%=products.get(i).getItemPrice() %></div>
+				<div><%=products.get(i).getItemPrice() %>원</div>
 				</div>
 	<%		
 			} 
@@ -60,7 +60,7 @@
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
 					<div><%=products.get(i).getItemName() %></div>
-					<div><%=products.get(i).getItemPrice() %></div>
+					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%			}
 	%>			
 				</div>
