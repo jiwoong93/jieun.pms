@@ -2,11 +2,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="./res/css/main.css?var=14">
+<link rel="stylesheet" href="./res/css/main.css?var=15">
 <script src="./res/js/main.js"></script>
+<script>
+	$(function() {
+	    $(window).scroll(function() {
+	        if ($(this).scrollTop() > 500) {
+	            $('#MOVE_TOP_BTN').fadeIn();
+	        } else {
+	            $('#MOVE_TOP_BTN').fadeOut();
+	        }
+	    });
+	    
+	    $("#MOVE_TOP_BTN").click(function() {
+	        $('html, body').animate({
+	            scrollTop : 0
+	        }, 400);
+	        return false;
+	    });
+	});
+	</script>
 <body>
 <% request.setCharacterEncoding("UTF-8"); %>
+<a id="MOVE_TOP_BTN" href="#">TOP</a>
 <div class="slideshow">
+
     <div class="slideshow-slides">
         <a href="" class="slide" id="slide-1"><img src="./res/img/banner/banner_1.jpg" alt=""></a>
         <a href="" class="slide" id="slide-2"><img src="./res/img/banner/banner_2.jpg" alt=""></a>
@@ -62,7 +82,6 @@
 	%>
 				</div>
 </div>
-
 <div class="background"></div>
 
 <div class="item2">
