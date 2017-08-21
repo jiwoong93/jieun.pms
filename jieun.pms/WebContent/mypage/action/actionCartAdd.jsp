@@ -13,7 +13,7 @@
 	
 	if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals(null)){
 %>
-      <script>alert('로그인후에 이용 가능 합니다.');</script>
+      <script>alert('로그인후에 이용 가능 합니다.'); location.href = '../../member/login/login.jsp';</script>
 <%
    } else {
       ProductService productService = new ProductServiceImpl();
