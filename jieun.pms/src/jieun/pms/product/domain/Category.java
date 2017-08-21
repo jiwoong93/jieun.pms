@@ -18,19 +18,19 @@ public class Category {
 			this.categoryStr = "배변";
 			break;
 		case 32:
-			this.categoryStr = "Deodorization";
+			this.categoryStr = "탈취제";
 			break;
 		case 33:
-			this.categoryStr = "Hygiene";
+			this.categoryStr = "귀·눈 위생";
 			break;
 		case 40:
 			this.categoryStr = "Beauty";
 			break;
 		case 41:
-			this.categoryStr = "Scissors";
+			this.categoryStr = "가위";
 			break;
 		case 42:
-			this.categoryStr = "Brush";
+			this.categoryStr = "브러쉬";
 			break;
 		case 50:
 			this.categoryStr = "Clothes";
@@ -39,16 +39,16 @@ public class Category {
 			this.categoryStr = "Accessory";
 			break;
 		case 61:
-			this.categoryStr = "Collar";
+			this.categoryStr = "자동줄·하네스";
 			break;
 		case 62:
-			this.categoryStr = "BackPack";
+			this.categoryStr = "배낭";
 			break;
 		case 63:
-			this.categoryStr = "Cap";
+			this.categoryStr = "헤어핀·모자";
 			break;
 		case 64:
-			this.categoryStr = "Hosiery";
+			this.categoryStr = "양말·신발";
 			break;
 		case 70:
 			this.categoryStr = "Toy";
