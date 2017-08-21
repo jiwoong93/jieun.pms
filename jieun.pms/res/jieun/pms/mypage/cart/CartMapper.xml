@@ -17,7 +17,7 @@
 	</resultMap>
 	
 	<select id="getCarts" parameterType="string" resultMap="cartMap">
-		select item_name, item_size, amount, item_price
+		select cart_no, item_name, item_size, amount, item_price
 		from carts
 		join items 
 		on (carts.ITEM_NO = items.ITEM_NO)
@@ -29,4 +29,9 @@
 		insert into carts
 		values(seq_cart_no.nextval, #{memId,jdbcType=VARCHAR},#{itemNo,jdbcType=INTEGER},#{amount,jdbcType=INTEGER})
 	</insert>
+	
+	<delete id="deleteCart" parameterType="int">
+		delete from carts 
+		where cart_no = #{cartNo}
+	</delete>
 </mapper>

@@ -74,8 +74,8 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 				<%		}
 				%>
 						<td><input type="number" name="amount" id="amount" value="<%=carts.get(i).getAmount()%>"></td>
-						<td><%=carts.get(i).getProduct().getItemPrice()%>
-						<td><input type="button" name="delete" value="X"></td>
+						<td><%=carts.get(i).getProduct().getItemPrice()%></td>
+						<td><a href="./action/actionCartDelete.jsp?no=<%=carts.get(i).getCartNo()%>"><input type="button" name="delete" value="X"></a></td>
 						</tr>
 				<%
 					}

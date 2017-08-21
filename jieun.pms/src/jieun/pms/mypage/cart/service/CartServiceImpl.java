@@ -23,4 +23,9 @@ public class CartServiceImpl implements CartService {
 		return cartDao.insertCart(cart)>0;
 	}
 
+	@Override
+	public boolean deleteCart(int cartNo) {
+		return cartDao.deleteCart(cartNo)>0;
+	}
+
 }
