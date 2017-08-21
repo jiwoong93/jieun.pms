@@ -17,19 +17,10 @@
 <%
 	ProductService productService = new ProductServiceImpl();
 	String requestCategory = request.getParameter("category");
+	int intCategory = Integer.parseInt(requestCategory);
 	List<Product> products = productService.getProducts(requestCategory);
 	
-	Category category = new Category(Integer.parseInt(requestCategory));
-	
-	/* ProductPage productPage = null;
-	String currentPage = request.getParameter("currentPage");
-	if(currentPage != null) productPage = new ProductPage(Integer.parseInt(currentPage));
-	else productPage = new ProductPage();
-	
-	ProductPageService productPageService = new ProductPageServiceImpl(12,productPage);
-	pageContext.setAttribute("productPageMaker", productPageService);
-	ProductPostService productPostService = new ProductPostServiceImpl();
-	pageContext.setAttribute("productPosts", productPostService.listProducts(productPage)); */
+	Category category = new Category(intCategory);
 %>
 <body>
 <div class="item">
@@ -44,12 +35,41 @@
 			if(i==0){
 	%>
 				<div style="float:left;" >
-				<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
-				<img src="../res/img/product/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-				<div><%=products.get(i).getItemName() %></div>
-				<div><%=products.get(i).getItemPrice() %>원</div>
-				</div>
-	<%		
+				<%=intCategory%>
+	<%			if(intCategory >30 && intCategory<40){
+	%>
+					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
+					<img src="../res/img/product/Bath/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
+					<div><%=products.get(i).getItemName() %></div>
+					<div><%=products.get(i).getItemPrice() %>원</div>
+	<%	
+				}
+				else if(intCategory>40 && intCategory<50){
+	%>
+					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
+					<img src="../res/img/product/Beauty/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
+					<div><%=products.get(i).getItemName() %></div>
+					<div><%=products.get(i).getItemPrice() %>원</div>
+	<%	
+				}
+				else if(intCategory>60 && intCategory<70){
+	%>
+					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
+					<img src="../res/img/product/Accessory/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
+					<div><%=products.get(i).getItemName() %></div>
+					<div><%=products.get(i).getItemPrice() %>원</div>
+	<%	
+				}
+				else{
+	%>
+					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
+					<img src="../res/img/product/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
+					<div><%=products.get(i).getItemName() %></div>
+					<div><%=products.get(i).getItemPrice() %>원</div>
+	<%	
+				}
+	%>			</div>
+	<%
 			} 
 			else { 
 	%>
