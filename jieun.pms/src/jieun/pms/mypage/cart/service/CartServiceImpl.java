@@ -15,6 +15,7 @@ public class CartServiceImpl implements CartService {
 	
 	@Override
 	public List<Cart> getCarts(String memId) {
+		System.out.println("service"+memId+cartDao.getCarts(memId));
 		return cartDao.getCarts(memId);
 	}
 

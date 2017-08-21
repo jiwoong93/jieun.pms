@@ -30,6 +30,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	CartService cartService = new CartServiceImpl();
 	List<Cart> carts = cartService.getCarts((String)session.getAttribute("sessionId"));
 %>
+<%=carts.size()%>
  <div class="mypage">
 	<div class="mypageTitle">장바구니<hr></div>
  

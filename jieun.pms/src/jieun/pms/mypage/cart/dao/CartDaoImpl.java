@@ -15,6 +15,7 @@ public class CartDaoImpl implements CartDao {
 
 	@Override
 	public List<Cart> getCarts(String memId) {
+		System.out.println("dao"+memId+cartMapper.getCarts(memId));
 		return cartMapper.getCarts(memId);
 	}
 
