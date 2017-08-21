@@ -24,4 +24,9 @@
 		where carts.mem_id = #{memId}
 		order by cart_no
 	</select>
+	
+	<insert id="insertCart" parameterType="Cart">
+		insert into carts
+		values(seq_cart_no.nextval, #{memId,jdbcType=VARCHAR},#{itemNo,jdbcType=INTEGER},#{amount,jdbcType=INTEGER})
+	</insert>
 </mapper>

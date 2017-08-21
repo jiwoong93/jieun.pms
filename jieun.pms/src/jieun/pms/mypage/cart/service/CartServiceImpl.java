@@ -15,8 +15,12 @@ public class CartServiceImpl implements CartService {
 	
 	@Override
 	public List<Cart> getCarts(String memId) {
-		System.out.println("service"+memId+cartDao.getCarts(memId));
 		return cartDao.getCarts(memId);
+	}
+
+	@Override
+	public boolean insertCart(Cart cart) {
+		return cartDao.insertCart(cart)>0;
 	}
 
 }

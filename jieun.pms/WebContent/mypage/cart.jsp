@@ -30,7 +30,6 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	CartService cartService = new CartServiceImpl();
 	List<Cart> carts = cartService.getCarts((String)session.getAttribute("sessionId"));
 %>
-<%=carts.size()%>
  <div class="mypage">
 	<div class="mypageTitle">장바구니<hr></div>
  
@@ -58,20 +57,30 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 			
 			<tr><td colspan="6" id="line"><hr></td></tr>
 			
-			<tr>
+			
 				
 				<%
 					for(int i=0; i<carts.size();i++){
+				%>		<tr>
+						<td><input type="checkbox" name="selectAll"></td>
+						<td><%=carts.get(i).getProduct().getItemName()%></td>
+				<%		if(carts.get(i).getProduct().getItemSize() != null){
 				%>
-						<td><%=carts.get(0).getProduct().getItemName()%></td>
-						<td><%=carts.get(0).getProduct().getItemSize()%></td>
-						<td><input type="number" name="amount" id="amount" value="1"></td>
-						<td><%=carts.get(0).getProduct().getItemPrice()%>
+							<td><%=carts.get(i).getProduct().getItemSize()%></td>
+				<%
+						}
+						else{
+				%>			<td>&nbsp;</td>	
+				<%		}
+				%>
+						<td><input type="number" name="amount" id="amount" value="<%=carts.get(i).getAmount()%>"></td>
+						<td><%=carts.get(i).getProduct().getItemPrice()%>
 						<td><input type="button" name="delete" value="X"></td>
+						</tr>
 				<%
 					}
 				%>	
-			</tr>
+			
 		</table><br/><br/>
 		
 		<table id="cartTotTable">
