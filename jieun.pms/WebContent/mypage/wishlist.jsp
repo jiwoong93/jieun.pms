@@ -1,3 +1,7 @@
+<%@page import="jieun.pms.mypage.wishlist.domain.Wishlist"%>
+<%@page import="java.util.List"%>
+<%@page import="jieun.pms.mypage.wishlist.service.WishlistServiceImpl"%>
+<%@page import="jieun.pms.mypage.wishlist.service.WishlistService"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
@@ -22,6 +26,10 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	<script>alert('로그인 후에 이용해주세요.'); location.href = '<%=pathWish%>member/login/login.jsp';</script>
 <%
 } else {
+	
+	WishlistService wishService = new WishlistServiceImpl();
+	List<Wishlist> wishes = wishService.getWishes((String)session.getAttribute("sessionId"));
+	
 %>
  <div class="mypage">
 	<div class="mypageTitle">위시리스트<hr></div>
@@ -49,14 +57,28 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 			
 			<tr><td colspan="6" id="line"><hr></td></tr>
 			
-			<tr>
-				<td><input type="checkbox" name="select"></td>
-				<td>곰돌이배낭</td>
-				<td>S</td>
-				<td><input type="number" name="amount" id="amount" value="1"></td>
-				<td>20,000원</td>
-				<td><input type="button" name="delete" value="X"></td>
-			</tr>
+			
+				<%
+					for(int i=0; i<wishes.size();i++){
+				%>		<tr>
+						<td><input type="checkbox" name="selectAll"></td>
+						<td><%=wishes.get(i).getProduct().getItemName()%></td>
+				<%		if(wishes.get(i).getProduct().getItemSize() != null){
+				%>
+							<td><%=wishes.get(i).getProduct().getItemSize()%></td>
+				<%
+						}
+						else{
+				%>			<td>&nbsp;</td>	
+				<%		}
+				%>
+						<td><input type="number" name="amount" id="amount" value="<%=wishes.get(i).getAmount()%>"></td>
+						<td><%=wishes.get(i).getProduct().getItemPrice()%></td>
+						<td><a href="./action/actionWishlistDelete.jsp?no=<%=wishes.get(i).getWishNo()%>"><input type="button" name="delete" value="X"></a></td>
+						</tr>
+				<%
+					}
+				%>	
 		</table><br/><br/>
 		
 		<table class="buttonTable">

@@ -18,4 +18,14 @@ public class CartServiceImpl implements CartService {
 		return cartDao.getCarts(memId);
 	}
 
+	@Override
+	public boolean insertCart(Cart cart) {
+		return cartDao.insertCart(cart)>0;
+	}
+
+	@Override
+	public boolean deleteCart(int cartNo) {
+		return cartDao.deleteCart(cartNo)>0;
+	}
+
 }
