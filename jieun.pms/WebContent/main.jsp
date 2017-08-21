@@ -21,7 +21,7 @@
 	        return false;
 	    });
 	});
-	</script>
+</script>
 <body>
 <% request.setCharacterEncoding("UTF-8"); %>
 <a id="MOVE_TOP_BTN" href="#">TOP</a>
