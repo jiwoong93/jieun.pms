@@ -65,26 +65,26 @@ if(pageName.equals("main.jsp")){
             <ul id="nav">
                 <li><a href="<%= path %>product/productList.jsp?category=10">사료</a></li>
                 <li><a href="<%= path %>product/productList.jsp?category=20">간식</a></li>
-                <li><a href="">위생</a>
+                <li><a href="<%= path %>product/productList.jsp?category=30">위생</a>
                 	<ul>
-						<li><a href="<%= path %>product/productList.jsp?category=30">배변</a></li>
-						<li><a href="<%= path %>product/productList.jsp?category=30">탈취제</a></li>
-						<li><a href="<%= path %>product/productList.jsp?category=30">귀·눈 위생</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=31">배변</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=32">탈취제</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=33">귀·눈 위생</a></li>
 					</ul>
 				</li>
-                <li><a href="">미용</a>
+                <li><a href="<%= path %>product/productList.jsp?category=40">미용</a>
 					<ul>
-						<li><a href="<%= path %>product/productList.jsp?category=40">가위</a></li>
-						<li><a href="<%= path %>product/productList.jsp?category=40">브러쉬</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=41">가위</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=42">브러쉬</a></li>
 					</ul>
 				</li>
                 <li><a href="<%= path %>product/productList.jsp?category=50">의류</a></li>
-				<li><a href="">악세사리</a>
+				<li><a href="<%= path %>product/productList.jsp?category=60">악세사리</a>
 					<ul>
-						<li><a href="<%= path %>product/productList.jsp?category=60">자동줄·하네스</a></li>
-						<li><a href="<%= path %>product/productList.jsp?category=60">배낭</a></li>
-						<li><a href="<%= path %>product/productList.jsp?category=60">헤어핀·모자</a></li>
-						<li><a href="<%= path %>product/productList.jsp?category=60">양말·신발</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=61">자동줄·하네스</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=62">배낭</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=63">헤어핀·모자</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=64">양말·신발</a></li>
 					</ul>
 				</li>
 				<li><a href="<%= path %>product/productList.jsp?category=70">장난감</a></li>

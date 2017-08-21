@@ -1,31 +1,31 @@
-package jieun.pms.mypage.cart.domain;
+package jieun.pms.mypage.wishlist.domain;
 
 import jieun.pms.product.domain.Product;
 
-public class Cart {
-	private int cartNo;
+public class Wishlist {
+	private int wishNo;
 	private String memId;
 	private int itemNo;
 	private int amount;
 	private Product product;
 	
-	public Cart() {}
+	public Wishlist() {	}
 
-	public Cart(int cartNo, String memId, int itemNo, int amount, Product product) {
+	public Wishlist(int wishNo, String memId, int itemNo, int amount, Product product) {
 		super();
-		this.cartNo = cartNo;
+		this.wishNo = wishNo;
 		this.memId = memId;
 		this.itemNo = itemNo;
 		this.amount = amount;
 		this.product = product;
 	}
 
-	public int getCartNo() {
-		return cartNo;
+	public int getWishNo() {
+		return wishNo;
 	}
 
-	public void setCartNo(int cartNo) {
-		this.cartNo = cartNo;
+	public void setWishNo(int wishNo) {
+		this.wishNo = wishNo;
 	}
 
 	public String getMemId() {
@@ -58,11 +58,5 @@ public class Cart {
 
 	public void setProduct(Product product) {
 		this.product = product;
-	}
-
-	@Override
-	public String toString() {
-		return "Cart [cartNo=" + cartNo + ", memId=" + memId + ", itemNo=" + itemNo + ", amount=" + amount
-				+ ", product=" + product + "]";
 	}
 }
