@@ -48,7 +48,12 @@
              cart.setItemNo(products.get(0).getItemNo());
              cart.setAmount(amount);
              boolean insert = cartService.insertCart(cart);
-             count++;
+             if(insert == true){
+            	 count++;
+             }
+             else{
+            	count -= 10; 
+             }
          }
          if(request.getParameter("size_M") != null){
         	 String amountStr = request.getParameter("amount_m");
@@ -56,7 +61,12 @@
              cart.setItemNo(products.get(1).getItemNo());
              cart.setAmount(amount);
              boolean insert = cartService.insertCart(cart);
-             count++;
+             if(insert == true){
+            	 count++;
+             }
+             else{
+            	count -= 10; 
+             }
          }
          if(request.getParameter("size_L") != null){
         	 String amountStr = request.getParameter("amount_l");
@@ -64,7 +74,12 @@
              cart.setItemNo(products.get(2).getItemNo());
              cart.setAmount(amount);
              boolean insert = cartService.insertCart(cart);
-             count++;
+             if(insert == true){
+            	 count++;
+             }
+             else{
+            	count -= 10; 
+             }
          }
          if(request.getParameter("size_XL") != null){
         	 String amountStr = request.getParameter("amount_xl");
@@ -72,7 +87,12 @@
              cart.setItemNo(products.get(3).getItemNo());
              cart.setAmount(amount);
              boolean insert = cartService.insertCart(cart);
-             count++;
+             if(insert == true){
+            	 count++;
+             }
+             else{
+            	count -= 10; 
+             }
          }
          if(count>0){
  %>		

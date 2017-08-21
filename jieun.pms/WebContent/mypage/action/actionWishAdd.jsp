@@ -47,7 +47,12 @@
         	 wish.setItemNo(products.get(0).getItemNo());
         	 wish.setAmount(amount);
              boolean insert = wishService.insertWishlist(wish);
-             count++;
+             if(insert == true){
+            	 count++;
+             }
+             else{
+            	count -= 10; 
+             }
          }
          if(request.getParameter("size_M") != null){
         	 String amountStr = request.getParameter("amount_m");
@@ -55,7 +60,12 @@
         	 wish.setItemNo(products.get(1).getItemNo());
         	 wish.setAmount(amount);
              boolean insert = wishService.insertWishlist(wish);
-             count++;
+             if(insert == true){
+            	 count++;
+             }
+             else{
+            	count -= 10; 
+             }
          }
          if(request.getParameter("size_L") != null){
         	 String amountStr = request.getParameter("amount_l");
@@ -63,7 +73,12 @@
         	 wish.setItemNo(products.get(2).getItemNo());
         	 wish.setAmount(amount);
              boolean insert = wishService.insertWishlist(wish);
-             count++;
+             if(insert == true){
+            	 count++;
+             }
+             else{
+            	count -= 10; 
+             }
          }
          if(request.getParameter("size_XL") != null){
         	 String amountStr = request.getParameter("amount_xl");
@@ -71,7 +86,12 @@
         	 wish.setItemNo(products.get(3).getItemNo());
         	 wish.setAmount(amount);
              boolean insert = wishService.insertWishlist(wish);
-             count++;
+             if(insert == true){
+            	 count++;
+             }
+             else{
+            	count -= 10; 
+             }
          }
          if(count>0){
  %>		

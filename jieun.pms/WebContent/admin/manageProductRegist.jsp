@@ -25,6 +25,56 @@
 			f.SUB3.style.display = "none";
 		}
 	}
+	
+	function checkDisable(frm)
+	{
+	    if( frm.itemSize_s.checked == true ){
+		   frm.textbox_s.disabled = false;
+		} 
+	    else 
+		{
+		   frm.textbox_s.disabled = true;
+		}    
+	    if( frm.itemSize_m.checked == true ){
+			frm.textbox_m.disabled = false;
+		} 
+		else 
+		{
+			frm.textbox_m.disabled = true;
+		}
+	    if( frm.itemSize_l.checked == true ){
+			frm.textbox_l.disabled = false;
+		} 
+		else 
+		{
+			frm.textbox_l.disabled = true;
+		}
+	    if( frm.itemSize_xl.checked == true ){
+			frm.textbox_xl.disabled = false;
+		} 
+		else 
+		{
+			frm.textbox_xl.disabled = true;
+		}
+	}
+	function div_OnOff(v){
+		if(v == "size_no"){
+			document.getElementById('sizeNo').style.display = ""; 
+			document.getElementById('sizeYes').style.display = "none";
+		}else{
+			document.getElementById('sizeYes').style.display = "";
+			document.getElementById('sizeNo').style.display = "none"; 
+		} 
+		
+		 if(v == "size_yes"){
+		   document.getElementById('sizeYes').style.display = "";
+		   document.getElementById('sizeNo').style.display = "none";
+		 }else{
+			 document.getElementById('sizeNo').style.display = "";
+		   document.getElementById('sizeYes').style.display = "none";
+		 }
+	}
+	
 </script>
 <body>
 <div class="modiDelProd">
@@ -84,16 +134,31 @@
 				<td><input type="number" name="itemPrice" placeholder="판매 가격을 입력해주세요" required="required" min="0" max="999999">원</td>
 			</tr>
 			<tr>
-				<td>판매수량</td>
-				<td><input type="number" name="itemAmount" placeholder="판매 수량을 입력해주세요" required="required" min="0" max="999">개</td>
-			</tr>
-			<tr>
-				<td>사이즈</td>
-				<td><input type="radio" name="itemSize" value="">없음 &nbsp; 
-					<input type="radio" name="itemSize" value="s">s &nbsp; 
-					<input type="radio" name="itemSize" value="m">m &nbsp; 
-					<input type="radio" name="itemSize" value="l">l &nbsp; 
-					<input type="radio" name="itemSize" value="xl">xl &nbsp; 
+				<td>사이즈 / 판매수량</td>
+				<td>
+				<div style="float:left;">
+					<input type="radio" name="itemSize" value="size_no" onclick="div_OnOff(this.value);" checked="checked">없음 &nbsp; 
+				</div>
+				<div id="sizeNo">
+					<input type="number" name="textbox" min="0" max="999">개 &nbsp; 
+				</div>
+				<div>
+					<input type="radio" name="itemSize" value="size_yes" onclick="div_OnOff(this.value);">있음 &nbsp; 
+				</div>
+				<div id="sizeYes" style="display:none">
+					<input type="checkbox" name="itemSize_s" value="s" onClick="checkDisable(this.form)">s &nbsp; 
+					<input type="number" name="textbox_s" min="0" max="999"> 개&nbsp; 
+					
+					<input type="checkbox" name="itemSize_m" value="m" onClick="checkDisable(this.form)">m &nbsp; 
+					<input type="number" name="textbox_m" min="0" max="999">개 &nbsp; 
+					
+					<input type="checkbox" name="itemSize_l" value="l" onClick="checkDisable(this.form)">l &nbsp; 
+					<input type="number" name="textbox_l" min="0" max="999"> 개&nbsp; 
+					
+					<input type="checkbox" name="itemSize_xl" value="xl" onClick="checkDisable(this.form)">xl &nbsp;
+					<input type="number" name="textbox_xl" min="0" max="999"> 개&nbsp;  
+				</div>
+				
 				</td>
 			</tr>
 		</table>
