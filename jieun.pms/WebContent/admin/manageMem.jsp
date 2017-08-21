@@ -176,9 +176,9 @@
 	        </c:if>
 	        
 	        <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-	          <li <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' : ''}"/>>
+	          <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' : ''}"/>
 	            <a href="list.jsp?currentPage=${idx}">${idx}</a>
-	          </li>
+	          
 	        </c:forEach>
 	        
 	        <c:if test="${pageMaker.next}">     
