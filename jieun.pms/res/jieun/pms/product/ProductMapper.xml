@@ -15,6 +15,12 @@
 		<result	property="itemUpdate"	column="item_update"/>
 	</resultMap>
 	
+	<select id="getAllProducts" resultType="product" resultMap="productMap">
+		select distinct category
+		from items
+		order by category
+	</select>
+	
 	<select id="getProducts" parameterType="string" resultType="product" resultMap="productMap">
 		select *
 		from items

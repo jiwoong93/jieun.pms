@@ -21,5 +21,4 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> listMembers(Page page) {
 		return memberDao.getMembers(page);
 	}
-	
 }

@@ -127,7 +127,7 @@
 			 </select>
 		   </td>
 		  </tr>
-		</table><br/><br/><br/>
+		</table><br/><br/>
 			<input type="submit" value="수정하기">
 			<input type="button" value="취소하기" onclick="window.close();">
 		</form>

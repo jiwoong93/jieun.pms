@@ -151,7 +151,7 @@
 				%>
 				<!-- 글쓰기 -->
 				<div class="comu_write">
-					<a href="./reviewboard.jsp"><input type="button" value="글쓰기"></a>
+					<a href="./reviewboard2.jsp"><input type="button" value="글쓰기"></a>
 				</div>
 				<%
 					}

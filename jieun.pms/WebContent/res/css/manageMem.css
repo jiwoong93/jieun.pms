@@ -60,3 +60,8 @@ a { color: inherit; text-decoration: none; }
 	margin-top: 30px;
 	margin-left: 770px;
 }
+
+.paging{
+	margin-left:260px;
+	margin-top: 20px;
+}

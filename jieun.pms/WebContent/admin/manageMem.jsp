@@ -8,6 +8,7 @@
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <link rel="stylesheet" href="../res/css/manageMem.css?">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -123,14 +124,14 @@
 			<c:forEach var="member" items="${members}">
 	          <tr>
 	            <td></td>
-	            <td>${member.memId}</td>
-	            <td>${member.memName}</td>
+	            <td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=${member.memId}', '회원정보', 'width=500, height=530, top=100, left=400' );">${member.memId}</span></td>
+	            <td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=${member.memId}', '회원정보', 'width=500, height=530, top=100, left=400' );">${member.memName}</span></td>
 	            <td>${member.memGender}</td>
 	            <td>${member.regDate}</td>
 	            <td></td>
 	            <td>${member.memEmail}</td>
 	            <td>${member.memPhone}</td>
-	            <td>x</td>
+	            <td><input type="button" name="delete" value="X" onclick="javascript:delchk('${member.memId}');" ></td>
 	          </tr>
 	        </c:forEach>
 			
@@ -169,26 +170,27 @@
 		</table>
 		
 		<!-- 페이징 -->
-	    <div class="text-center">
-	      <ul class="pagination">
-	        <c:if test="${pageMaker.prev}">     
-	          <a href="list.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a>
-	        </c:if>
-	        
-	        <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-	          <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' : ''}"/>
-	            <a href="list.jsp?currentPage=${idx}">${idx}</a>
-	          
-	        </c:forEach>
-	        
-	        <c:if test="${pageMaker.next}">     
-	          <a href="list.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a>
-	        </c:if>  
-	      </ul>
-	    </div>    
-    
-    
-    
+	    <div class="paging">
+			<ul class="pagination">
+				<c:if test="${pageMaker.prev}">
+					<li style="float: left;"><a
+						href="manageMem.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a>&nbsp;&nbsp;</li>
+				</c:if>
+
+				<c:forEach begin="${pageMaker.startPage}"
+					end="${pageMaker.endPage}" var="idx">
+					<li style="float: left;"
+						<c:out value="${pageMaker.page.currentPage==idx ? 'class=active' : ''}"/>>
+						&nbsp;&nbsp;&nbsp;<a href="manageMem.jsp?currentPage=${idx}">${idx}</a>
+					</li>
+				</c:forEach>
+
+				<c:if test="${pageMaker.next}">
+					<li style="float: left;">&nbsp;&nbsp;<a
+						href="manageMem.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
+				</c:if>
+			</ul>
+		</div> 
 	</div>
 </div>
 </body>
