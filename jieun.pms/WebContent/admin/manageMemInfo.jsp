@@ -25,10 +25,10 @@
 			<tr>
 				<td> 상태 </td>
 				<td>  
-					<select name="memLevel" value="<%=updateMember.getMemLevel()%>">
-						<option value="1">일반회원</option>
-						<option value="0">관리자</option>
-						<option value="9">탈퇴회원</option>
+					<select name="memLevel">
+						<option value="1" <%=updateMember.getMemLevel().equals("1")?"selected":""%>>일반회원</option>
+						<option value="0" <%=updateMember.getMemLevel().equals("0")?"selected":""%>>관리자</option>
+						<option value="9" <%=updateMember.getMemLevel().equals("9")?"selected":""%>>탈퇴회원</option>
 					</select>
 				</td>
 			</tr>
@@ -46,17 +46,8 @@
 		  <tr>
 		   <td> 성별 </td>
 		   <td>
-		   	<%
-		   		String genderM = "";
-		   		String genderW = "";
-		   		if(updateMember.getMemGender().equals("M")){
-		   			genderM = "checked";
-		   		} else {
-		   			genderW = "checked";
-		   		}
-		   	%>
-		    <input type="radio" name="memGender" value="M" <%=genderM %>>남자
-		    <input type="radio" name="memGender" value="W" <%=genderW %>>여자
+		    <input type="radio" name="memGender" value="M" <%=updateMember.getMemGender().equals("M")?"checked":""%>>남자
+		    <input type="radio" name="memGender" value="W" <%=updateMember.getMemGender().equals("W")?"checked":""%>>여자
 		   </td>
 		  </tr>
 		  
@@ -117,13 +108,13 @@
 		   <tr>
 		   <td> 강아지품종 </td>
 		   <td>
-		    <select name="dogCode" value="<%=updateMember.getDogCode()%>">
-				<option value="002">슈나우저</option>
-		    	<option value="003">푸들</option>
-			    <option value="004">차우차우</option>
-			    <option value="005">달마티안</option>
-			    <option value="006">그레이하운드</option>
-			    <option value="007">콜리</option>
+		    <select name="dogCode">
+				<option value="002" <%=updateMember.getDogCode().equals("002")?"selected":""%>>슈나우저</option>
+		    	<option value="003" <%=updateMember.getDogCode().equals("003")?"selected":""%>>푸들</option>
+			    <option value="004" <%=updateMember.getDogCode().equals("004")?"selected":""%>>차우차우</option>
+			    <option value="005" <%=updateMember.getDogCode().equals("005")?"selected":""%>>달마티안</option>
+			    <option value="006" <%=updateMember.getDogCode().equals("006")?"selected":""%>>그레이하운드</option>
+			    <option value="007" <%=updateMember.getDogCode().equals("007")?"selected":""%>>콜리</option>
 			 </select>
 		   </td>
 		  </tr>

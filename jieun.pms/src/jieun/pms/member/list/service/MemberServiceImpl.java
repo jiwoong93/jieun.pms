@@ -21,4 +21,12 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> listMembers(Page page) {
 		return memberDao.getMembers(page);
 	}
+	@Override
+	public List<Member> listAdmins(Page page) {
+		return memberDao.getAdmins(page);
+	} 
+	@Override
+	public List<Member> listExitMembers(Page page) {
+		return memberDao.getExitMembers(page);
+	}
 }

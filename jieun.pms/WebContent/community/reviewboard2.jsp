@@ -5,7 +5,7 @@
 <html>
 <script type="text/javascript">
    function popup(){
-	   window.open('./reviewcategory2.jsp','상품 선택','width=380, height=1, location=no, status=no, scrollbars=no, left=800, top=400');
+	   window.open('./reviewcategory2.jsp','상품 선택','width=420, height=1, location=no, status=no, scrollbars=no, left=600, top=400');
    }
    function setValue(file1,file2,itemNo){
      document.getElementById("file1").value=file1;

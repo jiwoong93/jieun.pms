@@ -72,20 +72,36 @@
 		<!-- 아무것도 선택하지 않았을 경우 -> 전체 상품 -->
 		<% if((cate1 == null || cate1.equals(null)) && (cate2 == null || cate2.equals(null))){ 
 			products = categoryService.cateAllProducts();
-				for(int i=0; i<products.size(); i++){
+			for(int i=0; i<products.size(); i++){
+				if(i==0){
 		%>
 					<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
 		<%
+				} else {
+					if(!(products.get(i-1).getItemName().equals(products.get(i).getItemName()))){
+		%>
+					<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
+		<%
+					}
 				}
+			}
 		%>
 			
 		<!-- 카테고리 처음것만 선택한 경우 -->
 		<% } else if(!(cate1 == null || cate1.equals(null)) && (cate2 == null || cate2.equals(null))){ 
 			products = categoryService.cateSecondProducts(cate1);
 			for(int i=0; i<products.size(); i++){
+				if(i==0){
 		%>
-				<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
+					<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
 		<%
+				} else {
+					if(!(products.get(i-1).getItemName().equals(products.get(i).getItemName()))){
+		%>
+					<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
+		<%
+					}
+				}
 			}
 		%>
 			
@@ -93,9 +109,17 @@
 		<% } else if(!(cate1 == null || cate1.equals(null)) && !(cate2 == null || cate2.equals(null))){ products = categoryService.cateSecondProducts(cate1.substring(0));
 			products = categoryService.cateProducts(cate2);
 			for(int i=0; i<products.size(); i++){
+				if(i==0){
 		%>
-				<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
+					<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
 		<%
+				} else {
+					if(!(products.get(i-1).getItemName().equals(products.get(i).getItemName()))){
+		%>
+					<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
+		<%
+					}
+				}
 			}
 		%>
 		<% } %>

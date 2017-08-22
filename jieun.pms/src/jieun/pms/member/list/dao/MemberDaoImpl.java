@@ -23,4 +23,14 @@ public class MemberDaoImpl implements MemberDao {
 	public List<Member> getMembers(Page page) {
 		return memberMapper.getMembers(page);
 	}
+
+	@Override
+	public List<Member> getAdmins(Page page) {
+		return memberMapper.getAdmins(page);
+	}
+
+	@Override
+	public List<Member> getExitMembers(Page page) {
+		return memberMapper.getExitMembers(page);
+	}
 }

@@ -10,7 +10,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/manageMem.css?">
+<link rel="stylesheet" href="../res/css/manageMem.css?ver=2">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -44,11 +44,19 @@
 	String currentPage = request.getParameter("currentPage");
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
 	else myPage = new Page();
-	
 	PageService pageService = new PageServiceImpl(5, myPage);
 	pageContext.setAttribute("pageMaker", pageService);
 	MemberService memberService = new MemberServiceImpl();
-	pageContext.setAttribute("members", memberService.listMembers(myPage));
+	
+	if(memLevel == "1" || memLevel.equals("1")){ //일반회원
+		pageContext.setAttribute("members", memberService.listMembers(myPage));
+	} else if(memLevel == "0" || memLevel.equals("0")){ //관리자
+		pageContext.setAttribute("members", memberService.listAdmins(myPage));
+	} else if(memLevel == "9" || memLevel.equals("9")){ //탈퇴회원
+		pageContext.setAttribute("members", memberService.listExitMembers(myPage));
+	}
+	
+	
 	//List<Member> members = memberService.listMembers(memLevel);
 	
 %>
@@ -124,8 +132,8 @@
 			<c:forEach var="member" items="${members}">
 	          <tr>
 	            <td></td>
-	            <td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=${member.memId}', '회원정보', 'width=500, height=530, top=100, left=400' );">${member.memId}</span></td>
-	            <td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=${member.memId}', '회원정보', 'width=500, height=530, top=100, left=400' );">${member.memName}</span></td>
+	            <td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=${member.memId}', '회원정보', 'width=550, height=530, top=100, left=400' );">${member.memId}</span></td>
+	            <td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=${member.memId}', '회원정보', 'width=550, height=530, top=100, left=400' );">${member.memName}</span></td>
 	            <td>${member.memGender}</td>
 	            <td>${member.regDate}</td>
 	            <td></td>
@@ -174,20 +182,20 @@
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li style="float: left;"><a
-						href="manageMem.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a>&nbsp;&nbsp;</li>
+						href="manageMem.jsp?ck=<%=memLevel %>&currentPage=${pageMaker.startPage-1}">&laquo;</a>&nbsp;&nbsp;</li>
 				</c:if>
 
 				<c:forEach begin="${pageMaker.startPage}"
 					end="${pageMaker.endPage}" var="idx">
 					<li style="float: left;"
 						<c:out value="${pageMaker.page.currentPage==idx ? 'class=active' : ''}"/>>
-						&nbsp;&nbsp;&nbsp;<a href="manageMem.jsp?currentPage=${idx}">${idx}</a>
+						&nbsp;&nbsp;&nbsp;<a href="manageMem.jsp?ck=<%=memLevel %>&currentPage=${idx}">${idx}</a>
 					</li>
 				</c:forEach>
 
 				<c:if test="${pageMaker.next}">
 					<li style="float: left;">&nbsp;&nbsp;<a
-						href="manageMem.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
+						href="manageMem.jsp?ck=<%=memLevel %>&currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
 				</c:if>
 			</ul>
 		</div> 

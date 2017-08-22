@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/productdetail.css"></link>
+<link rel="stylesheet" href="../res/css/productdetail.css?ver=1"></link>
 <script>
    $( document ).ready(function() {
       document.getElementById('sizeS').style.display = 'none';

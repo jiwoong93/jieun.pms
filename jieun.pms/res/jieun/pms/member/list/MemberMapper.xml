@@ -10,6 +10,31 @@
         select * from (
             select rownum as rnum, x.* from(
                   select * from members
+                  where mem_level='1'
+                  order by mem_id desc
+            )x where rownum <= #{rowCnt}*#{currentPage}
+        ) where rnum > #{rowCnt}*(#{currentPage}-1)
+        ]]>
+    </select>
+    
+    <select id="getAdmins" parameterType="memPage" resultMap="memberMap">
+        <![CDATA[
+        select * from (
+            select rownum as rnum, x.* from(
+                  select * from members
+                  where mem_level='0'
+                  order by mem_id desc
+            )x where rownum <= #{rowCnt}*#{currentPage}
+        ) where rnum > #{rowCnt}*(#{currentPage}-1)
+        ]]>
+    </select>
+    
+    <select id="getExitMembers" parameterType="memPage" resultMap="memberMap">
+        <![CDATA[
+        select * from (
+            select rownum as rnum, x.* from(
+                  select * from members
+                  where mem_level='9'
                   order by mem_id desc
             )x where rownum <= #{rowCnt}*#{currentPage}
         ) where rnum > #{rowCnt}*(#{currentPage}-1)
