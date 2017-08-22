@@ -59,4 +59,10 @@ public class Cart {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	@Override
+	public String toString() {
+		return "Cart [cartNo=" + cartNo + ", memId=" + memId + ", itemNo=" + itemNo + ", amount=" + amount
+				+ ", product=" + product + "]";
+	}
 }

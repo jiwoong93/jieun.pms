@@ -69,8 +69,7 @@
 								if (currentId != null && currentId != "") {
 									if (currentId.equals("admin")) {
 							%>
-							<td width="30" align="center"><input type="checkbox"
-								name="all" onclick="check();"></td>
+							<td width="30" align="center"><input type="checkbox" name="all" onclick="check();"></td>
 							<%
 								}
 								}
@@ -87,8 +86,7 @@
 									if (currentId != null && currentId != "") {
 											if (currentId.equals("admin")) {
 								%>
-								<td align="center"><input type="checkbox" name="chk"
-									value="1"></td>
+								<td align="center"><input type="checkbox" name="chk" value="1"></td>
 								<%
 									}
 										}

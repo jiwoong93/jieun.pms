@@ -18,8 +18,7 @@ if(pageName.equals("main.jsp")){
 	path = "../";
 }
 %>
-
-	<link rel="stylesheet" href="<%= path %>res/css/header.css?ver=3">
+	<link rel="stylesheet" href="<%= path %>res/css/header.css?ver=11">
 	<script src="<%= path %>res/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="<%= path %>res/js/header.js"></script>
 
@@ -63,13 +62,31 @@ if(pageName.equals("main.jsp")){
 	<div class="category">
         <hr>
 		<nav class="category-nav" role="navigation">
-            <ul>
+            <ul id="nav">
                 <li><a href="<%= path %>product/productList.jsp?category=10">사료</a></li>
                 <li><a href="<%= path %>product/productList.jsp?category=20">간식</a></li>
-                <li><a href="<%= path %>product/productList.jsp?category=30">위생</a></li>
-                <li><a href="<%= path %>product/productList.jsp?category=40">미용</a></li>
+                <li><a href="<%= path %>product/productList.jsp?category=30">위생</a>
+                	<ul>
+						<li><a href="<%= path %>product/productList.jsp?category=31">배변</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=32">탈취제</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=33">귀·눈 위생</a></li>
+					</ul>
+				</li>
+                <li><a href="<%= path %>product/productList.jsp?category=40">미용</a>
+					<ul>
+						<li><a href="<%= path %>product/productList.jsp?category=41">가위</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=42">브러쉬</a></li>
+					</ul>
+				</li>
                 <li><a href="<%= path %>product/productList.jsp?category=50">의류</a></li>
-				<li><a href="<%= path %>product/productList.jsp?category=60">악세사리</a></li>
+				<li><a href="<%= path %>product/productList.jsp?category=60">악세사리</a>
+					<ul>
+						<li><a href="<%= path %>product/productList.jsp?category=61">자동줄·하네스</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=62">배낭</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=63">헤어핀·모자</a></li>
+						<li><a href="<%= path %>product/productList.jsp?category=64">양말·신발</a></li>
+					</ul>
+				</li>
 				<li><a href="<%= path %>product/productList.jsp?category=70">장난감</a></li>
 				<li><a href="<%= path %>product/productList.jsp?category=80">하우스</a></li>
             </ul>
