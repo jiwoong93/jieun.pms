@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jieun.pms.category.dao.mapper.CategoryMapper">
+	<insert id="addCate" parameterType="jieun.pms.category.domain.Category" >
+		insert into categorys values (#{cateNo,jdbcType=VARCHAR}, #{parentNo,jdbcType=VARCHAR},
+		#{cateTitle,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="delCate" parameterType="string">
+		delete from categorys where cate_no=#{cateNo}
+	</delete>
+	
+	<resultMap id="categoryMap" type="jieun.pms.category.domain.Category">
+        <id property="cateNo"      column="cate_no"/>
+        <result property="parentNo"   column="parent_no"/>
+        <result property="cateTitle" column="cate_title"/>
+    </resultMap>   
+    
+    <resultMap id="categoryProductMap" type="jieun.pms.category.domain.Product">
+        <id property="itemNo"      column="item_no"/>
+        <result property="itemId"   column="item_id"/>
+        <result property="itemCate" column="caategory"/>
+        <result property="itemName" column="item_name"/>
+    </resultMap> 
+    
+    <select id="firstCate" resultMap="categoryMap" resultType="jieun.pms.category.domain.Category">
+    	select * from categorys where parent_no is null
+    </select>
+    
+    <select id="secondCate" resultMap="categoryMap" resultType="jieun.pms.category.domain.Category">
+    	select * from categorys where parent_no is not null
+    </select>
+    
+    <select id="selectSecondCate" parameterType="String" resultMap="categoryMap" resultType="jieun.pms.category.domain.Category">
+    	select * from categorys where parent_no=#{cateNo}
+    </select>
+    
+    <select id="cateProducts" parameterType="String" resultMap="categoryProductMap" resultType="jieun.pms.category.domain.Product">
+    	select item_no itemNo, item_id itemId, category itemCate, item_name itemName from items where category=#{itemCate}
+    </select>
+    
+    <select id="cateSecondProducts" parameterType="String" resultMap="categoryProductMap" resultType="jieun.pms.category.domain.Product">
+    	select item_no itemNo, item_id itemId, category itemCate, item_name itemName from items where category like #{itemCate}||'%'
+    </select>
+    
+    <select id="cateAllProducts" resultMap="categoryProductMap" resultType="jieun.pms.category.domain.Product">
+    	select item_no itemNo, item_id itemId, category itemCate, item_name itemName from items
+    </select>
+</mapper>

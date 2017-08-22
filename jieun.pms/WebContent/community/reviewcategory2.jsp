@@ -1,9 +1,8 @@
-<%@page import="jieun.pms.product.domain.CategoryKor"%>
-<%@page import="jieun.pms.product.domain.Category"%>
-<%@page import="jieun.pms.product.service.ProductServiceImpl"%>
-<%@page import="jieun.pms.product.domain.Product"%>
+<%@page import="jieun.pms.category.service.CategoryServiceImpl"%>
+<%@page import="jieun.pms.category.service.CategoryService"%>
+<%@page import="jieun.pms.category.domain.Category"%>
+<%@page import="jieun.pms.category.domain.Product"%>
 <%@page import="java.util.List"%>
-<%@page import="jieun.pms.product.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,99 +11,94 @@
 </head>
 <script language="javascript">
 	function showSub(obj) {
-		f = document.forms.f1;
-
-		switch(obj){
-		case '위생': 
-			f.SUB1.style.display = ""; f.SUB1.disabled = false;
-			f.SUB2.style.display = "none";
-			f.SUB3.style.display = "none";
-			break;
-		case '미용': 
-			f.SUB1.style.display = "none";
-			f.SUB2.style.display = ""; f.SUB2.disabled = false;
-			f.SUB3.style.display = "none";
-			break;
-		case '악세사리': 
-			f.SUB1.style.display = "none";
-			f.SUB2.style.display = "none";
-			f.SUB3.style.display = ""; f.SUB3.disabled = false;
-			break;
-		default : 
-			f.SUB1.style.display = "none"; f.SUB1.disabled = true;
-			f.SUB2.style.display = "none"; f.SUB1.disabled = true;
-			f.SUB3.style.display = "none"; f.SUB1.disabled = true;
-			break;
-		}
+		var cate1 = obj.split('/');
+		location.href='./reviewcategory2.jsp?cate1='+ cate1[1];
+	}
+	
+	function subVal(obj) {
+		var cate2 = obj.split('/');
+		location.href='./reviewcategory2.jsp?cate1='+ cate2[0] + '&cate2=' + cate2[2];
 	}
 
 	function setOpener(){
-	    var file1=document.getElementById("file1");
-	    var file2=document.getElementById("file2").value.split('/');
+	    var file1=document.getElementById("file1").value.split('/');
+	    var file2=document.getElementById("file3").value.split('/');
 	    
-	    opener.setValue(file1.value, file2[0], file2[1]);
+	    opener.setValue(file1[0], file2[0], file2[1]);
 	    self.close();
 	  }
-
 </script>
 <body>
 <%
-	ProductService productService = new ProductServiceImpl();
-	List<Product> products = productService.getProducts("50");
-	List<Product> allList = productService.getAllProducts();
+	String cate1 = request.getParameter("cate1");
+	String cate2 = request.getParameter("cate2");
+	CategoryService categoryService = new CategoryServiceImpl();
+	List<Category> firstCategorys = categoryService.firstCate();
+	List<Category> secondCategorys = categoryService.secondCate();
+	List<Product> products;
 
 %>
 <center>
 	<form name="f1" action="">
 		<select name="itembox" id="file1" onChange="showSub(this.options[this.selectedIndex].value);">
-			<option id="cate" >카테고리</option>
+			<option value="">카테고리</option>
 			<% 
-				for(int i=0; i<allList.size(); i++){
-					if(allList.get(i).getCategory().equals("10") || allList.get(i).getCategory().equals("20") || allList.get(i).getCategory().equals("30") || allList.get(i).getCategory().equals("40") || allList.get(i).getCategory().equals("50") || allList.get(i).getCategory().equals("60") || allList.get(i).getCategory().equals("70") || allList.get(i).getCategory().equals("80")){
-						CategoryKor category = new CategoryKor(Integer.parseInt(allList.get(i).getCategory()));
+				for(int i=0; i<firstCategorys.size(); i++){
 			%>
-						<option value="<%=category.getCategoryStr() %>"><%=category.getCategoryStr() %></option>
+						<option value="<%=firstCategorys.get(i).getCateTitle()%>/<%=firstCategorys.get(i).getCateNo()%>" <%=firstCategorys.get(i).getCateNo().equals(cate1)?"selected":""%> ><%=firstCategorys.get(i).getCateTitle()%></option>
 			<%
-					}
 				}
 			%>
-			<!-- <option value="사료">사료</option>
-			<option value="간식">간식</option>
-			<option value="위생">위생</option>
-			<option value="미용">미용</option>
-			<option value="의류">의류</option>
-			<option value="악세사리">악세사리</option>
-			<option value="장난감">장난감</option>
-			<option value="하우스">하우스</option> -->
 		</select> 
-		<select name="SUB1" style="display: none;" disabled>
-			<option value="">하위카테고리</option>
-			<option value="배변">배변</option>
-			<option value="탈취제">탈취제</option>
-			<option value="귀·눈 위생">귀·눈 위생</option>
-		</select> 
-		<select name="SUB2" style="display: none;" disabled>
-			<option value="">하위카테고리</option>
-			<option value="가위">가위</option>
-			<option value="브러쉬">브러쉬</option>
-		</select> 
-		<select name="SUB3" style="display: none;" disabled>
-			<option value="">하위카테고리</option>
-			<option value="자동줄·하네스">자동줄·하네스</option>
-			<option value="배낭">배낭</option>
-			<option value="헤어핀·모자">헤어핀·모자</option>
-			<option value="양말·신발">양말·신발</option>
-		</select>
+		
+		<% if(!(cate1 == null || cate1.equals(null))){ 
+			List<Category> selectCate = categoryService.selectSecondCate(cate1);
+			if(selectCate.size() != 0){
+		%>
+			<select id="file2" name="SUB" onchange="subVal(this.options[this.selectedIndex].value);">
+				<option value="">카테고리</option>
+				<%
+					for(int i=0; i<selectCate.size(); i++){
+				%>
+						<option value="<%=cate1 %>/<%=selectCate.get(i).getCateTitle()%>/<%=selectCate.get(i).getCateNo()%>" <%=selectCate.get(i).getCateNo().equals(cate2)?"selected":""%> ><%=selectCate.get(i).getCateTitle()%></option>
+				<%
+					}
+				%>
+			</select> 
+			<%} %>
+		<% } %>
 		<select name="SUB4" id="file3">
 			<option value="">==상품선택==</option>
-			<% 
+		<!-- 아무것도 선택하지 않았을 경우 -> 전체 상품 -->
+		<% if((cate1 == null || cate1.equals(null)) && (cate2 == null || cate2.equals(null))){ 
+			products = categoryService.cateAllProducts();
 				for(int i=0; i<products.size(); i++){
-			%>
-					<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName()%></option>
-
-			<%
+		%>
+					<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
+		<%
 				}
-			%>
+		%>
+			
+		<!-- 카테고리 처음것만 선택한 경우 -->
+		<% } else if(!(cate1 == null || cate1.equals(null)) && (cate2 == null || cate2.equals(null))){ 
+			products = categoryService.cateSecondProducts(cate1);
+			for(int i=0; i<products.size(); i++){
+		%>
+				<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
+		<%
+			}
+		%>
+			
+		<!-- 카테고리를 두개 다 선택한 경우 -->
+		<% } else if(!(cate1 == null || cate1.equals(null)) && !(cate2 == null || cate2.equals(null))){ products = categoryService.cateSecondProducts(cate1.substring(0));
+			products = categoryService.cateProducts(cate2);
+			for(int i=0; i<products.size(); i++){
+		%>
+				<option value="<%=products.get(i).getItemName()%>/<%=products.get(i).getItemNo()%>"><%=products.get(i).getItemName() %></option>
+		<%
+			}
+		%>
+		<% } %>
 		</select>
 		
 		<input type="button" value="선택" onClick="javascript:setOpener()">
