@@ -1,9 +1,38 @@
+<%@page import="jieun.pms.member.update.service.UpdateServiceImpl"%>
+<%@page import="jieun.pms.member.update.domain.UpdateMember"%>
+<%@page import="jieun.pms.member.update.service.UpdateService"%>
+<%@page import="java.util.List"%>
+<%@page import="jieun.pms.product.domain.Product"%>
+<%@page import="jieun.pms.product.service.ProductServiceImpl"%>
+<%@page import="jieun.pms.product.service.ProductService"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <link rel="stylesheet" href="../res/css/order.css">
 <body>
+<script>
+	function cleartext(){
+		document.getElementById('recive_name').value='';
+		document.getElementById('recive_zipcode').value='';
+		document.getElementById('recive_street').value='';
+		document.getElementById('recive_addr').value='';
+		document.getElementById('recive_phone1').value='010';
+		document.getElementById('recive_phone2').value='';
+		document.getElementById('recive_phone3').value='';
+	}
+	
+	function move(){
+		document.getElementById('recive_name').value=document.getElementById('order_name').value;
+		document.getElementById('recive_zipcode').value=value=document.getElementById('order_zipcode').value;
+		document.getElementById('recive_street').value=value=document.getElementById('order_street').value;
+		document.getElementById('recive_addr').value=value=document.getElementById('order_addr').value;
+		document.getElementById('recive_phone1').value=value=document.getElementById('order_phone1').value;
+		document.getElementById('recive_phone2').value=value=document.getElementById('order_phone2').value;
+		document.getElementById('recive_phone3').value=value=document.getElementById('order_phone3').value;
+	}
+</script>
+<% request.setCharacterEncoding("UTF-8"); %>
 <%
 if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
 %>
@@ -11,8 +40,25 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 <%
 } else {
 %>
+<%
+	ProductService productService = new ProductServiceImpl();
+	int itemNo = Integer.parseInt(request.getParameter("no"));
+	Product product = productService.getProductNo(itemNo);
+	
+	int amountn=0, amounts=0, amountm=0, amountl=0, amountxl=0;
+	if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){
+		amountn = Integer.parseInt(request.getParameter("amount_n"));
+	} else {
+		amounts = Integer.parseInt(request.getParameter("amount_s"));
+		amountm = Integer.parseInt(request.getParameter("amount_m"));
+		amountl = Integer.parseInt(request.getParameter("amount_l"));
+		amountxl = Integer.parseInt(request.getParameter("amount_xl"));
+	}
+%>
 <div class="payment">
 	<form method="post" action="./orderResult.jsp">
+	<input type="hidden" name="amount" value="<%=amountn+amounts+amountm+amountl+amountxl%>">
+	<input type="hidden" name="gubun" value="<%=request.getParameter("gubun")%>">
 	<table class="itemTable">
 		<tr>
 			<td><input type="checkbox" name="selectAll"></td>
@@ -26,25 +72,77 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		<tr>
 			<td colspan="6"><hr></td>
 		</tr>
+<%
+	if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){%>
 
 		<tr>
 			<td><input type="checkbox" name="select"></td>
-			<td>곰돌이배낭</td>
-			<td>S</td>
-			<td><input type="number" name="amount" id="amount" value="1"></td>
-			<td>20,000원</td>
-			<td><input type="button" name="delete" value="X"></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" name="select"></td>
-			<td>헬로도기 핀브러쉬</td>
-			<td></td>
-			<td><input type="number" name="amount" id="amount" value="1"></td>
-			<td>6,000원</td>
-			<td><input type="button" name="delete" value="X"></td>
-		</tr>
-	</table>
+			<td><%=product.getItemName()%></td>
+			<td>x</td>
+			<td><input type="number" name="amountN" value="<%=amountn%>"></td>
+			<td><%=amountn*product.getItemPrice()%>원</td>
+			<td><input type="button" name="deleteN" value="X"></td>
+		</tr><% 		
+	} else {
+		if(amounts != 0){
+%>
+			<tr>
+				<td><input type="checkbox" name="select"></td>
+				<td><%=product.getItemName()%></td>
+				<td>S</td>
+				<td><input type="number" name="amountS" value="<%=amounts%>"></td>
+				<td><%=amounts*product.getItemPrice()%>원</td>
+				<td><input type="button" name="deleteS" value="X"></td>
+			</tr>
+<%
+		}
+		if(amountm != 0){
+%>
+			<tr>
+				<td><input type="checkbox" name="select"></td>
+				<td><%=product.getItemName()%></td>
+				<td>M</td>
+				<td><input type="number" name="amountM" value="<%=amountm%>"></td>
+				<td><%=amountm*product.getItemPrice()%>원</td>
+				<td><input type="button" name="deleteM" value="X"></td>
+			</tr>
+<%					
+				}
+		if(amountl != 0){
+%>
+			<tr>
+				<td><input type="checkbox" name="select"></td>
+				<td><%=product.getItemName()%></td>
+				<td>L</td>
+				<td><input type="number" name="amountL" value="<%=amountl%>"></td>
+				<td><%=amountl*product.getItemPrice()%>원</td>
+				<td><input type="button" name="deleteL" value="X"></td>
+			</tr>
+<%			
+		}
+		if(amountxl != 0){
+%>
+			<tr>
+				<td><input type="checkbox" name="select"></td>
+				<td><%=product.getItemName()%></td>
+				<td>XL</td>
+				<td><input type="number" name="amountXL" value="<%=amountxl%>"></td>
+				<td><%=amountxl*product.getItemPrice()%>원</td>
+				<td><input type="button" name="deleteXL" value="X"></td>
+			</tr>
+<%			
+		}
+%>
 	
+<%		
+	}
+%>
+	</table>
+<%
+	String memId = session.getAttribute("sessionId").toString();
+	UpdateService updateService = new UpdateServiceImpl();
+	UpdateMember orderMember = updateService.selectMember(memId);
+%>
 	<div class="button">
 		<div id="deleteButton">
 			<input type="button" name="delete" value="삭제">
@@ -60,52 +158,62 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	<div id="required">
 		<b>*</b>필수입력사항
 	</div>
-	
+	<input type="hidden" name="order_id" value="<%=orderMember.getMemId()%>">
 	<table class="memInforTable">
 		<tr>
 			<td>주문하시는분<b>*</b></td>
-			<td><input type="text" name="name" required="required" value="송은영"></td>
+			<td><input type="text" id="order_name" name="order_name" required="required" value="<%=orderMember.getMemName()%>"></td>
 		</tr>
 
 		<tr>
 			<td>주소<b>*</b></td>
 			<td>
-				<input type="text" name="zipcode" value="12345">
+				<input type="text" id="order_zipcode" value="<%=orderMember.getMemZipcode()%>">
 				<input type="button" value="우편번호" />
 			</td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>
-			<input type="text" size="30" name="streetadd" value="도로명주소">
-			<input type="text" size="30" name="add" value="상세주소">
+			<input type="text" size="30" id="order_street" value="<%=orderMember.getMemStreet()%>">
+			<input type="text" size="30" id="order_addr" value="<%=orderMember.getMemAddr()%>">
 			</td>
 		</tr>
 
 		<tr>
 			<td>휴대폰<b>*</b></td>
 			<td>
-			<select>
-					<option value="010">010</option>
-					<option value="011">011</option>
-					<option value="016">016</option>
-					<option value="018">018</option>
+			<%
+		   		String phone = orderMember.getMemPhone();
+		   		String phone1 = phone.substring(0, 3);
+		   		String phone2 = phone.substring(3, 7);
+		   		String phone3 = phone.substring(7, 11);
+	   		%>
+			
+			<select id="order_phone1">
+					<option value="010" <%=phone1.equals("010")?"selected":"" %>>010</option>
+					<option value="011" <%=phone1.equals("011")?"selected":"" %>>011</option>
+					<option value="016" <%=phone1.equals("016")?"selected":"" %>>016</option>
+					<option value="018" <%=phone1.equals("018")?"selected":"" %>>018</option>
 			</select>
-			<input type="text" name="phone_num" size="6" required="required" value="8885" />
-			 - <input type="text" name="phone_num" size="6" required="required" value="0409">
+			<input type="text" id="order_phone2" size="6" required="required" value="<%=phone2%>" />
+			 - <input type="text" id="order_phone3" size="6" required="required" value="<%=phone3%>">
 			</td>
 		</tr>
 		
 		<tr>
 			<td>이메일<b>*</b></td>
 			<td>
-			<input type = "text" name="email_id" id="email_id" value="eunyoung">
-			 @ <input type = "text" name="email" id="email" value="naver.com"> &nbsp;&nbsp; 
+			<%
+		   		String[] email = orderMember.getMemEmail().split("@");
+		   	%>
+			<input type = "text" id="order_email1" value="<%=email[0]%>">
+			 @ <input type = "text" id="order_email2" value="<%=email[1]%>"> &nbsp;&nbsp; 
 				<select>
 				<option> 직접입력 </option>
-				<option value="naver" selected="selected"> naver.com </option>
-				<option value="daum"> daum.net </option>
-				<option value="nate"> nate.com </option>
+				<option value="naver.com" <%=email[1].equals("naver.com")?"selected":"" %>> naver.com </option>
+				<option value="daum.net" <%=email[1].equals("daum.net")?"selected":"" %>> daum.net </option>
+				<option value="nate.com" <%=email[1].equals("nate.com")?"selected":"" %>> nate.com </option>
 				</select>
 			</td>
 		</tr>
@@ -126,8 +234,8 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	<table class="deliveryInfoTable">
 		<tr>
 			<td colspan="2">
-				<input type="radio" name="delivery" value="mem" checked="checked"> 주문자 정보와 동일
-		   		<input type="radio" name="delivery" value="new"> 새로운배송지
+				<input type="radio" name="delivery" value="new" checked="checked" onclick="cleartext();"> 새로운배송지
+				<input type="radio" name="delivery" value="mem" onclick="move();"> 주문자 정보와 동일
 			</td>
 		</tr>
 		
@@ -137,35 +245,35 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		
 		<tr>
 			<td>받으시는분<b>*</b></td>
-			<td><input type="text" name="name" required="required" value="송은영"></td>
+			<td><input type="text" name="recive_name" id="recive_name" required="required" value=""></td>
 		</tr>
 
 		<tr>
 			<td>주소<b>*</b></td>
 			<td>
-				<input type="text" name="zipcode" required="required" value="12345">
+				<input type="text" name="recive_zipcode" id="recive_zipcode" required="required" value="">
 				<input type="button" required="required" value="우편번호" />
 			</td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>
-			<input type="text" size="30" name="streetadd" required="required" value="도로명주소">
-			<input type="text" size="30" name="add" required="required" value="상세주소">
+			<input type="text" size="30" name="recive_street" id="recive_street" required="required" value="">
+			<input type="text" size="30" name="recive_addr" id="recive_addr" required="required" value="">
 			</td>
 		</tr>
 
 		<tr>
 			<td>휴대폰<b>*</b></td>
 			<td>
-			<select>
+			<select name="recive_phone1" id="recive_phone1">
 				<option value="010">010</option>
 				<option value="011">011</option>
 				<option value="016">016</option>
 				<option value="018">018</option>
 			</select>
-			<input type="text" name="phone_num" size="6" value="8885" />
-			 - <input type="text" name="phone_num" size="6" value="0409">
+			<input type="text" name="recive_phone2" id="recive_phone2" size="6" value="" />
+			 - <input type="text" name="recive_phone3" id="recive_phone3" size="6" value="">
 			</td>
 		</tr>
 	</table>
@@ -173,7 +281,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	<table class="paymentTable1">
 		<tr>
 			<td> 주문금액 </td>
-			<td> 부가금액 </td>
+			<td> 택배비 </td>
 			<td> 총 결제금액 </td>
 		</tr>
 		
@@ -182,9 +290,30 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		</tr>
 		
 		<tr>
-			<td> <h3>26,000원</h3> </td>
-			<td> <h3>2,500원</h3> </td>
-			<td> <h3>28,500원</h3> </td>
+		<%
+			int price =0;
+			if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){
+				price = amountn*product.getItemPrice();
+			} else {
+				if(amounts != 0){
+					price = price + amounts*product.getItemPrice();
+				}
+				if(amountm != 0){
+					price = price + amountm*product.getItemPrice();
+				}
+				if(amountl != 0){
+					price = price + amountl*product.getItemPrice();
+				}
+				if(amountxl != 0){
+					price = price + amountxl*product.getItemPrice();
+				}
+			}
+			int baesong = 2500;
+			int totalPrice = price+baesong;
+		%>
+			<td> <h3><%=price %>원</h3> </td>
+			<td> <h3><%=baesong %>원</h3> </td>
+			<td> <h3><%=totalPrice %>원</h3> </td>
 		</tr>
 		
 	</table>
@@ -200,14 +329,16 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		
 		<tr>
 			<td>입금자명</td>
-			<td><input type="text" name="orderName" required="required" value=""></td>
-			<td class="center"><h3>= 28,500원</h3></td>
+			<td><input type="text" name="bank_Name" required="required" value=""></td>
+			<td class="center"><h3>= <%=totalPrice %>원</h3></td>
 		</tr>
 		
 		<tr>
 			<td>입금은행</td>
-			<td><select>
-				<option value="bank">쿵샵은행:0000-000-0000 쿵이</option>
+			<td><select name="bank">
+				<option value="shinhanbank">신한은행:15724-445-321465 이동구</option>
+				<option value="kookminbank">국민은행:14613-64651-73 임지나</option>
+				<option value="wooribank">우리은행:2163-1387-123475 정명재</option>
 			</select></td>
 			<td>
 			<input type="checkbox" name="agree" required="required">
@@ -216,7 +347,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		
 		<tr>
 			<td colspan="3" class="right">
-				<input type="submit" name="payment" id="paybutton" value="결제하기" />
+				<input type="submit" value="결제하기" />
 			</td>
 		</tr>
 	</table>
