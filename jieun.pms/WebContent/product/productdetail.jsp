@@ -134,14 +134,25 @@
    ProductService productService = new ProductServiceImpl();
    String itemName = request.getParameter("name").trim();
    List<Product> products = productService.getProduct(itemName);
-   
-   Category category = new Category(Integer.parseInt(products.get(0).getCategory()));
+   int categoryInt = Integer.parseInt(products.get(0).getCategory());
+   Category category = new Category(categoryInt);
 
+	String path = "";
+	if(categoryInt>30 && categoryInt<40){
+		path = "../res/img/product/Bath";
+	} else if(categoryInt>40 && categoryInt<50) {
+		path = "../res/img/product/Beauty";
+	} else if(categoryInt>60 && categoryInt<70){
+		path = "../res/img/product/Accessory";
+	}
+	else {
+		path = "../res/img/product";
+	}
 %>
 <body>
 <div class="productDetail">
    <div class="titleImg">
-         <img src="../res/img/product/<%=category.getCategoryStr()%>/<%=products.get(0).getItemImg()%>">
+         <img src="<%=path %>/<%=category.getCategoryStr()%>/<%=products.get(0).getItemImg()%>">
    </div>
    <form id="productForm" name="productForm" method="post" action="../mypage/action/actionCartAdd.jsp">
    <div class="itemInfo">
@@ -305,7 +316,7 @@
             String[] productDetail = products.get(0).getItemImgDetail().split("/");
             for(int i=0;i<productDetail.length;i++){
          %>
-               <img src="../res/img/product/<%=category.getCategoryStr()%>/<%=productDetail[i]%>"><br>
+               <img src="<%=path %>/<%=category.getCategoryStr()%>/<%=productDetail[i]%>"><br>
          <%   }
          %>
       </div>
