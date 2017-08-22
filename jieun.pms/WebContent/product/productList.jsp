@@ -35,7 +35,6 @@
 			if(i==0){
 	%>
 				<div style="float:left;" >
-				<%=intCategory%>
 	<%			if(intCategory >30 && intCategory<40){
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
@@ -77,10 +76,40 @@
 	<%
 				if(!(products.get(i-1).getItemName().equals(products.get(i).getItemName()))){
 	%>				
+				<div style="float:left;" >
+	<%			if(intCategory >30 && intCategory<40){
+	%>
+					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
+					<img src="../res/img/product/Bath/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
+					<div><%=products.get(i).getItemName() %></div>
+					<div><%=products.get(i).getItemPrice() %>원</div>
+	<%	
+				}
+				else if(intCategory>40 && intCategory<50){
+	%>
+					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
+					<img src="../res/img/product/Beauty/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
+					<div><%=products.get(i).getItemName() %></div>
+					<div><%=products.get(i).getItemPrice() %>원</div>
+	<%	
+				}
+				else if(intCategory>60 && intCategory<70){
+	%>
+					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
+					<img src="../res/img/product/Accessory/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
+					<div><%=products.get(i).getItemName() %></div>
+					<div><%=products.get(i).getItemPrice() %>원</div>
+	<%	
+				}
+				else{
+	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
 					<div><%=products.get(i).getItemName() %></div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
+	<%	
+				}
+	%>			</div>
 	<%			}
 	%>			
 				</div>
