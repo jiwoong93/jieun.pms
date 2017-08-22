@@ -56,7 +56,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	}
 %>
 <div class="payment">
-	<form method="post" action="./orderResult.jsp">
+	<form method="post" action="./action/orderAdd.jsp">
 	<input type="hidden" name="amount" value="<%=amountn+amounts+amountm+amountl+amountxl%>">
 	<input type="hidden" name="gubun" value="<%=request.getParameter("gubun")%>">
 	<table class="itemTable">
@@ -330,7 +330,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		<tr>
 			<td>입금자명</td>
 			<td><input type="text" name="bank_Name" required="required" value=""></td>
-			<td class="center"><h3>= <%=totalPrice %>원</h3></td>
+			<td class="center"><h3>= <%=totalPrice %>원</h3><input type="hidden" name="totalPrice" value="<%=totalPrice%>"></td>
 		</tr>
 		
 		<tr>
