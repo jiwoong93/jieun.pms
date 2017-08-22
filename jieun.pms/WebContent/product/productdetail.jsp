@@ -152,7 +152,7 @@
 <body>
 <div class="productDetail">
    <div class="titleImg">
-         <img src="<%=path%>/<%=category.getCategoryStr()%>/<%=products.get(0).getItemImg()%>">
+         <img src="<%=path %>/<%=category.getCategoryStr()%>/<%=products.get(0).getItemImg()%>">
    </div>
    <form id="productForm" name="productForm" method="post" action="../mypage/action/actionCartAdd.jsp">
    <div class="itemInfo">
@@ -316,7 +316,7 @@
             String[] productDetail = products.get(0).getItemImgDetail().split("/");
             for(int i=0;i<productDetail.length;i++){
          %>
-               <img src="<%=path%>/<%=category.getCategoryStr()%>/<%=productDetail[i]%>"><br>
+               <img src="<%=path %>/<%=category.getCategoryStr()%>/<%=productDetail[i]%>"><br>
          <%   }
          %>
       </div>
