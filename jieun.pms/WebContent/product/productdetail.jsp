@@ -18,7 +18,7 @@
 
    //사이즈가 없는 상품의 경수
    function amount(amount){
-      document.getElementById('amount_n').value = amount.value;
+      document.getElementById('amount_n').value = amountn.value;
       var price = document.getElementById('itemPriceHidden').value;
       document.getElementById('totalPrice').innerHTML = amount.value*price;
       document.getElementById('totalPriceHidden').value = amount.value*price;
@@ -238,7 +238,7 @@
                <tr>
                   <td colspan="2"><span id="itemName"><%=products.get(0).getItemName()%></span></td>
                   <td><span id="itemSize"></span></td>
-                  <td><span id="itemAmount"><input type="number" min="0" value="1" oninput="amount(this);" id="amount"></span></td>
+                  <td><span id="itemAmount"><input type="number" min="0" value="1" oninput="amount(this);" id="amountn"></span></td>
                   <td><span id="itemPrice" colspan="2"><%=products.get(0).getItemPrice()%>원</span></td>
                </tr>
 

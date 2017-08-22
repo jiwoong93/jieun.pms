@@ -41,6 +41,26 @@
 		where item_no = #{itemNo}
 	</select>
 	
+	<select id="searchProducts" parameterType="product" resultType="product" resultMap="productMap">
+		select *
+		from items
+		where
+		<choose>
+			<when test="itemName != null">
+				item_name like '%'||#{itemName}||'%'
+			</when>
+			<when test="category != null">
+				and category = #{category}
+			</when>
+			<when test="rowPrice>0 and highPrice>rowPrice">
+				and item_price between #{rowPrice} and #{highPrice}
+			</when>
+		</choose>
+		<if test="sort.equals('new')">
+			order by item_update desc
+		</if> 
+	</select>
+	
 	<update id="updateProduct" parameterType="product" >
 		update items
 		<set>

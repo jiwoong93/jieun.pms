@@ -13,7 +13,34 @@ public class Product {
 	private String itemImg;
 	private String itemImgDetail;
 	private Date itemUpdate;
+	private int rowPrice;
+	private int highPrice;
+	private String sort;
 	
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	public int getRowPrice() {
+		return rowPrice;
+	}
+
+	public void setRowPrice(int rowPrice) {
+		this.rowPrice = rowPrice;
+	}
+
+	public int getHighPrice() {
+		return highPrice;
+	}
+
+	public void setHighPrice(int highPrice) {
+		this.highPrice = highPrice;
+	}
+
 	public Product() {}
 	
 	public Product(int itemNo, String itemId, String category, String itemName, int itemAmount, int itemPrice,
