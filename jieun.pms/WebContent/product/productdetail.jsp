@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/productdetail.css"></link>
+<link rel="stylesheet" href="../res/css/productdetail.css?ver=1"></link>
 <script>
    $( document ).ready(function() {
       document.getElementById('sizeS').style.display = 'none';
@@ -238,7 +238,7 @@
                <tr>
                   <td colspan="2"><span id="itemName"><%=products.get(0).getItemName()%></span></td>
                   <td><span id="itemSize"></span></td>
-                  <td><span id="itemAmount"><input type="number" min="0" value="1" oninput="amount(this);" id="amount"></span></td>
+                  <td><span id="itemAmount"><input type="number" min="0" value="1" oninput="amount(this);" id="amountn"></span></td>
                   <td><span id="itemPrice" colspan="2"><%=products.get(0).getItemPrice()%>원</span></td>
                </tr>
 
