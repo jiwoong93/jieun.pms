@@ -7,7 +7,7 @@ import jieun.pms.order.dao.OrderDaoImpl;
 import jieun.pms.order.domain.Order;
 
 public class OrderServiceImpl implements OrderService {
-	OrderDao orderDao;
+	private OrderDao orderDao;
 	
 	
 	public OrderServiceImpl() {

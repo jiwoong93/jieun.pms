@@ -23,7 +23,6 @@ public class Order {
 	public Order(int orderNo, String memId, String itemNo, Date orderDate, String orderName, String orderPhone,
 			int orderAmount, int payment, String paymentOption, String orderZipcode, String orderStreet,
 			String orderAddr, String transport, String status) {
-		super();
 		this.orderNo = orderNo;
 		this.memId = memId;
 		this.itemNo = itemNo;

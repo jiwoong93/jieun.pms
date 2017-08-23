@@ -20,8 +20,7 @@
 	</resultMap>
 	
 	<select id="getOrders" resultType="order" resultMap="orderMap">
-		select *
+		select * 
 		from orders
 	</select>
-	
 </mapper>
