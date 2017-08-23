@@ -1,12 +1,10 @@
 package jieun.pms.order.domain;
 
-import java.sql.Date;
-
 public class Order {
 	private int orderNo;
 	private String memId;
 	private String itemNo;
-	private Date orderDate;
+	private String orderDate;
 	private String orderName;
 	private String orderPhone;
 	private int orderAmount;
@@ -20,9 +18,10 @@ public class Order {
 	
 	public Order() {}
 
-	public Order(int orderNo, String memId, String itemNo, Date orderDate, String orderName, String orderPhone,
+	public Order(int orderNo, String memId, String itemNo, String orderDate, String orderName, String orderPhone,
 			int orderAmount, int payment, String paymentOption, String orderZipcode, String orderStreet,
 			String orderAddr, String transport, String status) {
+		super();
 		this.orderNo = orderNo;
 		this.memId = memId;
 		this.itemNo = itemNo;
@@ -63,11 +62,11 @@ public class Order {
 		this.itemNo = itemNo;
 	}
 
-	public Date getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 
@@ -150,5 +149,8 @@ public class Order {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	
+
 
 }

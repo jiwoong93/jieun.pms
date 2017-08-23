@@ -55,20 +55,20 @@
 				<%	
 						}
 						
-				 //		if(orders.get(i).getStatus().equals("1")){
-				%>			<td><%=orders.get(i).getStatus() %>결제완료</td>
+				 		if(orders.get(i).getStatus().equals("1")){
+				%>			<td>결제완료</td>
 				<%			
-				//		}
-				 		//else if(orders.get(i).getStatus().equals("0")){
-				%>			<!-- <td>취소</td> -->
+						}
+				 		else if(orders.get(i).getStatus().equals("0")){
+				%>			<td>취소</td>
 				<%			
-					//	}else if(orders.get(i).getStatus().equals("2")){
-				%>			<!-- <td>교환</td> -->
+						}else if(orders.get(i).getStatus().equals("2")){
+				%>			<td>교환</td>
 				<%			
-						//}else if(orders.get(i).getStatus() == null){
-				%>			<!-- <td></td> -->
+						}else if(orders.get(i).getStatus() == null){
+				%>			<td></td>
 				<%			
-						//}
+						}
 				%> 			
 						<td ><button name="startShipment" oncliclk="">배송시작</button></td>
 						<td>거래완료</td>
