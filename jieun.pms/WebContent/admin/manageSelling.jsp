@@ -1,8 +1,17 @@
+<%@page import="jieun.pms.order.domain.Order"%>
+<%@page import="java.util.List"%>
+<%@page import="jieun.pms.order.service.OrderServiceImpl"%>
+<%@page import="jieun.pms.order.service.OrderService"%>
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link rel="stylesheet" href="../res/css/manager.css?var=1">
+<%
+	OrderService orderService = new OrderServiceImpl();
+	List<Order> orders = orderService.getOrders();
+%>
+
 <body>
 	<div class="mngSelling">
 		<div class="mngSellingHeader">
@@ -25,34 +34,48 @@
 					<td>주문번호</td>
 					<td>실결제금액</td>
 					<td>결제수단</td>
-					<td>결제</td>
-					<td>취소</td>
+					<td>상태</td>
 					<td>배송</td>
-					<td>교환</td>
 					<td>거래완료</td>
 				</tr>
-				<tr height="40px">
-					<td>2017-07-07</a></td>
-					<td>170707-0000</td>
-					<td>10,000</td>
-					<td>신용카드</td>
-					<td>O</td>
-					<td>X</td>
-					<td ><button name="startShipment" oncliclk="">배송시작</button></td>
-					<td>X</td>
-					<td>거래완료</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<%
+					for(int i=0; i<orders.size();i++){
+				%>
+					<tr height="40px">
+						<td><%=orders.get(i).getOrderDate()%></td>
+						<td><%=orders.get(i).getOrderNo()%></td>
+						<td><%=orders.get(i).getPayment()%></td>
+				<%		
+						if(orders.get(i).getPaymentOption().equals("1")){
+				%>			<td>카드</td>
+				<%		}else if(orders.get(i).getPaymentOption().equals("2")){
+				%>			<td>현금</td>
+				<%		}else{
+				%>			<td></td>
+				<%	
+						}
+						
+				 //		if(orders.get(i).getStatus().equals("1")){
+				%>			<td><%=orders.get(i).getStatus() %>결제완료</td>
+				<%			
+				//		}
+				 		//else if(orders.get(i).getStatus().equals("0")){
+				%>			<!-- <td>취소</td> -->
+				<%			
+					//	}else if(orders.get(i).getStatus().equals("2")){
+				%>			<!-- <td>교환</td> -->
+				<%			
+						//}else if(orders.get(i).getStatus() == null){
+				%>			<!-- <td></td> -->
+				<%			
+						//}
+				%> 			
+						<td ><button name="startShipment" oncliclk="">배송시작</button></td>
+						<td>거래완료</td>
+					</tr>
+				<%	
+					}
+				%>
 			</table>	
 		</div>
 	</div>

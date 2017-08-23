@@ -14,6 +14,7 @@
 		<typeAlias alias="ProductPage" type="jieun.pms.product.domain.ProductPage"></typeAlias>
 		<typeAlias alias="cart" type="jieun.pms.mypage.cart.domain.Cart"></typeAlias>
 		<typeAlias alias="wishlist" type="jieun.pms.mypage.wishlist.domain.Wishlist"></typeAlias>
+		<typeAlias alias="order" type="jieun.pms.order.domain.Order"></typeAlias>
 	</typeAliases>
 	
 	<environments default="development">
@@ -42,5 +43,6 @@
 		<mapper resource="jieun/pms/product/ProductPostMapper.xml" />
 		<mapper resource="jieun/pms/mypage/cart/CartMapper.xml" />
 		<mapper resource="jieun/pms/mypage/wishlist/WishlistMapper.xml" />
+		<mapper resource="jieun/pms/order/OrderMapper.xml" />
 	</mappers>
 </configuration>
