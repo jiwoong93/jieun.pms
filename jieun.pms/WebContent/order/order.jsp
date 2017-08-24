@@ -1,3 +1,5 @@
+<%@page import="jieun.pms.order.service.OrderServiceImpl"%>
+<%@page import="jieun.pms.order.service.OrderService"%>
 <%@page import="jieun.pms.member.update.service.UpdateServiceImpl"%>
 <%@page import="jieun.pms.member.update.domain.UpdateMember"%>
 <%@page import="jieun.pms.member.update.service.UpdateService"%>
@@ -44,21 +46,24 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 	ProductService productService = new ProductServiceImpl();
 	int itemNo = Integer.parseInt(request.getParameter("no"));
 	Product product = productService.getProductNo(itemNo);
+	String[] allItemId = product.getItemId().split("/");
+	String sId="", mId="", lId="", xlId="", items_no="";
 	
-	int amountn=0, amounts=0, amountm=0, amountl=0, amountxl=0;
+	String amountn="", amounts="", amountm="", amountl="", amountxl="";
 	if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){
-		amountn = Integer.parseInt(request.getParameter("amount_n"));
+		amountn = request.getParameter("amount_n");
 	} else {
-		amounts = Integer.parseInt(request.getParameter("amount_s"));
-		amountm = Integer.parseInt(request.getParameter("amount_m"));
-		amountl = Integer.parseInt(request.getParameter("amount_l"));
-		amountxl = Integer.parseInt(request.getParameter("amount_xl"));
+		amounts = request.getParameter("amount_s");
+		amountm = request.getParameter("amount_m");
+		amountl = request.getParameter("amount_l");
+		amountxl = request.getParameter("amount_xl");
 	}
 %>
 <div class="payment">
-	<form method="post" action="./action/orderAdd.jsp">
+	<form method="post" action="./orderResult.jsp">
 	<input type="hidden" name="amount" value="<%=amountn+amounts+amountm+amountl+amountxl%>">
 	<input type="hidden" name="gubun" value="<%=request.getParameter("gubun")%>">
+	<input type="hidden" name="itemNo" value="<%=itemNo%>">
 	<table class="itemTable">
 		<tr>
 			<td><input type="checkbox" name="selectAll"></td>
@@ -74,70 +79,84 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		</tr>
 <%
 	if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){%>
-
 		<tr>
 			<td><input type="checkbox" name="select"></td>
 			<td><%=product.getItemName()%></td>
 			<td>x</td>
-			<td><input type="number" name="amountN" value="<%=amountn%>"></td>
-			<td><%=amountn*product.getItemPrice()%>원</td>
+			<td><input type="number" name="amountN" value="<%=amountn%>" readonly></td>
+			<td><%=Integer.parseInt(amountn)*product.getItemPrice()%>원</td>
 			<td><input type="button" name="deleteN" value="X"></td>
 		</tr><% 		
 	} else {
-		if(amounts != 0){
+		if(amounts != "" || !amounts.equals("")){
+			sId = allItemId[0];
+			Product products = productService.getProductId(allItemId[0]+"/s");
+			items_no = items_no+"s/"+products.getItemNo()+",";
 %>
 			<tr>
 				<td><input type="checkbox" name="select"></td>
 				<td><%=product.getItemName()%></td>
 				<td>S</td>
-				<td><input type="number" name="amountS" value="<%=amounts%>"></td>
-				<td><%=amounts*product.getItemPrice()%>원</td>
+				<td><input type="number" name="amountS" value="<%=amounts%>" readonly></td>
+				<td><%=Integer.parseInt(amounts)*product.getItemPrice()%>원</td>
 				<td><input type="button" name="deleteS" value="X"></td>
 			</tr>
 <%
 		}
-		if(amountm != 0){
+		if(amountm != "" || !amountm.equals("")){
+			mId = allItemId[1];
+			Product productm = productService.getProductId(allItemId[0]+"/m");
+			items_no = items_no+"m/"+productm.getItemNo()+",";
 %>
 			<tr>
 				<td><input type="checkbox" name="select"></td>
 				<td><%=product.getItemName()%></td>
 				<td>M</td>
-				<td><input type="number" name="amountM" value="<%=amountm%>"></td>
-				<td><%=amountm*product.getItemPrice()%>원</td>
+				<td><input type="number" name="amountM" value="<%=amountm%>" readonly></td>
+				<td><%=Integer.parseInt(amountm)*product.getItemPrice()%>원</td>
 				<td><input type="button" name="deleteM" value="X"></td>
 			</tr>
 <%					
-				}
-		if(amountl != 0){
+		}
+		if(amountl != "" || !amountl.equals("")){
+			lId = allItemId[1];
+			Product productl = productService.getProductId(allItemId[0]+"/l");
+			items_no = items_no+"l/"+productl.getItemNo()+",";
 %>
 			<tr>
 				<td><input type="checkbox" name="select"></td>
 				<td><%=product.getItemName()%></td>
 				<td>L</td>
-				<td><input type="number" name="amountL" value="<%=amountl%>"></td>
-				<td><%=amountl*product.getItemPrice()%>원</td>
+				<td><input type="number" name="amountL" value="<%=amountl%>" readonly></td>
+				<td><%=Integer.parseInt(amountl)*product.getItemPrice()%>원</td>
 				<td><input type="button" name="deleteL" value="X"></td>
 			</tr>
 <%			
 		}
-		if(amountxl != 0){
+		if(amountxl != "" || !amountxl.equals("")){
+			xlId = allItemId[1];
+			Product productxl = productService.getProductId(allItemId[0]+"/xl");
+			items_no = items_no+"xl/"+productxl.getItemNo()+",";
 %>
+			
 			<tr>
 				<td><input type="checkbox" name="select"></td>
 				<td><%=product.getItemName()%></td>
 				<td>XL</td>
-				<td><input type="number" name="amountXL" value="<%=amountxl%>"></td>
-				<td><%=amountxl*product.getItemPrice()%>원</td>
+				<td><input type="number" name="amountXL" value="<%=amountxl%>" readonly></td>
+				<td><%=Integer.parseInt(amountxl)*product.getItemPrice()%>원</td>
 				<td><input type="button" name="deleteXL" value="X"></td>
 			</tr>
 <%			
 		}
-%>
-	
-<%		
 	}
 %>
 	</table>
+	<input type="hidden" name="sId" value="<%=sId%>">
+	<input type="hidden" name="mId" value="<%=mId%>">
+	<input type="hidden" name="lId" value="<%=lId%>">
+	<input type="hidden" name="xlId" value="<%=xlId%>">
+	<input type="hidden" name="items_no" value="<%=items_no%>">
 <%
 	String memId = session.getAttribute("sessionId").toString();
 	UpdateService updateService = new UpdateServiceImpl();
@@ -293,19 +312,19 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		<%
 			int price =0;
 			if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){
-				price = amountn*product.getItemPrice();
+				price = Integer.parseInt(amountn)*product.getItemPrice();
 			} else {
-				if(amounts != 0){
-					price = price + amounts*product.getItemPrice();
+				if(amounts != "" || !amounts.equals("")){
+					price = price + Integer.parseInt(amounts)*product.getItemPrice();
 				}
-				if(amountm != 0){
-					price = price + amountm*product.getItemPrice();
+				if(amountm != "" || !amountm.equals("")){
+					price = price + Integer.parseInt(amountm)*product.getItemPrice();
 				}
-				if(amountl != 0){
-					price = price + amountl*product.getItemPrice();
+				if(amountl != "" || !amountl.equals("")){
+					price = price + Integer.parseInt(amountl)*product.getItemPrice();
 				}
-				if(amountxl != 0){
-					price = price + amountxl*product.getItemPrice();
+				if(amountxl != "" || !amountxl.equals("")){
+					price = price + Integer.parseInt(amountxl)*product.getItemPrice();
 				}
 			}
 			int baesong = 2500;

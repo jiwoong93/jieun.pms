@@ -8,6 +8,13 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="../res/css/cart.css">
 <body>
+<script>
+	function submits(gubun){
+		var f = document.getElementById("submitForm");
+        f.action = "../order/cartOrder.jsp?gubun="+gubun;
+        f.submit();
+	}
+</script>
 <%
 String cururlCart = request.getRequestURI().toString();
 String pageNameCart = cururlCart.substring(cururlCart.lastIndexOf("/") + 1, cururlCart.length());
@@ -44,7 +51,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 		</ul>
 	</div>
 	<div class="mypageContents">
-		<form  method="post" action="../order/order.jsp">
+		<form id="submitForm" method="post" action="../order/cartOrder.jsp">
 		<table id="cartTable">
 			<tr class="first">
 				<td><input type="checkbox" name="selectAll"></td>
@@ -62,7 +69,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 				<%
 					for(int i=0; i<carts.size();i++){
 				%>		<tr>
-						<td><input type="checkbox" name="selectAll"></td>
+						<td><input type="checkbox" name="selectItem" value="<%=carts.get(i).getItemNo()%>"><input type="hidden" name="allItemsNo" value="<%=carts.get(i).getItemNo()%>"></td>
 						<td><%=carts.get(i).getProduct().getItemName()%></td>
 				<%		if(carts.get(i).getProduct().getItemSize() != null){
 				%>
@@ -73,7 +80,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 				%>			<td>&nbsp;</td>	
 				<%		}
 				%>
-						<td><input type="number" name="amount" id="amount" value="<%=carts.get(i).getAmount()%>"></td>
+						<td><input type="number" name="amount<%=carts.get(i).getItemNo() %>" value="<%=carts.get(i).getAmount()%>"></td>
 						<td><%=carts.get(i).getProduct().getItemPrice()%></td>
 						<td><a href="./action/actionCartDelete.jsp?no=<%=carts.get(i).getCartNo()%>"><input type="button" name="delete" value="X"></a></td>
 						</tr>
@@ -83,7 +90,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 			
 		</table><br/><br/>
 		
-		<table id="cartTotTable">
+		<!-- <table id="cartTotTable">
 			<tr>
 				<td colspan="5" class="totline"> 총 상품금액 </td>
 				<td> 26,000원</td>
@@ -96,7 +103,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 				<td colspan="5" class="totline"> 결제예정금액 </td>
 				<td> = 28,500원</td>
 			</tr>
-		</table><br/>
+		</table><br/> -->
 		
 		<table class="buttonTable">
 			<tr>
@@ -104,8 +111,8 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 					<input type="button" name="deleteAll" value="삭제">
 				</td>
 				<td class="right">
-					<input type="submit" name="paySelect" value="선택상품 결제"> 
-					<input type="submit" name="payAll" value="전체상품 결제">
+					<input type="button" name="paySelect" onclick="submits('select')" value="선택상품 결제"> 
+					<input type="button" name="payAll" onclick="submits('all')" value="전체상품 결제">
 				</td>
 			</tr>
 		</table>

@@ -4,4 +4,5 @@ import jieun.pms.order.domain.Order;
 
 public interface OrderService {
 	int addOrder(Order order);
+	int orderSeq();
 }

@@ -16,4 +16,8 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.addOrder(order);
 	}
 
+	@Override
+	public int orderSeq() {
+		return orderDao.orderSeq();
+	}
 }

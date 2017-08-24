@@ -15,4 +15,9 @@ public class OrderDaoImpl implements OrderDao {
 	public int addOrder(Order order) {
 		return orderMapper.addOrder(order);
 	}
+
+	@Override
+	public int orderSeq() {
+		return orderMapper.orderSeq();
+	}
 }
