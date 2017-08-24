@@ -5,6 +5,7 @@ import java.util.List;
 import jieun.pms.order.dao.OrderDao;
 import jieun.pms.order.dao.OrderDaoImpl;
 import jieun.pms.order.domain.Order;
+import jieun.pms.order.domain.OrderDate;
 
 public class OrderServiceImpl implements OrderService {
 	private OrderDao orderDao;
@@ -52,8 +53,26 @@ public class OrderServiceImpl implements OrderService {
 
 
 	@Override
-	public List<Order> orderDate(String startDate, String endDate) {
-		return orderDao.orderDate(startDate, endDate);
+	public List<Order> orderDate(OrderDate orderDate) {
+		return orderDao.orderDate(orderDate);
+	}
+
+
+	@Override
+	public List<Order> getMemOrders(String memId) {
+		return orderDao.getMemOrders(memId);
+	}
+
+
+	@Override
+	public boolean cancelDeal(int orderNo) {
+		return orderDao.cancelDeal(orderNo)>0;
+	}
+
+
+	@Override
+	public boolean changeDeal(int orderNo) {
+		return orderDao.changeDeal(orderNo)>0;
 	}
 
 }

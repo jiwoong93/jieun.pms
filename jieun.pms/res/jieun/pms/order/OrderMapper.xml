@@ -43,9 +43,16 @@
 		where status='1'
 	</select>
 	
-	<select id="orderDate" parameterType="string" resultType="order" resultMap="orderMap">
+	<select id="orderDate" parameterType="orderDate" resultType="order" resultMap="orderMap">
 		select * from orders
-		where order_date between #{startDate} and #{endDate}
+		where order_date between #{startDate} and #{endDate} and mem_id = #{memId}
+		order by order_no desc
+	</select> 
+	
+	<select id="getMemOrders" parameterType="string" resultType="order" resultMap="orderMap">
+		select * from orders
+		where mem_id = #{memId}
+		order by order_no desc
 	</select> 
 	
 	<update id="completeDeal" parameterType="int">
@@ -54,4 +61,15 @@
 		where order_no = #{orderNo}
 	</update>
 	
+	<update id="cancelDeal" parameterType="int">
+		update orders
+		set status = '0'
+		where order_no = #{orderNo}
+	</update>
+	
+	<update id="changeDeal" parameterType="int">
+		update orders
+		set status = '2'
+		where order_no = #{orderNo}
+	</update>
 </mapper>

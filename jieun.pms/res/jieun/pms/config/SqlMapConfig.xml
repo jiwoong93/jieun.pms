@@ -15,6 +15,7 @@
 		<typeAlias alias="cart" type="jieun.pms.mypage.cart.domain.Cart"></typeAlias>
 		<typeAlias alias="wishlist" type="jieun.pms.mypage.wishlist.domain.Wishlist"></typeAlias>
 		<typeAlias alias="order" type="jieun.pms.order.domain.Order"></typeAlias>
+		<typeAlias alias="orderDate" type="jieun.pms.order.domain.OrderDate"></typeAlias>
 	</typeAliases>
 	
 	<environments default="development">

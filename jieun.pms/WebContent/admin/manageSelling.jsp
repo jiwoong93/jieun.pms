@@ -74,7 +74,13 @@
 							<td ></td>
 							<td ></td>
 				<%			
-						}else if(orders.get(i).getStatus().equals("3")){
+						}else if(orders.get(i).getStatus().equals("2")){
+				%>			<td>교환</td>
+							<td ></td>
+							<td ></td>
+				<%			
+						}
+				 		else if(orders.get(i).getStatus().equals("3")){
 				%>			<td>결제완료</td>
 							<td ><input type="button" id="end<%=i%>" value="배송완료" disabled="disabled"/></td>
 							<td >거래완료</td>

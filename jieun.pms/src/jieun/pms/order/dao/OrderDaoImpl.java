@@ -5,6 +5,7 @@ import java.util.List;
 import jieun.pms.config.Configuration;
 import jieun.pms.order.dao.mapper.OrderMapper;
 import jieun.pms.order.domain.Order;
+import jieun.pms.order.domain.OrderDate;
 
 public class OrderDaoImpl implements OrderDao {
 	private OrderMapper orderMapper;
@@ -51,8 +52,26 @@ public class OrderDaoImpl implements OrderDao {
 
 
 	@Override
-	public List<Order> orderDate(String startDate, String endDate) {
-		return orderMapper.orderDate(startDate, endDate);
+	public List<Order> orderDate(OrderDate orderDate) {
+		return orderMapper.orderDate(orderDate);
+	}
+
+
+	@Override
+	public List<Order> getMemOrders(String memId) {
+		return orderMapper.getMemOrders(memId);
+	}
+
+
+	@Override
+	public int cancelDeal(int orderNo) {
+		return orderMapper.cancelDeal(orderNo);
+	}
+
+
+	@Override
+	public int changeDeal(int orderNo) {
+		return orderMapper.changeDeal(orderNo);
 	}
 
 }
