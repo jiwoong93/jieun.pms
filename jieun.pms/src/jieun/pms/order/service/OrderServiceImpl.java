@@ -20,4 +20,34 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.getOrders();
 	}
 
+
+	@Override
+	public int countTotal() {
+		return orderDao.countTotal();
+	}
+
+
+	@Override
+	public int sumTotal() {
+		return orderDao.sumTotal();
+	}
+
+
+	@Override
+	public int sumReal() {
+		return orderDao.sumReal();
+	}
+
+
+	@Override
+	public int countReal() {
+		return orderDao.countReal();
+	}
+
+
+	@Override
+	public boolean completeDeal(int orderNo) {
+		return orderDao.completeDeal(orderNo)>0;
+	}
+
 }

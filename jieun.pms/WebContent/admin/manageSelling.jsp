@@ -5,11 +5,18 @@
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <link rel="stylesheet" href="../res/css/manager.css?var=1">
 <%
 	OrderService orderService = new OrderServiceImpl();
 	List<Order> orders = orderService.getOrders();
+	int sumPayment = orderService.sumTotal();
+	int countPayment = orderService.countTotal();
+	int sumReal = orderService.sumReal();
+	int countReal = orderService.countReal();
+	
 %>
 
 <body>
@@ -21,9 +28,9 @@
 			<table class="mngSellingCount" border="1">
 				<tr>
 					<td colspan="3" > 총 실결재금액 / 건수 </td>
-					<td> 350,000원 / 10 건</td>
+					<td> <fmt:formatNumber value="<%=sumPayment%>" pattern="#,###"/>/ <%=countPayment%> 건</td>
 					<td> 실 주문금액 / 건수 </td>
-					<td> 250,000원 / 8 건</td>
+					<td> <fmt:formatNumber value="<%=sumReal%>" pattern="#,###"/>/ <%=countReal%> 건</td>
 				</tr>
 			</table>
 		</div>
@@ -45,7 +52,8 @@
 						<td><%=orders.get(i).getOrderDate()%></td>
 						<td><%=orders.get(i).getOrderNo()%></td>
 						<td><%=orders.get(i).getPayment()%></td>
-				<%		
+						
+				<%
 						if(orders.get(i).getPaymentOption().equals("1")){
 				%>			<td>카드</td>
 				<%		}else if(orders.get(i).getPaymentOption().equals("2")){
@@ -57,21 +65,29 @@
 						
 				 		if(orders.get(i).getStatus().equals("1")){
 				%>			<td>결제완료</td>
+							<td><a href="./action/actionCompleteDeal.jsp?no=<%=orders.get(i).getOrderNo()%>"><input type="button" id="start<%=i%>" value="배송시작"/></a></td>
+							<td></td>
 				<%			
 						}
 				 		else if(orders.get(i).getStatus().equals("0")){
 				%>			<td>취소</td>
+							<td ></td>
+							<td ></td>
 				<%			
-						}else if(orders.get(i).getStatus().equals("2")){
-				%>			<td>교환</td>
+						}else if(orders.get(i).getStatus().equals("3")){
+				%>			<td>결제완료</td>
+							<td ><input type="button" id="end<%=i%>" value="배송완료" disabled="disabled"/></td>
+							<td >거래완료</td>
 				<%			
-						}else if(orders.get(i).getStatus() == null){
+						}
+				 		else if(orders.get(i).getStatus() == null){
 				%>			<td></td>
+							<td ></td>
+							<td ></td>
 				<%			
 						}
 				%> 			
-						<td ><button name="startShipment" oncliclk="">배송시작</button></td>
-						<td>거래완료</td>
+	
 					</tr>
 				<%	
 					}

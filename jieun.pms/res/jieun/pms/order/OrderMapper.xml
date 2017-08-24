@@ -22,5 +22,31 @@
 	<select id="getOrders" resultType="order" resultMap="orderMap">
 		select * 
 		from orders
+		order by order_no desc
 	</select>
+	
+	<select id="sumTotal" resultType="int">
+		select sum(payment) from orders
+	</select>
+	
+	<select id="countTotal" resultType="int">
+		select count(order_no) from orders
+	</select>
+	
+	<select id="sumReal" resultType="int">
+		select sum(payment) from orders
+		where status='1'
+	</select>
+	
+	<select id="countReal" resultType="int">
+		select count(order_no) from orders
+		where status='1'
+	</select>
+	
+	<update id="completeDeal" parameterType="int">
+		update orders
+		set status = '3'
+		where order_no = #{orderNo}
+	</update>
+	
 </mapper>

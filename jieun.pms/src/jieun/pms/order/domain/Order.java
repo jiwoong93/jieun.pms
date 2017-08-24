@@ -7,7 +7,7 @@ public class Order {
 	private String orderDate;
 	private String orderName;
 	private String orderPhone;
-	private int orderAmount;
+	private String orderAmount;
 	private int payment;
 	private String paymentOption;
 	private String orderZipcode;
@@ -19,7 +19,7 @@ public class Order {
 	public Order() {}
 
 	public Order(int orderNo, String memId, String itemNo, String orderDate, String orderName, String orderPhone,
-			int orderAmount, int payment, String paymentOption, String orderZipcode, String orderStreet,
+			String orderAmount, int payment, String paymentOption, String orderZipcode, String orderStreet,
 			String orderAddr, String transport, String status) {
 		super();
 		this.orderNo = orderNo;
@@ -86,11 +86,11 @@ public class Order {
 		this.orderPhone = orderPhone;
 	}
 
-	public int getOrderAmount() {
+	public String getOrderAmount() {
 		return orderAmount;
 	}
 
-	public void setOrderAmount(int orderAmount) {
+	public void setOrderAmount(String orderAmount) {
 		this.orderAmount = orderAmount;
 	}
 
@@ -149,8 +149,5 @@ public class Order {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	
-
 
 }
