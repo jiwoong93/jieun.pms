@@ -6,6 +6,7 @@ import jieun.pms.order.domain.Order;
 
 public interface OrderDao {
 	List<Order> getOrders();
+	List<Order> orderDate(String startDate, String endDate);
 	int sumTotal();
 	int countTotal();
 	int sumReal();

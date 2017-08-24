@@ -43,6 +43,11 @@
 		where status='1'
 	</select>
 	
+	<select id="orderDate" parameterType="string" resultType="order" resultMap="orderMap">
+		select * from orders
+		where order_date between #{startDate} and #{endDate}
+	</select> 
+	
 	<update id="completeDeal" parameterType="int">
 		update orders
 		set status = '3'

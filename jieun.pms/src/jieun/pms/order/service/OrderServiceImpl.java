@@ -50,4 +50,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.completeDeal(orderNo)>0;
 	}
 
+
+	@Override
+	public List<Order> orderDate(String startDate, String endDate) {
+		return orderDao.orderDate(startDate, endDate);
+	}
+
 }

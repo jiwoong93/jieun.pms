@@ -49,4 +49,10 @@ public class OrderDaoImpl implements OrderDao {
 		return orderMapper.completeDeal(orderNo);
 	}
 
+
+	@Override
+	public List<Order> orderDate(String startDate, String endDate) {
+		return orderMapper.orderDate(startDate, endDate);
+	}
+
 }
