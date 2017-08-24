@@ -37,23 +37,31 @@
 <%
 	ProductService productService = new ProductServiceImpl();
 	String itemsNoAll = "";
+	String cartNos = "";
 	//몇개만 선택해서 구매할 때
 	if(request.getParameter("gubun").equals("select")){
 		String[] itemsNo = request.getParameterValues("selectItem");
 		for(int i=0; i<itemsNo.length; i++){
 			String para = "amount"+itemsNo[i];
+			String paraNo = "cartNos"+itemsNo[i];
 			String amount = request.getParameter(para);
+			String cartNo = request.getParameter(paraNo);
 			itemsNoAll = itemsNoAll + itemsNo[i] + "/" + amount + "," ;
+			cartNos = cartNos + cartNo + "/";
 		}
 	//전체 상품 선택
 	} else {
 		String[] allItemsNo = request.getParameterValues("allItemsNo");
 		for(int i=0; i<allItemsNo.length; i++){
 			String para = "amount"+allItemsNo[i];
+			String paraNo = "cartNos"+allItemsNo[i];
 			String amount = request.getParameter(para);
+			String cartNo = request.getParameter(paraNo);
 			itemsNoAll = itemsNoAll + allItemsNo[i] + "/" + amount +",";
+			cartNos = cartNos + cartNo + "/";
 		}
 	}
+	out.println(cartNos);
 %>
 <%
 if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
@@ -65,6 +73,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 <div class="payment">
 	<form method="post" action="./orderResult.jsp?op=cart&gubun=cart">
 	<input type="hidden" name="itemInfo" value="<%=itemsNoAll%>">
+	<input type="hidden" name="cartNos" value="<%=cartNos%>">
 	<table class="itemTable">
 		<tr>
 			<td><input type="checkbox" name="selectAll"></td>

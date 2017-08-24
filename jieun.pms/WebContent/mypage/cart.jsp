@@ -69,7 +69,7 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 				<%
 					for(int i=0; i<carts.size();i++){
 				%>		<tr>
-						<td><input type="checkbox" name="selectItem" value="<%=carts.get(i).getItemNo()%>"><input type="hidden" name="allItemsNo" value="<%=carts.get(i).getItemNo()%>"></td>
+						<td><input type="checkbox" name="selectItem" value="<%=carts.get(i).getItemNo()%>"><input type="hidden" name="allItemsNo" value="<%=carts.get(i).getItemNo()%>"><input type="hidden" name="cartNos<%=carts.get(i).getItemNo()%>" value="<%=carts.get(i).getCartNo()%>"></td>
 						<td><%=carts.get(i).getProduct().getItemName()%></td>
 				<%		if(carts.get(i).getProduct().getItemSize() != null){
 				%>

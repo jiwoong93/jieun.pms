@@ -1,3 +1,5 @@
+<%@page import="jieun.pms.mypage.cart.service.CartServiceImpl"%>
+<%@page import="jieun.pms.mypage.cart.service.CartService"%>
 <%@page import="jieun.pms.product.service.ProductServiceImpl"%>
 <%@page import="jieun.pms.product.service.ProductService"%>
 <%@page import="jieun.pms.product.domain.Product"%>
@@ -11,7 +13,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/orderResult.css">
+<link rel="stylesheet" href="../res/css/orderResult.css?ver=1">
 <body>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
@@ -85,6 +87,7 @@ if(request.getParameter("op") == "cart" || request.getParameter("op").equals("ca
 		product = productService.getProductNo(Integer.parseInt(itemNo));
 	}
 }
+	int price = 0, basong = 2500, totalPrice = 0;
 	
 	//출력
 %>
@@ -128,7 +131,7 @@ if(request.getParameter("op") == "cart" || request.getParameter("op").equals("ca
 				%>
 			</td>
 			<td><%=request.getParameter("amount"+productno[0])%></td>
-			<td><%=products.getItemPrice()*Integer.parseInt(request.getParameter("amount"+productno[0]))%>원</td>
+			<td><%=products.getItemPrice()*Integer.parseInt(request.getParameter("amount"+productno[0]))%>원<% price = price + products.getItemPrice()*Integer.parseInt(request.getParameter("amount"+productno[0])); %></td>
 			<td>상품준비중</td>
 			<td><input type="button" name="delete" value="X"></td>
 		</tr>
@@ -141,7 +144,7 @@ if(request.getParameter("op") == "cart" || request.getParameter("op").equals("ca
 		<td><%=product.getItemName() %></td>
 		<td></td>
 		<td><input type="number" name="amount" id="amount" value="<%=amount%>" disabled></td>
-		<td><%=payment%>원</td>
+		<td><%=payment%>원<% price = payment; %></td>
 		<td>상품준비중</td>
 		<td><input type="button" name="delete" value="X"></td>
 	</tr>
@@ -169,10 +172,10 @@ if(request.getParameter("op") == "cart" || request.getParameter("op").equals("ca
 			<td>
 			<%
 				switch(productAll.getItemSize()){
-					case "s" :%><%=productAll.getItemPrice()*Integer.parseInt(amountS)%>원<%break;
-					case "m" :%><%=productAll.getItemPrice()*Integer.parseInt(amountM)%>원<%break;
-					case "l" :%><%=productAll.getItemPrice()*Integer.parseInt(amountL)%>원<%break;
-					case "xl" :%><%=productAll.getItemPrice()*Integer.parseInt(amountXL)%>원<%break;
+					case "s" :%><%=productAll.getItemPrice()*Integer.parseInt(amountS)%>원<% price = price + productAll.getItemPrice()*Integer.parseInt(amountS); %><%break;
+					case "m" :%><%=productAll.getItemPrice()*Integer.parseInt(amountM)%>원<% price = price + productAll.getItemPrice()*Integer.parseInt(amountM); %><%break;
+					case "l" :%><%=productAll.getItemPrice()*Integer.parseInt(amountL)%>원<% price = price + productAll.getItemPrice()*Integer.parseInt(amountL); %><%break;
+					case "xl" :%><%=productAll.getItemPrice()*Integer.parseInt(amountXL)%>원<% price = price + productAll.getItemPrice()*Integer.parseInt(amountXL); %><%break;
 				}
 			%>
 			</td>
@@ -183,8 +186,56 @@ if(request.getParameter("op") == "cart" || request.getParameter("op").equals("ca
 	} 
 }
 %>
-		</table>
+		</table><br><br>
+		<table class="paymentTable1">
+		<tr>
+			<td> 총 결제금액 </td>
+			<td> 결제 수단 </td>
+		</tr>
+		
+		<tr>
+			<td colspan="3"><hr></td>
+		</tr>
+		
+		<tr>
+			<td> <h3><%=price%>원 + <%=basong%>원 = <%=price+basong%>원</h3> </td>
+			<td> 
+				<%
+					if(request.getParameter("paymentOption") == "1" || request.getParameter("paymentOption").equals("1")){
+				%>
+						<h3>무통장 입금</h3><br>
+						<h3>입금자 명 : <%=request.getParameter("orderName") %> </h3>
+						<h3>입금 은행 : 
+						<%
+							switch(request.getParameter("bank")){
+								case "shinhanbank": out.println("신한은행:15724-445-321465 이동구"); break;
+								case "kookminbank": out.println("국민은행:14613-64651-73 임지나"); break;
+								case "wooribank": out.println("우리은행:2163-1387-123475"); break;
+							}
+						%>
+						</h3>
+				<%
+					} else {
+				%>
+						<h3>카드 결제</h3><br>
+				<%
+					}
+				%>
+			</td>
+		</tr>
+	</table>
+		
 	</form>
 </div>
 <% } %>
+<%
+//카트에서 삭제
+if(request.getParameter("op") == "cart" || request.getParameter("op").equals("cart")){
+	CartService cartService = new CartServiceImpl();
+	String[] cartNos = request.getParameter("cartNos").split("/");
+	for(int i=0; i<cartNos.length; i++){
+		boolean result = cartService.deleteCart(Integer.parseInt(cartNos[i]));
+	}
+}
+%>
 <%@ include file="../common/footer.jsp"%>
