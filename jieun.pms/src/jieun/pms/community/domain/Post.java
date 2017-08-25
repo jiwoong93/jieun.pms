@@ -4,19 +4,32 @@ import java.sql.Date;
 
 public class Post {
 	private int revNo;
-	private int noticeNo;
-	private String subject;
-	private String contents;
+	private String revSubject;
+	private String revContents;
 	private String memId;
+	private String revFilename;
 	private Date regDate;
-	private int view;
+	private int revView;
+	private int itemNo;
 
-	public int getNoticeNo() {
-		return noticeNo;
+	@Override
+	public String toString() {
+		return String.format("%s", memId);
 	}
 
-	public void setNoticeNo(int noticeNo) {
-		this.noticeNo = noticeNo;
+	public Post() {
+	}
+
+	public Post(int revNo, String revSubject, String revContents, String memId, String revFilename, Date regDate,
+			int revView, int itemNo) {
+		this.revNo = revNo;
+		this.revSubject = revSubject;
+		this.revContents = revContents;
+		this.memId = memId;
+		this.revFilename = revFilename;
+		this.regDate = regDate;
+		this.revView = revView;
+		this.itemNo = itemNo;
 	}
 
 	public int getRevNo() {
@@ -27,20 +40,20 @@ public class Post {
 		this.revNo = revNo;
 	}
 
-	public String getSubject() {
-		return subject;
+	public String getRevSubject() {
+		return revSubject;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setRevSubject(String revSubject) {
+		this.revSubject = revSubject;
 	}
 
-	public String getContents() {
-		return contents;
+	public String getRevContents() {
+		return revContents;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setRevContents(String revContents) {
+		this.revContents = revContents;
 	}
 
 	public String getMemId() {
@@ -51,6 +64,14 @@ public class Post {
 		this.memId = memId;
 	}
 
+	public String getRevFilename() {
+		return revFilename;
+	}
+
+	public void setRevFilename(String revFilename) {
+		this.revFilename = revFilename;
+	}
+
 	public Date getRegDate() {
 		return regDate;
 	}
@@ -59,12 +80,20 @@ public class Post {
 		this.regDate = regDate;
 	}
 
-	public int getView() {
-		return view;
+	public int getRevView() {
+		return revView;
 	}
 
-	public void setView(int view) {
-		this.view = view;
+	public void setRevView(int revView) {
+		this.revView = revView;
+	}
+
+	public int getItemNo() {
+		return itemNo;
+	}
+
+	public void setItemNo(int itemNo) {
+		this.itemNo = itemNo;
 	}
 
 }

@@ -18,7 +18,7 @@
 
    //사이즈가 없는 상품의 경수
    function amount(amount){
-      document.getElementById('amount_n').value = amount.value;
+      document.getElementById('amount_n').value = amountn.value;
       var price = document.getElementById('itemPriceHidden').value;
       document.getElementById('totalPrice').innerHTML = amount.value*price;
       document.getElementById('totalPriceHidden').value = amount.value*price;

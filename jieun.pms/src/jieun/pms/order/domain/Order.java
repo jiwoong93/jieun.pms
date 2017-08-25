@@ -7,22 +7,20 @@ public class Order {
 	private String orderDate;
 	private String orderName;
 	private String orderPhone;
-	private String amount;
+	private String orderAmount;
 	private int payment;
 	private String paymentOption;
 	private String orderZipcode;
 	private String orderStreet;
 	private String orderAddr;
 	private String transport;
-	private String Status;
+	private String status;
 	
-	public Order() {
-		super();
-	}
+	public Order() {}
 
 	public Order(int orderNo, String memId, String itemNo, String orderDate, String orderName, String orderPhone,
-			String amount, int payment, String paymentOption, String orderZipcode, String orderStreet, String orderAddr,
-			String transport, String status) {
+			String orderAmount, int payment, String paymentOption, String orderZipcode, String orderStreet,
+			String orderAddr, String transport, String status) {
 		super();
 		this.orderNo = orderNo;
 		this.memId = memId;
@@ -30,14 +28,14 @@ public class Order {
 		this.orderDate = orderDate;
 		this.orderName = orderName;
 		this.orderPhone = orderPhone;
-		this.amount = amount;
+		this.orderAmount = orderAmount;
 		this.payment = payment;
 		this.paymentOption = paymentOption;
 		this.orderZipcode = orderZipcode;
 		this.orderStreet = orderStreet;
 		this.orderAddr = orderAddr;
 		this.transport = transport;
-		Status = status;
+		this.status = status;
 	}
 
 	public int getOrderNo() {
@@ -88,12 +86,12 @@ public class Order {
 		this.orderPhone = orderPhone;
 	}
 
-	public String getAmount() {
-		return amount;
+	public String getOrderAmount() {
+		return orderAmount;
 	}
 
-	public void setAmount(String amount) {
-		this.amount = amount;
+	public void setOrderAmount(String orderAmount) {
+		this.orderAmount = orderAmount;
 	}
 
 	public int getPayment() {
@@ -145,10 +143,11 @@ public class Order {
 	}
 
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 	public void setStatus(String status) {
-		Status = status;
+		this.status = status;
 	}
+
 }

@@ -21,8 +21,18 @@ public class PostDaoImpl implements PostDao {
 	public Post getReview(int revNo){
 		return postMapper.getReview(revNo);
 	}
+
+	@Override
+	public int insertReview(Post post) {
+		return postMapper.insertReview(post);
+	}
 	
-	public Post getNotice(int noticeNo){
-		return postMapper.getNotice(noticeNo);
+	public int deleteProduct(int revNo){
+		return postMapper.deleteProduct(revNo);
+	}
+
+	@Override
+	public int updateCount(int revNo) {
+		return postMapper.updateCount(revNo);
 	}
 }

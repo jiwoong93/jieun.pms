@@ -1,3 +1,7 @@
+<%@page import="jieun.pms.community.domain.Post"%>
+<%@page import="jieun.pms.member.update.service.UpdateServiceImpl"%>
+<%@page import="jieun.pms.member.update.service.UpdateService"%>
+<%@page import="jieun.pms.member.update.domain.UpdateMember"%>
 <%@page import="jieun.pms.community.service.PostServiceImpl"%>
 <%@page import="jieun.pms.community.service.PageServiceImpl"%>
 <%@page import="jieun.pms.community.service.PostService"%>
@@ -19,9 +23,10 @@
 	pageContext.setAttribute("pageMaker", pageService);
 	PostService postService = new PostServiceImpl();
 	pageContext.setAttribute("posts", postService.listPosts(myPage));
+	UpdateService updateService = new UpdateServiceImpl();
 %>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?ver=13">
+<link rel="stylesheet" href="../res/css/community.css?ver=18">
 <script>
 <!-- 체크박스 전체선택 -->
 	function check() {
@@ -92,10 +97,17 @@
 										}
 								%>
 								<td height="30" align="center">${post.revNo}</td>
-								<td align="center"><a href="./reviewview.jsp?revNo=${post.revNo}">${post.subject}</a></td>
-								<td align="center">${post.memId}</td>
+								<td align="center"><a href="./reviewview.jsp?revNo=${post.revNo}">${post.revContents}</a></td>
+								<td align="center">
+									<%
+										//Post post = (Post)pageContext.getAttribute("post");
+										//out.println(post);
+										//UpdateMember memBer = updateService.selectMember(memId);
+										//out.println(memBer.getMemName());
+									%>
+								</td>
 								<td align="center">${post.regDate}</td>
-								<td align="center">${post.view}</td>
+								<td align="center">${post.revView}</td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -123,13 +135,13 @@
 									href="review.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
 							</c:if>
 						</ul>
-					</div>
+					</div>					
 				</div>
 
 				<!-- 검색 -->
 				<div class="comu_search">
-					<input type="text" class="textbox" size="18"> <input
-						type="submit" value="검색" /><br />
+					<input type="text" class="textbox" size="18">
+					<input type="submit" value="검색" /><br />
 				</div>
 
 				<%
@@ -149,7 +161,7 @@
 				%>
 				<!-- 글쓰기 -->
 				<div class="comu_write">
-					<a href="./reviewboard2.jsp"><input type="button" value="글쓰기"></a>
+					<a href="./reviewboard.jsp"><input type="button" value="글쓰기"></a>
 				</div>
 				<%
 					}

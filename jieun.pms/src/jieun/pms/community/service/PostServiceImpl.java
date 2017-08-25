@@ -21,8 +21,18 @@ public class PostServiceImpl implements PostService {
 	public Post getReview(int revNo){
 		return postDao.getReview(revNo);
 	}
+
+	@Override
+	public boolean insertReview(Post post) {
+		return postDao.insertReview(post)>0;
+	}
 	
-	public Post getNotice(int noticeNo){
-		return postDao.getNotice(noticeNo);
+	public boolean deleteProduct(int revNo){
+		return postDao.deleteProduct(revNo)>0;
+	}
+
+	@Override
+	public int updateCount(int revNo) {
+		return postDao.updateCount(revNo);
 	}
 }
