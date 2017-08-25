@@ -88,9 +88,19 @@
 						</td>
 					</tr>
 				</table>
-				<div class="review_button">
-					<a href="./review.jsp"><input type="button" value="목록" /></a> <input type="submit" value="수정" />
-					<a href="./actionReviewDelete.jsp?revNo=<%=post.getRevNo()%>"><input type="button" name="deletePrd" value="삭제" ></a>
+					<div class="review_button">
+					<a href="./review.jsp"><input type="button" value="목록" /></a>
+					<%
+					String Id = (String) session.getAttribute("sessionId");
+					if (Id != null && Id != "") {
+						
+				%>
+					<input type="submit" value="수정" />
+					<a href="./actionReviewDelete.jsp?revNo=<%=post.getRevNo()%>">
+					<input type="button" name="deletePrd" value="삭제" ></a>
+				<%
+					}
+				%>	
 				</div>
 			</div>
 		</div>
