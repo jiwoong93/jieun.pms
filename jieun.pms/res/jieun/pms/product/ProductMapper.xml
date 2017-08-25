@@ -35,6 +35,12 @@
 		order by item_no
 	</select>
 	
+	<select id="getProductId" parameterType="string" resultType="product" resultMap="productMap">
+		select * 
+		from items
+		where item_id = #{itemId}
+	</select>
+	
 	<select id="getProductNo" parameterType="int" resultType="product" resultMap="productMap">
 		select * 
 		from items

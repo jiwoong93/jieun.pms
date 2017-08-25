@@ -16,4 +16,6 @@ public interface OrderService {
 	boolean completeDeal(int orderNo);
 	boolean cancelDeal(int orderNo);
 	boolean changeDeal(int orderNo);
+	int addOrder(Order order);
+	int orderSeq();
 }

@@ -16,4 +16,6 @@ public interface OrderMapper {
 	int completeDeal(int orderNo);
 	int cancelDeal(int orderNo);
 	int changeDeal(int orderNo);
+	int addOrder(Order order);
+	int orderSeq();
 }

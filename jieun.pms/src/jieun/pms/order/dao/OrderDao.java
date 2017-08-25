@@ -1,8 +1,7 @@
 package jieun.pms.order.dao;
 
-import java.util.List;
-
 import jieun.pms.order.domain.Order;
+import java.util.List;
 import jieun.pms.order.domain.OrderDate;
 
 public interface OrderDao {
@@ -16,4 +15,6 @@ public interface OrderDao {
 	int completeDeal(int orderNo);
 	int cancelDeal(int orderNo);
 	int changeDeal(int orderNo);
+	int addOrder(Order order);
+	int orderSeq();
 }

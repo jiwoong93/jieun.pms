@@ -17,7 +17,7 @@
 	</resultMap>
 	
 	<select id="getCarts" parameterType="string" resultMap="cartMap">
-		select cart_no, item_name, item_size, amount, item_price
+		select cart_no, items.item_no, item_name, item_size, amount, item_price
 		from carts
 		join items 
 		on (carts.ITEM_NO = items.ITEM_NO)

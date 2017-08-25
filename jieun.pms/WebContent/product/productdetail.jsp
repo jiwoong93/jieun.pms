@@ -126,6 +126,10 @@
             f.action = "../mypage/action/actionCartAdd.jsp";
             f.submit();
             break;
+         case 'payNow':
+        	f.action = "../order/order.jsp";
+            f.submit();
+            break;
       }
    }
 </script>
@@ -162,11 +166,12 @@
       <input type="hidden" id="totalMPriceHidden" value="0">
       <input type="hidden" id="totalLPriceHidden" value="0">
       <input type="hidden" id="totalXLPriceHidden" value="0">
-      <input type="hidden" id="amount_n" name="amount_n">
+      <input type="hidden" id="amount_n" name="amount_n" value="1">
       <input type="hidden" id="amount_s" name="amount_s">
       <input type="hidden" id="amount_m" name="amount_m">
       <input type="hidden" id="amount_l" name="amount_l">
       <input type="hidden" id="amount_xl" name="amount_xl">
+      <input type="hidden" name="no" value="<%=products.get(0).getItemNo()%>">
       <table id="itemInfo1" class="itemInfoTable">
          <tr>
             <td colspan="2"> <hr> </td>
@@ -298,7 +303,7 @@
       </form>
       <!-- 상품번호 가격 수량  -->
       <div class="Button">
-         <a href="../order/order.jsp"><input type="button" id="orderButton" value="BUY NOW"></a><br>
+         <input type="button" id="orderButton" value="BUY NOW" onclick="submits('payNow');"><br>
          <input type="button" id="wishlistButton" value="위시리스트" onclick="submits('wish');">
          <input type="button" id="cartButton" value="장바구니" onclick="submits('cart');">
          <%-- <a href="../mypage/action/actionWishAdd.jsp?name=<%=products.get(0).getItemName()%>&amount="><input type="button" id="wishlistButton" value="위시리스트"></a>
