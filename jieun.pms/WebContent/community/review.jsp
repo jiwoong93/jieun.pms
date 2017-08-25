@@ -21,7 +21,7 @@
 	pageContext.setAttribute("posts", postService.listPosts(myPage));
 %>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?ver=13">
+<link rel="stylesheet" href="../res/css/community.css?ver=18">
 <script>
 <!-- 체크박스 전체선택 -->
 	function check() {
@@ -123,13 +123,13 @@
 									href="review.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
 							</c:if>
 						</ul>
-					</div>
+					</div>					
 				</div>
 
 				<!-- 검색 -->
 				<div class="comu_search">
-					<input type="text" class="textbox" size="18"> <input
-						type="submit" value="검색" /><br />
+					<input type="text" class="textbox" size="18">
+					<input type="submit" value="검색" /><br />
 				</div>
 
 				<%
@@ -149,7 +149,7 @@
 				%>
 				<!-- 글쓰기 -->
 				<div class="comu_write">
-					<a href="./reviewboard2.jsp"><input type="button" value="글쓰기"></a>
+					<a href="./reviewboard.jsp"><input type="button" value="글쓰기"></a>
 				</div>
 				<%
 					}

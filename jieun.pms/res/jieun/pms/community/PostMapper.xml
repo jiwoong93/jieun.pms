@@ -22,13 +22,15 @@
 		]]>
 	</select>
 	
-	<select id="getNotice" parameterType="page" resultMap="noticeMap">
-		<![CDATA[
-		select notice_no, notice_subject, notice_contents, notice_view
-		from notices
-		where notice_no = #{noticeNo}			
-		]]>
-	</select>
+	<insert id="insertReview" parameterType="review">
+		insert into reviews
+		values(revno_seq.nextval,#{memId,jdbcType=VARCHAR} , #{itemNo,jdbcType=VARCHAR},sysdate,#{revFilename,jdbcType=VARCHAR},#{revSubject,jdbcType=VARCHAR},#{revContents,jdbcType=VARCHAR},0)
+	</insert>
+	
+	<delete id="deleteProduct" parameterType="int">
+		delete items
+		where rev_no = #{revNo}
+	</delete>
 
 	<resultMap id="postMap" type="post">
 		<id property="revNo" column="rev_no" />
@@ -38,11 +40,14 @@
 		<result property="view" column="rev_view" />
 	</resultMap>
 	
-	<resultMap id="noticeMap" type="post">
-		<id property="noticeNo" column="notice_no" />
-		<result property="subject" column="notice_subject" />
-		<result property="contents" column="notice_contents" />
-		<result property="regDate" column="notice_date" />
-		<result property="view" column="notice_view" />
+	<resultMap id="reviewMap" type="review">
+		<id property="revNo" column="rev_no" />
+		<result property="memId" column="rev_memid" />
+		<result property="itemNo" column="rev_itemno" />
+		<result property="revDate" column="rev_revdate" />
+		<result property="revFilename" column="rev_revfilename" />
+		<result property="revSubject" column="rev_revsubject" />
+		<result property="revContents" column="rev_revcontents" />
+		<result property="revView" column="rev_revview" />
 	</resultMap>
 </mapper>

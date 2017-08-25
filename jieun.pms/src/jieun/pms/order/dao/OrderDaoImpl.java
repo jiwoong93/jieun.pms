@@ -6,6 +6,7 @@ import jieun.pms.config.Configuration;
 import jieun.pms.order.dao.mapper.OrderMapper;
 import jieun.pms.order.domain.Order;
 import jieun.pms.order.domain.OrderDate;
+import jieun.pms.order.domain.Page;
 
 public class OrderDaoImpl implements OrderDao {
 	private OrderMapper orderMapper;
@@ -16,8 +17,8 @@ public class OrderDaoImpl implements OrderDao {
 
 
 	@Override
-	public List<Order> getOrders() {
-		return orderMapper.getOrders();
+	public List<Order> getOrders(Page page) {
+		return orderMapper.getOrders(page);
 	}
 
 
