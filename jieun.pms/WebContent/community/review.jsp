@@ -26,7 +26,7 @@
 	UpdateService updateService = new UpdateServiceImpl();
 %>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?ver=18">
+<link rel="stylesheet" href="../res/css/community.css?ver=28">
 <script>
 <!-- 체크박스 전체선택 -->
 	function check() {

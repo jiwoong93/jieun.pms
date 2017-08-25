@@ -81,7 +81,8 @@
 							</div>
 							<table class="board_table2" border="1" align="center">
 								<tr>
-									<td height="202" colspan="4"><%=post.getRevSubject()%></td>
+								<td height="202" colspan="4"><textarea name="revSubject" readonly style="resize: none; width: 610px; height: 440px; border: 1px;"><%=post.getRevSubject()%></textarea>
+								</td>	
 								</tr>
 							</table>
 						</td>
