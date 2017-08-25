@@ -1,19 +1,99 @@
-<%@ include file="../common/actionHeader.jsp"%>
+<%@page import="jieun.pms.mypage.cart.service.CartServiceImpl"%>
+<%@page import="jieun.pms.mypage.cart.service.CartService"%>
+<%@page import="jieun.pms.product.service.ProductServiceImpl"%>
+<%@page import="jieun.pms.product.service.ProductService"%>
+<%@page import="jieun.pms.product.domain.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="jieun.pms.order.domain.Order"%>
+<%@page import="jieun.pms.order.service.OrderServiceImpl"%>
+<%@page import="jieun.pms.order.service.OrderService"%>
+<%@ include file="../common/header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/orderResult.css">
+<link rel="stylesheet" href="../res/css/orderResult.css?ver=1">
 <body>
+<% request.setCharacterEncoding("UTF-8"); %>
 <%
 if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
 %>
 	<script>alert('로그인 후에 이용해주세요.'); location.href = '../member/login/login.jsp';</script>
 <%
 } else {
+	//주문정보 db저장 및 출력
+	//db저장 (memId, itemNo, orderDate, orderName, orderPhone, orderAmount, payment, paymentOption, orderZipcode, orderStreet, orderAddr, transport(null), status(0))
+	OrderService orderService = new OrderServiceImpl();
+	int orderNo = orderService.orderSeq();
+	String memId = session.getAttribute("sessionId").toString();
+	String itemNo = "";
+	String amount="";
+	String amountN="", amountS="", amountM="", amountL="", amountXL="";
+if(request.getParameter("op") == "cart" || request.getParameter("op").equals("cart")){
+	//파라미터 받아서 0번째만 ,로 구분해서 itemNo
+	String[] paraValue = request.getParameter("itemInfo").split(",");
+	for(int i=0; i<paraValue.length; i++){
+		String[] no = paraValue[i].split("/");
+		itemNo = itemNo + no[0] + ",";
+	}
+} else {
+	if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){
+		itemNo = request.getParameter("itemNo");
+		amountN = request.getParameter("amountN");
+	} else if(request.getParameter("gubun")=="size" || request.getParameter("gubun").equals("size")) {
+		amountS = request.getParameter("amountS");
+		amountM = request.getParameter("amountM");
+		amountL = request.getParameter("amountL");
+		amountXL = request.getParameter("amountXL");
+		String[] itemsNo = request.getParameter("items_no").split(",");
+		for(int i=0; i<itemsNo.length; i++){
+			String[] sizeNo = itemsNo[i].split("/");
+			itemNo = itemNo + sizeNo[1] + ",";
+			switch(sizeNo[0]){
+				case "s" : amount=amount+sizeNo[1]+"/"+request.getParameter("amountS")+","; break;
+				case "m" : amount=amount+sizeNo[1]+"/"+request.getParameter("amountM")+","; break;
+				case "l" : amount=amount+sizeNo[1]+"/"+request.getParameter("amountL")+","; break;
+				case "xl" : amount=amount+sizeNo[1]+"/"+request.getParameter("amountXL")+","; break;
+			}
+		}
+	}
+}
+	String orderDate = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss").format(new Date());
+	String orderName = request.getParameter("recive_name");
+	String orderPhone = request.getParameter("recive_phone1")+request.getParameter("recive_phone2")+request.getParameter("recive_phone3");
+if(request.getParameter("op") == "cart" || request.getParameter("op").equals("cart")){
+	//파라미터 받은값 그대로 amount
+	amount = request.getParameter("itemInfo");
+} else {
+	if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){
+		amount = request.getParameter("amount");
+	}
+}
+	int payment = Integer.parseInt(request.getParameter("totalPrice"));
+	String paymentOption = request.getParameter("paymentOption");
+	String orderZipcode = request.getParameter("recive_zipcode");
+	String orderStreet = request.getParameter("recive_street");
+	String orderAddr = request.getParameter("recive_addr");
+	String transport = "";
+	String status = "1";
+	Order order = new Order(orderNo,memId,itemNo,orderDate,orderName,orderPhone,amount,payment,paymentOption,orderZipcode,orderStreet,orderAddr,transport,status);
+	orderService.addOrder(order);
+	ProductService productService = new ProductServiceImpl();
+	Product product = null;
+if(request.getParameter("op") == "cart" || request.getParameter("op").equals("cart")){
+} else {
+	if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){
+		product = productService.getProductNo(Integer.parseInt(itemNo));
+	}
+}
+	int price = 0, basong = 2500, totalPrice = 0;
+	
+	//출력
 %>
 <div class="paymentCk">
 	<div class="orderMsg">
-		<h2><b>송은영</b>고객님 상품주문이 <b>완료</b>되었습니다.</h2>
+		<h2><b><%=request.getParameter("order_name")%></b>고객님 상품주문이 <b>완료</b>되었습니다.</h2>
 		<h2>이용해주셔서 감사합니다.</h2>
 		<br><br>
 		<a href="../mypage/orderlist.jsp"><input type="button" value="주문내역확인"></a>
@@ -34,27 +114,128 @@ if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId"
 			<tr>
 				<td colspan="7"><hr></td>
 			</tr>
-	
-			<tr>
-				<td rowspan="2">2017/00/00<br>[1234567]</td>
-				<td>곰돌이배낭</td>
-				<td>S</td>
-				<td><input type="number" name="amount" id="amount" value="1" disabled></td>
-				<td>20,000원</td>
-				<td>상품준비중</td>
-				<td><input type="button" name="delete" value="X"></td>
-			</tr>
-			
-			<tr>
-				<td>헬로도기 핀브러쉬</td>
-				<td></td>
-				<td><input type="number" name="amount" id="amount" value="1" disabled></td>
-				<td>6,000원</td>
-				<td>상품준비중</td>
-				<td><input type="button" name="delete" value="X"></td>
-			</tr>
-		</table>
+<% if(request.getParameter("op") == "cart" || request.getParameter("op").equals("cart")){
+	String[] productValue = request.getParameter("itemInfo").split(",");
+	for(int i=0; i<productValue.length; i++){
+		String[] productno = productValue[i].split("/");
+		Product products = productService.getProductNo(Integer.parseInt(productno[0]));
+%>
+		<tr>
+			<td><%=order.getOrderDate()%><br>[<%=order.getOrderNo()%>]</td>
+			<td><%=products.getItemName()%></td>
+			<td>
+				<% 
+					if(products.getItemSize() != null){
+						out.println(products.getItemSize());
+					}
+				%>
+			</td>
+			<td><%=request.getParameter("amount"+productno[0])%></td>
+			<td><%=products.getItemPrice()*Integer.parseInt(request.getParameter("amount"+productno[0]))%>원<% price = price + products.getItemPrice()*Integer.parseInt(request.getParameter("amount"+productno[0])); %></td>
+			<td>상품준비중</td>
+			<td><input type="button" name="delete" value="X"></td>
+		</tr>
+<%
+	}
+} else {
+	if(request.getParameter("gubun")=="noSize" || request.getParameter("gubun").equals("noSize")){ %>
+	<tr>
+		<td rowspan="2"><%=order.getOrderDate() %><br>[<%=order.getOrderNo()%>]</td>
+		<td><%=product.getItemName() %></td>
+		<td></td>
+		<td><input type="number" name="amount" id="amount" value="<%=amount%>" disabled></td>
+		<td><%=payment%>원<% price = payment; %></td>
+		<td>상품준비중</td>
+		<td><input type="button" name="delete" value="X"></td>
+	</tr>
+<% } else if(request.getParameter("gubun")=="size" || request.getParameter("gubun").equals("size")) { 
+	String[] itemsNo = request.getParameter("items_no").split(",");
+	for(int i =0; i<itemsNo.length; i++){
+		String[] sizeNo = itemsNo[i].split("/");
+		Product productAll = productService.getProductNo(Integer.parseInt(sizeNo[1]));
+%>
+		<tr>
+			<td><%=order.getOrderDate()%><br>[<%=order.getOrderNo()%>]</td>
+			<td><%=productAll.getItemName()%></td>
+			<td><%=productAll.getItemSize()%></td>
+			<td>
+			<% 
+				switch(productAll.getItemSize()){
+					case "s" :%><input type="number" name="amounts" id="amounts" value="<%=amountS%>" disabled> <%break;
+					case "m" :%><input type="number" name="amountm" id="amountm" value="<%=amountM%>" disabled> <%break;
+					case "l" :%><input type="number" name="amountl" id="amountl" value="<%=amountL%>" disabled><%break;
+					case "xl" :%><input type="number" name="amountxl" id="amountxl" value="<%=amountXL%>" disabled><%break;
+				}
+			%>
+				
+			</td>
+			<td>
+			<%
+				switch(productAll.getItemSize()){
+					case "s" :%><%=productAll.getItemPrice()*Integer.parseInt(amountS)%>원<% price = price + productAll.getItemPrice()*Integer.parseInt(amountS); %><%break;
+					case "m" :%><%=productAll.getItemPrice()*Integer.parseInt(amountM)%>원<% price = price + productAll.getItemPrice()*Integer.parseInt(amountM); %><%break;
+					case "l" :%><%=productAll.getItemPrice()*Integer.parseInt(amountL)%>원<% price = price + productAll.getItemPrice()*Integer.parseInt(amountL); %><%break;
+					case "xl" :%><%=productAll.getItemPrice()*Integer.parseInt(amountXL)%>원<% price = price + productAll.getItemPrice()*Integer.parseInt(amountXL); %><%break;
+				}
+			%>
+			</td>
+			<td>상품준비중</td>
+			<td><input type="button" name="delete" value="X"></td>
+		</tr>
+<% 		}
+	} 
+}
+%>
+		</table><br><br>
+		<table class="paymentTable1">
+		<tr>
+			<td> 총 결제금액 </td>
+			<td> 결제 수단 </td>
+		</tr>
+		
+		<tr>
+			<td colspan="3"><hr></td>
+		</tr>
+		
+		<tr>
+			<td> <h3><%=price%>원 + <%=basong%>원 = <%=price+basong%>원</h3> </td>
+			<td> 
+				<%
+					if(request.getParameter("paymentOption") == "1" || request.getParameter("paymentOption").equals("1")){
+				%>
+						<h3>무통장 입금</h3><br>
+						<h3>입금자 명 : <%=request.getParameter("orderName") %> </h3>
+						<h3>입금 은행 : 
+						<%
+							switch(request.getParameter("bank")){
+								case "shinhanbank": out.println("신한은행:15724-445-321465 이동구"); break;
+								case "kookminbank": out.println("국민은행:14613-64651-73 임지나"); break;
+								case "wooribank": out.println("우리은행:2163-1387-123475"); break;
+							}
+						%>
+						</h3>
+				<%
+					} else {
+				%>
+						<h3>카드 결제</h3><br>
+				<%
+					}
+				%>
+			</td>
+		</tr>
+	</table>
+		
 	</form>
 </div>
 <% } %>
+<%
+//카트에서 삭제
+if(request.getParameter("op") == "cart" || request.getParameter("op").equals("cart")){
+	CartService cartService = new CartServiceImpl();
+	String[] cartNos = request.getParameter("cartNos").split("/");
+	for(int i=0; i<cartNos.length; i++){
+		boolean result = cartService.deleteCart(Integer.parseInt(cartNos[i]));
+	}
+}
+%>
 <%@ include file="../common/footer.jsp"%>

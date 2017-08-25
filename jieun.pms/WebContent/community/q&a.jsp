@@ -94,10 +94,10 @@
 										}
 								%>
 								<td height="30" align="center">${post.revNo}</td>
-								<td align="center"><a href="${post.contents}">${post.subject}</a></td>
+								<td align="center"><a href="${post.revContents}">${post.revSubject}</a></td>
 								<td align="center">${post.memId}</td>
 								<td align="center">${post.regDate}</td>
-								<td align="center">${post.view}</td>
+								<td align="center">${post.revView}</td>
 							</tr>
 						</c:forEach>
 					</table>

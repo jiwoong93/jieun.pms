@@ -9,5 +9,10 @@ public interface PostMapper {
 	List<Post> getPosts(Page page);
 	
 	Post getReview(int revNo);
-	Post getNotice(int noticeNo);
+	
+	int updateCount(int revNo);
+	
+	int insertReview(Post post);
+	
+	int deleteProduct(int revNo);
 }

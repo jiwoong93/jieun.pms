@@ -10,5 +10,9 @@ public interface PostService {
 	
 	Post getReview(int revNo);
 	
-	Post getNotice(int noticeNo);
+	int updateCount(int revNo);
+	
+	boolean insertReview(Post post);
+	
+	boolean deleteProduct(int revNo);
 }

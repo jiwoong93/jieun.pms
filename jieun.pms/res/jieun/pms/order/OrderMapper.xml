@@ -77,4 +77,16 @@
 		set status = '2'
 		where order_no = #{orderNo}
 	</update>
+	
+	<insert id="addOrder" parameterType="jieun.pms.order.domain.Order" >
+		insert into orders values (#{orderNo,jdbcType=NUMERIC}, #{memId,jdbcType=VARCHAR},
+		#{itemNo,jdbcType=VARCHAR}, #{orderDate,jdbcType=VARCHAR}, #{orderName,jdbcType=VARCHAR},
+		#{orderPhone,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, #{payment,jdbcType=NUMERIC},
+		#{paymentOption,jdbcType=VARCHAR}, #{orderZipcode,jdbcType=VARCHAR}, #{orderStreet,jdbcType=VARCHAR},
+		#{orderAddr,jdbcType=VARCHAR}, #{transport,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+	</insert>
+
+	<select id="orderSeq" resultType="int">
+		select SEQ_ORDER_NO.NEXTVAL from dual
+	</select>
 </mapper>

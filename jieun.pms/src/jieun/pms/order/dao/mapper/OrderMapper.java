@@ -6,6 +6,7 @@ import jieun.pms.order.domain.Page;
 import jieun.pms.order.domain.Order;
 import jieun.pms.order.domain.OrderDate;
 
+
 public interface OrderMapper {
 	List<Order> getOrders(Page page);
 	List<Order> orderDate(OrderDate orderDate);
@@ -17,4 +18,6 @@ public interface OrderMapper {
 	int completeDeal(int orderNo);
 	int cancelDeal(int orderNo);
 	int changeDeal(int orderNo);
+	int addOrder(Order order);
+	int orderSeq();
 }
