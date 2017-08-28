@@ -1,8 +1,11 @@
+<%@page import="jieun.pms.member.login.domain.Member"%>
+<%@page import="jieun.pms.member.login.service.MemberServiceImpl"%>
+<%@page import="jieun.pms.member.login.service.MemberService"%>
 <jsp:include page="../../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../../res/css/login.css?ver=2">
+<link rel="stylesheet" href="../../res/css/login.css?ver=4">
 <script Language='JavaScript'>
 	function check(ck){
 		if(ck == 1){
@@ -43,7 +46,7 @@
 		      return false;
 		   }
 		         else if(regPhone.test(email)==true){
-		            document.getElementById('Check').innerHTML = "올바르개 입력했습니다.";
+		            document.getElementById('Check').innerHTML = "올바르게 입력했습니다.";
 		            document.getElementById('Check').style.color = "green";
 		            document.addjoin.email.focus();
 		   }
@@ -62,15 +65,11 @@
 		checked1 = "checked";
 	}
 %>
-<br/><br/><br/><br/>
 
-<div class="find_id_box"> 
-<center>
- <form name="fine" action="">
- 
+<div class="findBox"> 
+ <form action="findId.jsp?check=1" method="post">
  <table>
- 
-  <tr>
+   	<tr>
    <td colspan="2"> <h2>FIND ID</h2> <hr> </td>
   </tr>
   
@@ -97,9 +96,9 @@
   <tr>
   <% if(check == "2" ||check.equals("2")){ %>
    <td>휴대폰번호</td>
-   <td> <input type="text" name="phone_num" id="phone_num1" size="6"/>
-    - <input type="text" name="phone_num" id="phone_num2" size="6" maxlength="4"/>
-    - <input type="text" name="phone_num" id="phone_num3"size="6" maxlength="4"/>
+   <td> <input type="text" name="phone_num1" id="phone_num1" size="6"/>
+    - <input type="text" name="phone_num2" id="phone_num2" size="6" maxlength="4"/>
+    - <input type="text" name="phone_num3" id="phone_num3"size="6" maxlength="4"/>
    </td>
   <% } else { %>
    <td>이메일</td>
@@ -111,18 +110,73 @@
   <tr>
    <td colspan="2"> <hr> </td>
   </tr>
-  
  </table>
- </form>
+<br>
+<input type="submit" value="FIND ID" class="findbutton"/>
+</form>
+</div>
  
-<br/>
- <button type="submit" value="Submit" class="findId">FIND ID</button>
- </center>
- </div>
-	<p class="findPwAsk">비밀번호를 잊어버리셨나요?</p>
-	<div class="findPw">
- 	<a href="./findPw.jsp?check=1"><button type="button">FIND PASSWORD</button></a>
- 	</div>
- 	</body>
-<br/><br/><br/><br/>
+<br>
+<%
+	MemberService memberService = new MemberServiceImpl();
+	String memName = request.getParameter("name");
+	String memEmail = request.getParameter("email");
+	String memPhone = request.getParameter("phone_num1") + request.getParameter("phone_num2") + request.getParameter("phone_num3");
+	
+	Member member = new Member();
+	String memId = null;
+	
+	if(memName != null){
+		member.setMemName(memName);
+		member.setMemEmail(memEmail);
+		member.setMemPhone(memPhone);
+		
+		if(member.getMemEmail() != null){
+			member = memberService.findIdEmail(member);
+			memId = member.getMemId();
+
+			if(memId != null && memId != "" ){
+%>
+			<div class="center">
+				<font color="blue">해당되는 아이디를 찾았습니다.</font><br>
+				<h1><%= memId %></h1>
+			</div>	  	
+<%
+			}else{
+%>
+			<div class="center">
+				<font color="red">해당되는 아이디가 존재하지않습니다.</font>
+			</div>
+<%
+			}
+		}else{
+			member = memberService.findIdPhone(member);
+			memId = member.getMemId();
+			
+			if(memId != null || !memId.equals("")){
+%>
+			<div class="center">
+				<font color="blue">해당되는 아이디를 찾았습니다.</font><br>
+				<h1><%= memId %></h1>
+			</div>
+										  	
+<%
+			}else{
+%>
+			<div class="center">
+				<font color="red">해당되는 아이디가 존재하지않습니다.</font>
+			</div>
+<%
+			}
+		}
+	}
+%>				
+<br>
+
+<div class="findMsg">
+	<p>비밀번호를 잊어버리셨나요?</p><br>
+	<a href="./findPw.jsp?check=1"><button type="button">비밀번호찾기</button></a>
+</div>
+ 	
+</body>
  <%@ include file="../../common/footer.jsp"%>

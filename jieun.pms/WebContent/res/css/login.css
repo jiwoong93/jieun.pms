@@ -1,31 +1,31 @@
 body {margin-top: 270px;}
 .no-border {border:0px;}
 
+.findBox {
+	margin: 0 auto;
+	width: 350px;
+	padding-top: 100px;
+}
+
 table {
-		width:350px;
-		border-collapse: collapse;
-		align: center;
-		padding: 5px;
+	width:350px;
+	border-collapse: collapse;
+	align: center;
+	padding: 5px;
 	}
-	
-.findId{
+
+.center {
+	text-align: center;
+}	
+
+.findbutton {
 	width: 350px;
     height: 35px;
 }
 
-.findPwAsk{
-	margin-left: 740px;
-	padding: 20px;
-}
-.findPw{
-	margin-left: 820px;
-}
-
-.findIdAsk{
-	margin-left: 760px;
-	padding: 20px;
-}
-.findIdButt{
-	margin-left: 815px;
-	width: 150px;
+.findMsg {
+	margin: 0 auto;
+	width: 350px;
+	text-align: right;
+	padding-bottom: 100px;
 }
