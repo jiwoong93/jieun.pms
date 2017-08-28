@@ -13,7 +13,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/productList.css?var=1">
+<link rel="stylesheet" href="../res/css/productList.css?var=10">
 <%
 	ProductService productService = new ProductServiceImpl();
 	String requestCategory = request.getParameter("category");
@@ -39,7 +39,16 @@
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/Bath/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-					<div><%=products.get(i).getItemName() %></div>
+					<div>
+					<% 
+						if(products.get(i).getItemAmount() == 0){
+					%>
+						<del><%=products.get(i).getItemName() %></del><font color=red>(품절)</font>
+					<%
+						}else
+					%>
+						<%=products.get(i).getItemName() %>
+					</div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%	
 				}
@@ -47,7 +56,16 @@
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/Beauty/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-					<div><%=products.get(i).getItemName() %></div>
+					<div>
+					<% 
+						if(products.get(i).getItemAmount() == 0){
+					%>
+						<del><%=products.get(i).getItemName() %></del><font color=red>(품절)</font>
+					<%
+						}else
+					%>
+						<%=products.get(i).getItemName() %>
+					</div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%	
 				}
@@ -55,7 +73,16 @@
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/Accessory/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-					<div><%=products.get(i).getItemName() %></div>
+					<div>
+					<% 
+						if(products.get(i).getItemAmount() == 0){
+					%>
+						<del><%=products.get(i).getItemName() %></del><font color=red>(품절)</font>
+					<%
+						}else
+					%>
+						<%=products.get(i).getItemName() %>
+					</div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%	
 				}
@@ -63,7 +90,16 @@
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-					<div><%=products.get(i).getItemName() %></div>
+					<div>
+					<% 
+						if(products.get(i).getItemAmount() == 0){
+					%>
+						<del><%=products.get(i).getItemName() %></del><font color=red>(품절)</font>
+					<%
+						}else
+					%>
+						<%=products.get(i).getItemName() %>
+					</div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%	
 				}
@@ -81,7 +117,16 @@
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/Bath/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-					<div><%=products.get(i).getItemName() %></div>
+					<div>
+					<% 
+						if(products.get(i).getItemAmount() == 0){
+					%>
+						<del><%=products.get(i).getItemName() %></del><font color=red>(품절)</font>
+					<%
+						}else
+					%>
+						<%=products.get(i).getItemName() %>
+					</div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%	
 				}
@@ -89,7 +134,16 @@
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/Beauty/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-					<div><%=products.get(i).getItemName() %></div>
+					<div>
+					<% 
+						if(products.get(i).getItemAmount() == 0){
+					%>
+						<del><%=products.get(i).getItemName() %></del><font color=red>(품절)</font>
+					<%
+						}else
+					%>
+						<%=products.get(i).getItemName() %>
+					</div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%	
 				}
@@ -97,7 +151,16 @@
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/Accessory/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-					<div><%=products.get(i).getItemName() %></div>
+					<div>
+					<% 
+						if(products.get(i).getItemAmount() == 0){
+					%>
+						<del><%=products.get(i).getItemName() %></del><font color=red>(품절)</font>
+					<%
+						}else
+					%>
+						<%=products.get(i).getItemName() %>
+					</div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%	
 				}
@@ -105,7 +168,16 @@
 	%>
 					<a href="./productdetail.jsp?name=<%=products.get(i).getItemName()%>" class="" id="<%=category.getCategoryStr() + products.get(i).getItemNo()%>">
 					<img src="../res/img/product/<%=category.getCategoryStr()%>/<%=products.get(i).getItemImg()%>"></a>
-					<div><%=products.get(i).getItemName() %></div>
+					<div>
+					<% 
+						if(products.get(i).getItemAmount() == 0){
+					%>
+						<del><%=products.get(i).getItemName() %></del><font color=red>(품절)</font>
+					<%
+						}else
+					%>
+						<%=products.get(i).getItemName() %>
+					</div>
 					<div><%=products.get(i).getItemPrice() %>원</div>
 	<%	
 				}
