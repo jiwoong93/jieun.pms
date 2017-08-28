@@ -10,4 +10,5 @@ public interface MemberService {
 	List<Member> listMembers(Page page);
 	List<Member> listAdmins(Page page);
 	List<Member> listExitMembers(Page page);
+	int totalPrice(String memId);
 }

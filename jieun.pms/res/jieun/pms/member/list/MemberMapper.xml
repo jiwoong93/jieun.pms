@@ -40,7 +40,9 @@
         ) where rnum > #{rowCnt}*(#{currentPage}-1)
         ]]>
     </select>
-    
+    <select id="totalPrice" parameterType="string" resultType="int">
+    	select sum(payment) from orders where mem_id=#{memId}
+    </select>
     <resultMap id="memberMap" type="member">
         <id property="memId"      column="mem_id"/>
         <result property="memName"   column="mem_name"/>

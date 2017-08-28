@@ -61,7 +61,6 @@
 			cartNos = cartNos + cartNo + "/";
 		}
 	}
-	out.println(cartNos);
 %>
 <%
 if(session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){

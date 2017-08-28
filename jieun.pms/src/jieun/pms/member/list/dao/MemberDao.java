@@ -10,4 +10,5 @@ public interface MemberDao {
 	 List<Member> getMembers(Page page);
 	 List<Member> getAdmins(Page page);
 	 List<Member> getExitMembers(Page page);
+	 int totalPrice(String memId);
 }

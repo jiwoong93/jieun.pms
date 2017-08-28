@@ -130,13 +130,20 @@
 			<tr><td colspan="10" id="line"><hr></td></tr>
 			
 			<c:forEach var="member" items="${members}">
+			<% Member memberOne = (Member)pageContext.getAttribute("member"); %>
 	          <tr>
 	            <td></td>
 	            <td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=${member.memId}', '회원정보', 'width=550, height=530, top=100, left=400' );">${member.memId}</span></td>
 	            <td><span onclick="javascript:window.open('./manageMemInfo.jsp?id=${member.memId}', '회원정보', 'width=550, height=530, top=100, left=400' );">${member.memName}</span></td>
 	            <td>${member.memGender}</td>
 	            <td>${member.regDate}</td>
-	            <td></td>
+	           <% if(memLevel != "0" || !memLevel.equals("0")){
+	        	%>
+	        	<%}else{
+	        	%>   <td><%=memberService.totalPrice(memberOne.getMemId())%></td>
+	           	<%}
+	           %> 
+	           
 	            <td>${member.memEmail}</td>
 	            <td>${member.memPhone}</td>
 	            <td><input type="button" name="delete" value="X" onclick="javascript:delchk('${member.memId}');" ></td>

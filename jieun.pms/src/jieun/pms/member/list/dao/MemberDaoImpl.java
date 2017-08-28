@@ -33,4 +33,9 @@ public class MemberDaoImpl implements MemberDao {
 	public List<Member> getExitMembers(Page page) {
 		return memberMapper.getExitMembers(page);
 	}
+
+	@Override
+	public int totalPrice(String memId) {
+		return memberMapper.totalPrice(memId);
+	}
 }

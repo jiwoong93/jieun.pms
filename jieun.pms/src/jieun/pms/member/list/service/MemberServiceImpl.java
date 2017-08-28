@@ -29,4 +29,8 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> listExitMembers(Page page) {
 		return memberDao.getExitMembers(page);
 	}
+	@Override
+	public int totalPrice(String memId) {
+		return memberDao.totalPrice(memId);
+	}
 }
