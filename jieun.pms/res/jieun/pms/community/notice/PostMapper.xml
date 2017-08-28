@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jieun.pms.community.notice.dao.mapper.PostMapper">
+	
+	<select id="getNotices" parameterType="noticePage" resultMap="noticeMap">
+		<![CDATA[
+		select * from(
+		select rownum as rnum, x.* from(
+			select * from notices
+			order by notice_no desc
+		)x where rownum <=#{rowCnt}*#{currentPage}
+		)where rnum>#{rowCnt}*(#{currentPage}-1)
+		]]>
+	</select>
+	
+	<select id="getNotice" parameterType="int" resultMap="noticeMap">
+		select * from notices
+		where notice_no = #{noticeNo}
+	</select>
+	
+	<insert id="insertNotice" parameterType="noticePost">
+		insert into notices(notice_no, notice_date,notice_filename,notice_subject,notice_contents,notice_view)
+		values(noticeno_seq.nextval, sysdate,#{noticeFileName,jdbcType=VARCHAR},#{noticeSubject,jdbcType=VARCHAR},#{noticeContents,jdbcType=VARCHAR},0)
+	</insert>
+	
+	<delete id="deleteNotice" parameterType="int">
+		delete notices
+		where notice_no = #{noticeNo}
+	</delete>
+
+	<update id="updateNotice" parameterType="noticePost">
+		update notices
+		<set>
+			<if test="noticeSubject != null">notice_subject = #{noticeSubject,jdbcType=VARCHAR},</if>
+			<if test="noticeContents != null">notice_contents = #{noticeContents,jdbcType=VARCHAR},</if>
+		</set>
+		where notice_no = #{noticeNo}
+	</update>
+
+	<resultMap id="noticeMap" type="noticePost">
+		<id property="noticeNo" column="notice_no" />
+		<result property="noticeDate" column="notice_date" />
+		<result property="noticeFileName" column="notice_filename" />
+		<result property="noticeSubject" column="notice_subject" />
+		<result property="noticeContents" column="notice_contents" />
+		<result property="noticeView" column="notice_view" />
+	</resultMap>
+	
+</mapper>

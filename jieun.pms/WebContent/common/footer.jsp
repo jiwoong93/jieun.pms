@@ -7,7 +7,9 @@ String pageNameFooter = cururlFooter.substring(cururlFooter.lastIndexOf("/") + 1
 String pathFooter = "";
 if(pageNameFooter.equals("main.jsp")){
 	pathFooter = "./";
-} else if(pageNameFooter.equals("login.jsp") || pageNameFooter.equals("findId.jsp") || pageNameFooter.equals("findPw.jsp") || pageNameFooter.equals("join.jsp")) {
+} else if(pageNameFooter.equals("login.jsp") || pageNameFooter.equals("findId.jsp") || pageNameFooter.equals("findPw.jsp") || pageNameFooter.equals("join.jsp") || pageNameFooter.equals("notice.jsp") 
+		|| pageNameFooter.equals("noticeview.jsp")|| pageNameFooter.equals("noticeupdate.jsp") || pageNameFooter.equals("noticeboard.jsp")|| pageNameFooter.equals("q&a.jsp")|| pageNameFooter.equals("review.jsp") 
+		|| pageNameFooter.equals("reviewview.jsp")|| pageNameFooter.equals("reviewupdate.jsp") || pageNameFooter.equals("reviewboard.jsp")) {
 	pathFooter = "../../";
 } else {
 	pathFooter = "../";

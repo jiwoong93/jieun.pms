@@ -6,24 +6,45 @@
 <meta charset="UTF-8">
 <title>Coong Shop</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+   $(function() {
+       $(window).scroll(function() {
+           if ($(this).scrollTop() > 500) {
+               $('#MOVE_TOP_BTN').fadeIn();
+           } else {
+               $('#MOVE_TOP_BTN').fadeOut();
+           }
+       });
+       
+       $("#MOVE_TOP_BTN").click(function() {
+           $('html, body').animate({
+               scrollTop : 0
+           }, 400);
+           return false;
+       });
+   });
+</script>
 <%
 String cururl = request.getRequestURI().toString();
 String pageName = cururl.substring(cururl.lastIndexOf("/") + 1, cururl.length());
 String path = "";
 if(pageName.equals("main.jsp")){
    path = "./";
-} else if(pageName.equals("login.jsp") || pageName.equals("findId.jsp") || pageName.equals("findPw.jsp") || pageName.equals("join.jsp")) {
+} else if(pageName.equals("login.jsp") || pageName.equals("findId.jsp") || pageName.equals("findPw.jsp") || pageName.equals("join.jsp")
+		 || pageName.equals("notice.jsp") || pageName.equals("noticeboard.jsp") || pageName.equals("noticeupdate.jsp") || pageName.equals("noticeview.jsp")
+		 || pageName.equals("q&a.jsp")
+		 || pageName.equals("reveiw.jsp") || pageName.equals("reviewboard.jsp") || pageName.equals("reviewupdate.jsp") || pageName.equals("reviewview.jsp")) {
    path = "../../";
 } else {
    path = "../";
 }
 %>
-   <link rel="stylesheet" href="<%= path %>res/css/header.css?ver=11">
+   <link rel="stylesheet" href="<%= path %>res/css/header.css">
    <script src="<%= path %>res/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
    <script src="<%= path %>res/js/header.js"></script>
-
 <header class="page-header" role="banner">
     <div class="top" >
+    <a id="MOVE_TOP_BTN" href="#">TOP</a><!-- 탑버튼 -->
    <hr>
       <span id="search">   
          <input id="searchBox" type="text">
@@ -65,21 +86,21 @@ if(pageName.equals("main.jsp")){
             <ul id="nav">
                 <li><a href="<%= path %>product/productList.jsp?category=10">사료</a></li>
                 <li><a href="<%= path %>product/productList.jsp?category=20">간식</a></li>
-                <li><a href="<%= path %>product/productList.jsp?category=30">위생</a>
+                <li><a href="javascript:void(0)">위생</a>
                    <ul>
                   <li><a href="<%= path %>product/productList.jsp?category=31">배변</a></li>
                   <li><a href="<%= path %>product/productList.jsp?category=32">탈취제</a></li>
                   <li><a href="<%= path %>product/productList.jsp?category=33">귀·눈 위생</a></li>
                </ul>
             </li>
-                <li><a href="<%= path %>product/productList.jsp?category=40">미용</a>
+                <li><a href="javascript:void(0)">미용</a>
                <ul>
                   <li><a href="<%= path %>product/productList.jsp?category=41">가위</a></li>
                   <li><a href="<%= path %>product/productList.jsp?category=42">브러쉬</a></li>
                </ul>
             </li>
                 <li><a href="<%= path %>product/productList.jsp?category=50">의류</a></li>
-            <li><a href="<%= path %>product/productList.jsp?category=60">악세사리</a>
+            <li><a href="javascript:void(0)">악세사리</a>
                <ul>
                   <li><a href="<%= path %>product/productList.jsp?category=61">자동줄·하네스</a></li>
                   <li><a href="<%= path %>product/productList.jsp?category=62">배낭</a></li>
