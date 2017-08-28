@@ -107,7 +107,7 @@
 						for(int i = 0; i<comm.size(); i++){
 							%>			 
 						<tr>
-							<td width="35" style="text-align: center">${comm.RevCommentNo}</td>
+							<td width="35" style="text-align: center"><%=comm.get(i).getRevCommentNo() %></td>
 							<td width="70" style="text-align: center">${comm.getMemId}</td>
 							<td><input type="text" style="width: 480px; border:0px;" value="${comm.getRevComment}"/></td>
 						</tr>

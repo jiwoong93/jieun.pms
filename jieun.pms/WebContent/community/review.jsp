@@ -99,12 +99,12 @@
 								<td height="30" align="center">${post.revNo}</td>
 								<td align="center"><a href="./reviewview.jsp?revNo=${post.revNo}">${post.revContents}</a></td>
 								<td align="center">
-									<%-- <%
+									<%
 										//Post post = (Post)pageContext.getAttribute("post");
 										//out.println(post);
 										//UpdateMember memBer = updateService.selectMember(memId);
 										//out.println(memBer.getMemName());
-									%> --%>
+									%>
 								</td>
 								<td align="center">${post.regDate}</td>
 								<td align="center">${post.revView}</td>

@@ -12,13 +12,6 @@ public class Post {
 	private int revView;
 	private int itemNo;
 
-<<<<<<< HEAD
-=======
-	@Override
-	public String toString() {
-		return String.format("%s", memId);
-	}
->>>>>>> branch 'master' of https://github.com/jiwoong93/jieun.pms.git
 	public Post() {
 	}
 
@@ -88,6 +81,14 @@ public class Post {
 
 	public void setRevView(int revView) {
 		this.revView = revView;
+	}
+
+	public int getItemNo() {
+		return itemNo;
+	}
+
+	public void setItemNo(int itemNo) {
+		this.itemNo = itemNo;
 	}
 
 }

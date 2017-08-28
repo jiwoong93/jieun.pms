@@ -17,7 +17,7 @@
 
 	if(insertComm == true){
 		%>
-<script>alert('댓글이 등록되었습니다.'); location.href = './review.jsp';</script>
+<script>alert('댓글이 등록되었습니다.'); location.href = './reviewview.jsp';</script>
 <%
 			}
 			else{
