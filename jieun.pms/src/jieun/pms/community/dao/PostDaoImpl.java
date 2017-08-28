@@ -52,5 +52,10 @@ public class PostDaoImpl implements PostDao {
 		return postMapper.getCommets(revNo);
 	}
 
+	@Override
+	public int deleteProductComm(int revNo) {
+		return postMapper.deleteProductComm(revNo);
+	}
+
 	
 }

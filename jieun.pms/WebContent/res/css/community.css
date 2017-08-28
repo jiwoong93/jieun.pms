@@ -101,7 +101,8 @@ a { color: inherit; text-decoration: none; }
 
 .review_button{
 	margin-top:10px;
-	margin-left:485px;
+	margin-left:15px;
+	width : 615px;
 }
 
 .managerborder_button{

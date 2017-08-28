@@ -100,10 +100,10 @@
 								<td align="center"><a href="./reviewview.jsp?revNo=${post.revNo}">${post.revContents}</a></td>
 								<td align="center">
 									<%
-										//Post post = (Post)pageContext.getAttribute("post");
-										//out.println(post);
-										//UpdateMember memBer = updateService.selectMember(memId);
-										//out.println(memBer.getMemName());
+										Post post = (Post)pageContext.getAttribute("post");
+										String memId = post.getMemId();
+										UpdateMember memBer = updateService.selectMember(memId);
+										out.println(memBer.getMemName());
 									%>
 								</td>
 								<td align="center">${post.regDate}</td>

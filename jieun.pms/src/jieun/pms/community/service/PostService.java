@@ -22,4 +22,6 @@ public interface PostService {
 	int updateReview(Post post);
 
 	boolean insertComm(Comm comm);
+	
+	int deleteProductComm(int revNo);
 }

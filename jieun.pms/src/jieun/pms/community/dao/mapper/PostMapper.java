@@ -22,4 +22,6 @@ public interface PostMapper {
 	int updateReview(Post post);
 	
 	int insertComm(Comm comm);
+	
+	int deleteProductComm(int revNo);
 }

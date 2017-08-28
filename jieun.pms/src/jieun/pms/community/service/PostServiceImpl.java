@@ -51,4 +51,9 @@ public class PostServiceImpl implements PostService {
 	public List<Comm> getCommets(int revNo) {
 		return postDao.getCommets(revNo);
 	}
+
+	@Override
+	public int deleteProductComm(int revNo) {
+		return postDao.deleteProductComm(revNo);
+	}
 }

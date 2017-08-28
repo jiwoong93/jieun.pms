@@ -17,12 +17,12 @@
 
 	if(insertComm == true){
 		%>
-<script>alert('댓글이 등록되었습니다.'); location.href = './reviewview.jsp';</script>
+<script>alert('댓글이 등록되었습니다.'); location.href = './reviewview.jsp?revNo=<%=request.getParameter("revNo")%>'</script>
 <%
 			}
 			else{
 		%>
-<script>alert('댓글 등록이 실패 하였습니다. 댓글 내용을 다시 입력하세요.'); location.href = './reviewview.jsp';</script>
+<script>alert('댓글 등록이 실패 하였습니다. 댓글 내용을 다시 입력하세요.'); location.href = './reviewview.jsp?revNo=<%=request.getParameter("revNo")%>';</script>
 <%	
 			}
 		%>

@@ -51,6 +51,11 @@
 		where rev_no = #{revNo}
 	</delete>
 	
+	<delete id="deleteProductComm" parameterType="int">
+		delete revcomments
+		where  rev_no = #{revNo}
+	</delete>
+	
 	<update id="updateReview" parameterType="post">
       update reviews 
       <set>
@@ -67,9 +72,10 @@
 		<result property="revContents" column="rev_contents" />
 		<result property="regDate" column="rev_date" />
 		<result property="revView" column="rev_view" />
+		<result property="memId" column="mem_id" />
 	</resultMap>
 	
-	<resultMap id="commMap" type="post">
+	<resultMap id="commMap" type="Comm">
 		<id property="revNo" column="rev_no" />
 		<result property="revCommentNo" column="rev_comment_no" />
 		<result property="revComment" column="rev_comment" />

@@ -6,6 +6,7 @@
 <%	
 	PostService postService = new PostServiceImpl();
 	int reviewNo = Integer.parseInt(request.getParameter("revNo"));
+	int delComm = postService.deleteProductComm(reviewNo);
 	boolean delete = postService.deleteProduct(reviewNo);
 	
 	if(delete == true){

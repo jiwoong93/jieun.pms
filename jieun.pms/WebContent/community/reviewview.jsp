@@ -18,7 +18,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?ver=212">
+<link rel="stylesheet" href="../res/css/community.css?hi=13">
 <%
    PostService postService = new PostServiceImpl();
    ProductService productService = new ProductServiceImpl();
@@ -108,8 +108,8 @@
 							%>			 
 						<tr>
 							<td width="35" style="text-align: center"><%=comm.get(i).getRevCommentNo() %></td>
-							<td width="70" style="text-align: center">${comm.getMemId}</td>
-							<td><input type="text" style="width: 480px; border:0px;" value="${comm.getRevComment}"/></td>
+							<td width="70" style="text-align: center"><%=comm.get(i).getMemId()%></td>
+							<td><input type="text" readonly="readonly" style="width: 480px; border:0px;" value="<%=comm.get(i).getRevComment()%>"/></td>
 						</tr>
 					<%
 						}
@@ -124,14 +124,14 @@
 			<%@ include file="./reviewcomm.jsp"%>
 				
 				<div class="review_button">
-					<a href="./review.jsp"><input type="button" value="목록" /></a>
+				<a href="./review.jsp"><input type="button" value="목록" style="float:left;"/></a>
 					<%
                   String currentId = (String) session.getAttribute("sessionId");
                   if (currentId != null && currentId != "") {
                %>
 					<%       if(session.getAttribute("sessionId") == post.getMemId() || session.getAttribute("sessionId").equals(post.getMemId())){ %>
-					<input type="submit" value="수정"/>
-					<a href="./actionReviewDelete.jsp?revNo=<%=post.getRevNo()%>"><input type="button" name="deletePrd" value="삭제"></a>
+					<input type="submit" value="수정" style="float:right;"/>
+					<a href="./actionReviewDelete.jsp?revNo=<%=post.getRevNo()%>"><input style="float:right;" type="button" name="deletePrd" value="삭제"></a>
 					<%       } 
                   }
                %>

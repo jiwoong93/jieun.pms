@@ -15,6 +15,11 @@ public class Post {
 	public Post() {
 	}
 
+	@Override
+	public String toString() {
+		return String.format("%d %s", revNo, memId);
+	}
+
 	public Post(int revNo, String revSubject, String revContents, String memId, String revFilename, Date regDate,
 			int revView, int itemNo) {
 		this.revNo = revNo;
