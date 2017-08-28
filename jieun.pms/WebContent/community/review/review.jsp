@@ -7,7 +7,7 @@
 <%@page import="jieun.pms.community.service.PostService"%>
 <%@page import="jieun.pms.community.service.PageService"%>
 <%@page import="jieun.pms.community.domain.Page"%>
-<jsp:include page="../common/actionHeader.jsp" />
+<jsp:include page="../../common/actionHeader.jsp" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -26,7 +26,7 @@
 	UpdateService updateService = new UpdateServiceImpl();
 %>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?ver=18">
+<link rel="stylesheet" href="../../res/css/community.css?ver=18">
 <script>
 <!-- 체크박스 전체선택 -->
 	function check() {
@@ -46,7 +46,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-	<form name="input_form" action="./actionReviewChodel.jsp?revNo=${post.revNo}">
+	<form name="input_form" action="./action/actionReviewChodel.jsp?revNo=${post.revNo}">
 		<div class="mypage">
 			<div class="mypageTitle">
 				REVIEW
@@ -171,4 +171,4 @@
 		</div>
 		<br /> <br /> <br /> <br />
 	</form>
-	<%@ include file="../common/footer.jsp"%>
+	<%@ include file="../../common/footer.jsp"%>

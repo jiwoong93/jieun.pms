@@ -26,12 +26,12 @@
 	
 	if(insert == true){
 %>		
-		<script>alert('게시물이 등록되었습니다.'); location.href = './review.jsp';</script>
+		<script>alert('게시물이 등록되었습니다.'); location.href = '../review.jsp';</script>
 <%
 	}
 	else{
 %>
-		<script>alert('게시물 등록이 실패 하였습니다. 게시물 내용을 다시 입력하세요.'); location.href = './reviewboard.jsp';</script>
+		<script>alert('게시물 등록이 실패 하였습니다. 게시물 내용을 다시 입력하세요.'); location.href = '../reviewboard.jsp';</script>
 <%	
 	}
 %>

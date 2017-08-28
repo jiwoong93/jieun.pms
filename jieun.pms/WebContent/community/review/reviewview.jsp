@@ -13,12 +13,12 @@
 <%@page import="jieun.pms.community.domain.Post"%>
 <%@page import="jieun.pms.community.service.PostServiceImpl"%>
 <%@page import="jieun.pms.community.service.PostService"%>
-<jsp:include page="../common/actionHeader.jsp" />
+<jsp:include page="../../common/actionHeader.jsp" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?hi=13">
+<link rel="stylesheet" href="../../res/css/community.css?ver=18">
 <%
    PostService postService = new PostServiceImpl();
    ProductService productService = new ProductServiceImpl();
@@ -131,7 +131,7 @@
                %>
 					<%       if(session.getAttribute("sessionId") == post.getMemId() || session.getAttribute("sessionId").equals(post.getMemId())){ %>
 					<input type="submit" value="수정" style="float:right;"/>
-					<a href="./actionReviewDelete.jsp?revNo=<%=post.getRevNo()%>"><input style="float:right;" type="button" name="deletePrd" value="삭제"></a>
+					<a href="./action/actionReviewDelete.jsp?revNo=<%=post.getRevNo()%>"><input style="float:right;" type="button" name="deletePrd" value="삭제"></a>
 					<%       } 
                   }
                %>
@@ -141,4 +141,4 @@
 		<br /> <br /> <br /> <br />
 			
 		
-	<%@ include file="../common/footer.jsp"%>
+	<%@ include file="../../common/footer.jsp"%>

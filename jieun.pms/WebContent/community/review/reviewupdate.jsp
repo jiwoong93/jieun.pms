@@ -9,12 +9,12 @@
 <%@page import="jieun.pms.community.domain.Post"%>
 <%@page import="jieun.pms.community.service.PostServiceImpl"%>
 <%@page import="jieun.pms.community.service.PostService"%>
-<jsp:include page="../common/actionHeader.jsp" />
+<jsp:include page="../../common/actionHeader.jsp" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?ver=212">
+<link rel="stylesheet" href="../../res/css/community.css?ver=18">
 <%
    PostService postService = new PostServiceImpl();
    ProductService productService = new ProductServiceImpl();
@@ -35,7 +35,7 @@
    src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-   <form name="input_form" action="./actionReviewUpdate.jsp">
+   <form name="input_form" action="./action/actionReviewUpdate.jsp">
    <input type="hidden" name="revNo" value="<%=request.getParameter("revNo")%>">
       <div class="mypage">
          <div class="mypageTitle">
@@ -112,11 +112,11 @@
                <a href="./review.jsp"><input type="button" value="목록" /></a> 
                <% if(session.getAttribute("sessionId") == post.getMemId() || session.getAttribute("sessionId").equals(post.getMemId())){ %>
                   <input type="submit" value="수정" />
-                  <a href="./actionReviewDelete.jsp?revNo=<%=post.getRevNo()%>"><input type="button" name="deletePrd" value="삭제" ></a>
+                  <a href="./action/actionReviewDelete.jsp?revNo=<%=post.getRevNo()%>"><input type="button" name="deletePrd" value="삭제" ></a>
                <% } %>
             </div>
          </div>
       </div>
       <br /> <br /> <br /> <br />
    </form>
-   <%@ include file="../common/footer.jsp"%>
+   <%@ include file="../../common/footer.jsp"%>
