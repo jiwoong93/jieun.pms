@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jieun.pms.order.dao.mapper.OrderPostMapper">
+	
+	<select id="getOrderList" parameterType="orderPage" resultMap="orderMap">
+		<![CDATA[
+		select * from(
+		select rownum as rnum, x.* from(
+			select * from orders
+			order by order_no desc
+		)x where rownum <=#{rowCnt}*#{currentPage}
+		)where rnum>#{rowCnt}*(#{currentPage}-1)
+		]]>
+	</select>
+
+	<resultMap id="orderMap" type="order">
+		<id		property="orderNo"	column="order_no"/>
+		<result	property="orderDate"	column="order_date"/>
+		<result	property="payment"		column="payment"/>
+		<result	property="paymentOption" column="payment_option"/>
+		<result	property="status"	column="status"/>
+	</resultMap>
+</mapper>

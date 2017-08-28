@@ -19,15 +19,10 @@
 		<result	property="status"	column="status"/>
 	</resultMap>
 	
-	<select id="getOrders" parameterType="orderPage" resultMap="orderMap">
-		<![CDATA[
-		select * from(
-		select rownum as rnum, x.* from(
-			select * from orders
-			order by order_no
-		)x where rownum <=#{rowCnt}*#{currentPage}
-		)where rnum>#{rowCnt}*(#{currentPage}-1)
-		]]>
+	<select id="getOrders" resultType="order" resultMap="orderMap">
+		select * 
+		from orders
+		order by order_no desc
 	</select>
 	
 	<select id="sumTotal" resultType="int">
@@ -81,7 +76,7 @@
 	<insert id="addOrder" parameterType="jieun.pms.order.domain.Order" >
 		insert into orders values (#{orderNo,jdbcType=NUMERIC}, #{memId,jdbcType=VARCHAR},
 		#{itemNo,jdbcType=VARCHAR}, #{orderDate,jdbcType=VARCHAR}, #{orderName,jdbcType=VARCHAR},
-		#{orderPhone,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, #{payment,jdbcType=NUMERIC},
+		#{orderPhone,jdbcType=VARCHAR}, #{orderAmount,jdbcType=VARCHAR}, #{payment,jdbcType=NUMERIC},
 		#{paymentOption,jdbcType=VARCHAR}, #{orderZipcode,jdbcType=VARCHAR}, #{orderStreet,jdbcType=VARCHAR},
 		#{orderAddr,jdbcType=VARCHAR}, #{transport,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
 	</insert>

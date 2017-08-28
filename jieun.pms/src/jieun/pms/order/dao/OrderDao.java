@@ -3,10 +3,9 @@ package jieun.pms.order.dao;
 import jieun.pms.order.domain.Order;
 import java.util.List;
 import jieun.pms.order.domain.OrderDate;
-import jieun.pms.order.domain.Page;
 
 public interface OrderDao {
-	List<Order> getOrders(Page page);
+	List<Order> getOrders();
 	List<Order> orderDate(OrderDate orderDate);
 	List<Order> getMemOrders(String memId);
 	int sumTotal();

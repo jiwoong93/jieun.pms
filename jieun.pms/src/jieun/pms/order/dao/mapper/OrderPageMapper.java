@@ -1,5 +1,5 @@
 package jieun.pms.order.dao.mapper;
 
-public interface PageMapper {
+public interface OrderPageMapper {
 	int getTotRowCnt();
 }

@@ -78,7 +78,7 @@ if(request.getParameter("op") == "cart" || request.getParameter("op").equals("ca
 	String transport = "";
 	String status = "1";
 	Order order = new Order(orderNo,memId,itemNo,orderDate,orderName,orderPhone,amount,payment,paymentOption,orderZipcode,orderStreet,orderAddr,transport,status);
-	orderService.addOrder(order);
+	int result = orderService.addOrder(order);
 	ProductService productService = new ProductServiceImpl();
 	Product product = null;
 if(request.getParameter("op") == "cart" || request.getParameter("op").equals("cart")){

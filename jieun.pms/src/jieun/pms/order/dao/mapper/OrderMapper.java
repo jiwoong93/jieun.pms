@@ -2,13 +2,11 @@ package jieun.pms.order.dao.mapper;
 
 import java.util.List;
 
-import jieun.pms.order.domain.Page;
 import jieun.pms.order.domain.Order;
 import jieun.pms.order.domain.OrderDate;
 
-
 public interface OrderMapper {
-	List<Order> getOrders(Page page);
+	List<Order> getOrders();
 	List<Order> orderDate(OrderDate orderDate);
 	List<Order> getMemOrders(String memId);
 	int sumTotal();

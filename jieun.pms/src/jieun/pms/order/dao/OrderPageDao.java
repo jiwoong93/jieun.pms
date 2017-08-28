@@ -1,5 +1,5 @@
 package jieun.pms.order.dao;
 
-public interface PageDao {
+public interface OrderPageDao {
 	int getTotRowCnt();
 }
