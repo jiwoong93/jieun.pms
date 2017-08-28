@@ -3,6 +3,7 @@ package jieun.pms.community.dao;
 import java.util.List;
 
 import jieun.pms.community.dao.mapper.PostMapper;
+import jieun.pms.community.domain.Comm;
 import jieun.pms.community.domain.Page;
 import jieun.pms.community.domain.Post;
 import jieun.pms.config.Configuration;
@@ -35,4 +36,26 @@ public class PostDaoImpl implements PostDao {
 	public int updateCount(int revNo) {
 		return postMapper.updateCount(revNo);
 	}
+
+	@Override
+	public int updateReview(Post post) {
+		return postMapper.updateReview(post);
+	}
+
+	@Override
+	public int insertComm(Comm comm) {
+		return postMapper.insertComm(comm);
+	}
+
+	@Override
+	public List<Comm> getCommets(int revNo) {
+		return postMapper.getCommets(revNo);
+	}
+
+	@Override
+	public int deleteProductComm(int revNo) {
+		return postMapper.deleteProductComm(revNo);
+	}
+
+	
 }

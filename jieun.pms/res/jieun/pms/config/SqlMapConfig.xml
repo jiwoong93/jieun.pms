@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias alias="post" type="jieun.pms.community.domain.Post"></typeAlias>
 		<typeAlias alias="Page" type="jieun.pms.community.domain.Page"></typeAlias>
+		<typeAlias alias="Comm" type="jieun.pms.community.domain.Comm"></typeAlias>
 		<typeAlias alias="member" type="jieun.pms.member.list.domain.Member"></typeAlias>
 		<typeAlias alias="memPage" type="jieun.pms.member.list.domain.Page"></typeAlias>
 		<typeAlias alias="Product" type="jieun.pms.product.domain.Product"></typeAlias>

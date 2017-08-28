@@ -12,11 +12,12 @@ public class Post {
 	private int revView;
 	private int itemNo;
 
+	public Post() {
+	}
+
 	@Override
 	public String toString() {
-		return String.format("%s", memId);
-	}
-	public Post() {
+		return String.format("%d %s", revNo, memId);
 	}
 
 	public Post(int revNo, String revSubject, String revContents, String memId, String revFilename, Date regDate,
@@ -85,6 +86,14 @@ public class Post {
 
 	public void setRevView(int revView) {
 		this.revView = revView;
+	}
+
+	public int getItemNo() {
+		return itemNo;
+	}
+
+	public void setItemNo(int itemNo) {
+		this.itemNo = itemNo;
 	}
 
 }

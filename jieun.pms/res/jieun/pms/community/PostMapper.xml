@@ -16,16 +16,19 @@
 	
 	<select id="getReview" parameterType="page" resultMap="postMap">
 		<![CDATA[
-		select rev_no revNo, mem_id memId, item_no itemNo, rev_subject revSubject, rev_contents revContents, rev_view revView, rev_date regDate
+		select rev_no revNo, mem_id memId, item_no itemNo, rev_subject revSubject, rev_contents revContents, rev_view revView, rev_date regDate, rev_filename revFilename
 		from reviews
 		where rev_no = #{revNo}		
 		]]>
 	</select>
 	
-	<insert id="insertReview" parameterType="review">
-		insert into reviews
-		values(revno_seq.nextval,#{memId,jdbcType=VARCHAR} , #{itemNo,jdbcType=VARCHAR},sysdate,#{revFilename,jdbcType=VARCHAR},#{revSubject,jdbcType=VARCHAR},#{revContents,jdbcType=VARCHAR},0)
-	</insert>
+	<select id="getCommets" parameterType="Comm" resultMap="commMap">
+		<![CDATA[
+		select rev_comment_no revCommentNo, rev_no revNo, rev_comment revComment, mem_id memId
+		from revcomments
+		where rev_no = #{revNo}		
+		]]>
+	</select>
 	
 	<update id="updateCount" parameterType="int">
 		update reviews
@@ -38,10 +41,30 @@
 		values(revno_seq.nextval,#{memId,jdbcType=VARCHAR} , #{itemNo,jdbcType=VARCHAR},sysdate,#{revFilename,jdbcType=VARCHAR},#{revSubject,jdbcType=VARCHAR},#{revContents,jdbcType=VARCHAR},0)
 	</insert>
 	
+	<insert id="insertComm" parameterType="Comm">
+		insert into revcomments
+		values(seq_rev_comment_no.nextval,#{revNo,jdbcType=NUMERIC}, #{revComment,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR})
+	</insert>
+	
 	<delete id="deleteProduct" parameterType="int">
 		delete reviews
 		where rev_no = #{revNo}
 	</delete>
+	
+	<delete id="deleteProductComm" parameterType="int">
+		delete revcomments
+		where  rev_no = #{revNo}
+	</delete>
+	
+	<update id="updateReview" parameterType="post">
+      update reviews 
+      <set>
+         <if test="revSubject != null">rev_subject = #{revSubject,jdbcType=VARCHAR},</if>
+         <if test="revContents != null">rev_contents = #{revContents,jdbcType=VARCHAR},</if>
+         <if test="revFilename != null">rev_filename = #{revFilename,jdbcType=VARCHAR},</if>
+      </set>
+      where rev_no = #{revNo}
+   </update>
 
 	<resultMap id="postMap" type="post">
 		<id property="revNo" column="rev_no" />
@@ -49,17 +72,24 @@
 		<result property="revContents" column="rev_contents" />
 		<result property="regDate" column="rev_date" />
 		<result property="revView" column="rev_view" />
+		<result property="memId" column="mem_id" />
 	</resultMap>
-
-	<resultMap id="reviewMap" type="review">
+	
+	<resultMap id="commMap" type="Comm">
 		<id property="revNo" column="rev_no" />
-		<result property="memId" column="rev_memid" />
-		<result property="itemNo" column="rev_itemno" />
-		<result property="revDate" column="rev_revdate" />
-		<result property="revFilename" column="rev_revfilename" />
-		<result property="revSubject" column="rev_revsubject" />
-		<result property="revContents" column="rev_revcontents" />
-		<result property="revView" column="rev_revview" />
+		<result property="revCommentNo" column="rev_comment_no" />
+		<result property="revComment" column="rev_comment" />
+		<result property="memId" column="mem_id" />
 	</resultMap>
-
+	
+	<!-- <resultMap id="reviewMap" type="post">
+		<id property="revNo" column="rev_no" />
+		<result property="memId" column="mem_id" />
+		<result property="itemNo" column="item_no" />
+		<result property="revDate" column="rev_date" />
+		<result property="revFilename" column="rev_filename" />
+		<result property="revSubject" column="rev_subject" />
+		<result property="revContents" column="rev_contents" />
+		<result property="revView" column="rev_view" />
+	</resultMap> -->
 </mapper>
