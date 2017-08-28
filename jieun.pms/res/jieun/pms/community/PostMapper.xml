@@ -22,15 +22,11 @@
 		]]>
 	</select>
 	
-<<<<<<< HEAD
 	<insert id="insertReview" parameterType="review">
 		insert into reviews
 		values(revno_seq.nextval,#{memId,jdbcType=VARCHAR} , #{itemNo,jdbcType=VARCHAR},sysdate,#{revFilename,jdbcType=VARCHAR},#{revSubject,jdbcType=VARCHAR},#{revContents,jdbcType=VARCHAR},0)
 	</insert>
 	
-	<delete id="deleteProduct" parameterType="int">
-		delete items
-=======
 	<update id="updateCount" parameterType="int">
 		update reviews
 		set rev_view = rev_view + 1
@@ -44,7 +40,6 @@
 	
 	<delete id="deleteProduct" parameterType="int">
 		delete reviews
->>>>>>> branch 'master' of https://github.com/jiwoong93/jieun.pms.git
 		where rev_no = #{revNo}
 	</delete>
 
@@ -55,8 +50,7 @@
 		<result property="regDate" column="rev_date" />
 		<result property="revView" column="rev_view" />
 	</resultMap>
-	
-<<<<<<< HEAD
+
 	<resultMap id="reviewMap" type="review">
 		<id property="revNo" column="rev_no" />
 		<result property="memId" column="rev_memid" />
@@ -67,16 +61,5 @@
 		<result property="revContents" column="rev_revcontents" />
 		<result property="revView" column="rev_revview" />
 	</resultMap>
-=======
-	<!-- <resultMap id="reviewMap" type="post">
-		<id property="revNo" column="rev_no" />
-		<result property="memId" column="mem_id" />
-		<result property="itemNo" column="item_no" />
-		<result property="revDate" column="rev_date" />
-		<result property="revFilename" column="rev_filename" />
-		<result property="revSubject" column="rev_subject" />
-		<result property="revContents" column="rev_contents" />
-		<result property="revView" column="rev_view" />
-	</resultMap> -->
->>>>>>> branch 'master' of https://github.com/jiwoong93/jieun.pms.git
+
 </mapper>

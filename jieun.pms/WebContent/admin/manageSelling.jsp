@@ -8,7 +8,6 @@
 <jsp:include page="../common/actionHeader.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -57,12 +56,12 @@
 					<td>배송</td>
 					<td>거래완료</td>
 				</tr>
-				<c:forEach var="orderPost" items="${orders}">
+				<c:forEach var="orders" items="${orders}">
 				<tr height="40px">
-					<td>${orderPost.orderDate}</td>
-					<td>${orderPost.orderNo}</td>
-					<td>${orderPost.payment}</td>
-					<td>${orderPost.paymentOption}</td>
+					<td>${orders.orderDate}</td>
+					<td>${orders.orderNo}</td>
+					<td>${orders.payment}</td>
+					<td>${orders.paymentOption}</td>
 					<td></td>
 					<td></td>
 					<td></td>
