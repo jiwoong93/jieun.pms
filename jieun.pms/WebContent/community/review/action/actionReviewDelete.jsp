@@ -11,7 +11,7 @@
 	
 	if(delete == true){
 %>		
-		<script>alert('게시물이 삭제 되었습니다.'); location.href = './review.jsp';</script>
+		<script>alert('게시물이 삭제 되었습니다.'); location.href = '../review.jsp';</script>
 <%
 	}
 	else{

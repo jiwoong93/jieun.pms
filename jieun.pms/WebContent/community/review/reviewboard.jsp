@@ -1,4 +1,4 @@
-<jsp:include page="../common/actionHeader.jsp" />
+<jsp:include page="../../common/actionHeader.jsp" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,10 +15,10 @@
    </script>
 <head>
 <meta charset=UTF-8">
-<link rel="stylesheet" href="../res/css/community.css?ver=1">
+<link rel="stylesheet" href="../../res/css/community.css?ver=18">
 </head>
 <body>
-	<form name="f1" enctype="multipart/form-data" action="./actionReviewReg.jsp">
+	<form name="f1" enctype="multipart/form-data" action="./action/actionReviewReg.jsp">
 		<div class="mypage">
 			<div class="mypageTitle">
 				REVIEW
@@ -69,4 +69,4 @@
 	</form>
 </body>
 </html>
-<%@ include file="../common/footer.jsp"%>
+<%@ include file="../../common/footer.jsp"%>

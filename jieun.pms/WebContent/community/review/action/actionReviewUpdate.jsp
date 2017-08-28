@@ -17,10 +17,10 @@
 %>
 <%  if(postService.updateReview(post) == 1){ %>
       <script>alert('수정되었습니다.');
-      location.href="./reviewview.jsp?revNo=<%=post.getRevNo()%>";
+      location.href="../reviewview.jsp?revNo=<%=post.getRevNo()%>";
       </script>
 <% } else { %>
       <script>alert('수정 실패 관리자에게 문의 하세요.');
-      location.href="./reviewview.jsp?revNo=<%=request.getParameter("revNo")%>";
+      location.href="../reviewview.jsp?revNo=<%=request.getParameter("revNo")%>";
       </script>
 <% } %>
