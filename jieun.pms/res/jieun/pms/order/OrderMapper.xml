@@ -19,10 +19,15 @@
 		<result	property="status"	column="status"/>
 	</resultMap>
 	
-	<select id="getOrders" resultType="order" resultMap="orderMap">
-		select * 
-		from orders
-		order by order_no desc
+	<select id="getOrders" parameterType="orderPage" resultMap="orderMap">
+		<![CDATA[
+		select * from(
+		select rownum as rnum, x.* from(
+			select * from orders
+			order by order_no
+		)x where rownum <=#{rowCnt}*#{currentPage}
+		)where rnum>#{rowCnt}*(#{currentPage}-1)
+		]]>
 	</select>
 	
 	<select id="sumTotal" resultType="int">

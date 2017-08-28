@@ -6,6 +6,7 @@ import jieun.pms.order.dao.OrderDao;
 import jieun.pms.order.dao.OrderDaoImpl;
 import jieun.pms.order.domain.Order;
 import jieun.pms.order.domain.OrderDate;
+import jieun.pms.order.domain.Page;
 
 public class OrderServiceImpl implements OrderService {
 	private OrderDao orderDao;
@@ -17,8 +18,8 @@ public class OrderServiceImpl implements OrderService {
 
 
 	@Override
-	public List<Order> getOrders() {
-		return orderDao.getOrders();
+	public List<Order> getOrders(Page page) {
+		return orderDao.getOrders(page);
 	}
 
 
