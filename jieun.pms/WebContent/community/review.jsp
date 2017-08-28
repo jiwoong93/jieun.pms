@@ -26,11 +26,11 @@
 	UpdateService updateService = new UpdateServiceImpl();
 %>
 <!DOCTYPE html>
-<link rel="stylesheet" href="../res/css/community.css?ver=28">
+<link rel="stylesheet" href="../res/css/community.css?ver=18">
 <script>
 <!-- 체크박스 전체선택 -->
 	function check() {
-		cbox = input_form.chk;
+		cbox = input_form.revNo;
 		if (cbox.length) { // 여러 개일 경우
 			for (var i = 0; i < cbox.length; i++) {
 				cbox[i].checked = input_form.all.checked;
@@ -46,7 +46,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-	<form name="input_form">
+	<form name="input_form" action="./actionReviewChodel.jsp?revNo=${post.revNo}">
 		<div class="mypage">
 			<div class="mypageTitle">
 				REVIEW
@@ -91,7 +91,7 @@
 									if (currentId != null && currentId != "") {
 											if (currentId.equals("admin")) {
 								%>
-								<td align="center"><input type="checkbox" name="chk" value="1"></td>
+								<td align="center"><input type="checkbox" name="revNo" value="${post.revNo}"></td>
 								<%
 									}
 										}
@@ -99,12 +99,12 @@
 								<td height="30" align="center">${post.revNo}</td>
 								<td align="center"><a href="./reviewview.jsp?revNo=${post.revNo}">${post.revContents}</a></td>
 								<td align="center">
-									<%
+									<%-- <%
 										//Post post = (Post)pageContext.getAttribute("post");
 										//out.println(post);
 										//UpdateMember memBer = updateService.selectMember(memId);
 										//out.println(memBer.getMemName());
-									%>
+									%> --%>
 								</td>
 								<td align="center">${post.regDate}</td>
 								<td align="center">${post.revView}</td>
@@ -150,7 +150,8 @@
 				%>
 				<!-- 삭제버튼 -->
 				<div class="comu_delete">
-					<input type="submit" value="삭제" />
+					<%-- <a href="./actionReviewChodel.jsp?revNo=${post.revNo}"> --%>
+					<input type="submit" name="deletePrd" value="삭제">
 				</div>
 				<%
 					}

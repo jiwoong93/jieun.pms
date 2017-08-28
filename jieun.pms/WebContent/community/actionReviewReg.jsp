@@ -12,11 +12,11 @@
 	PostService postservice = new PostServiceImpl();
 	ProductService productservice = new ProductServiceImpl();
 	Post review = new Post();
-	review.setRevContents(request.getParameter("revContents"));
-	
+		
 	String itemName = request.getParameter("itemName"); 
 	List<Product> product = productservice.getProduct(itemName);
 	
+	review.setRevContents(request.getParameter("revContents"));
 	review.setMemId((String)session.getAttribute("sessionId"));
 	review.setItemNo(product.get(0).getItemNo());
 	review.setRevFilename(request.getParameter("revFilename"));

@@ -12,11 +12,6 @@ public class Post {
 	private int revView;
 	private int itemNo;
 
-	@Override
-	public String toString() {
-		return String.format("%s", memId);
-	}
-
 	public Post() {
 	}
 

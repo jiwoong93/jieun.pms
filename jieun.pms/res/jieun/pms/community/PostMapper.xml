@@ -16,8 +16,16 @@
 	
 	<select id="getReview" parameterType="page" resultMap="postMap">
 		<![CDATA[
-		select rev_no revNo, mem_id memId, item_no itemNo, rev_subject revSubject, rev_contents revContents, rev_view revView, rev_date regDate
+		select rev_no revNo, mem_id memId, item_no itemNo, rev_subject revSubject, rev_contents revContents, rev_view revView, rev_date regDate, rev_filename revFilename
 		from reviews
+		where rev_no = #{revNo}		
+		]]>
+	</select>
+	
+	<select id="getCommets" parameterType="Comm" resultMap="commMap">
+		<![CDATA[
+		select rev_comment_no revCommentNo, rev_no revNo, rev_comment revComment, mem_id memId
+		from revcomments
 		where rev_no = #{revNo}		
 		]]>
 	</select>
@@ -33,10 +41,25 @@
 		values(revno_seq.nextval,#{memId,jdbcType=VARCHAR} , #{itemNo,jdbcType=VARCHAR},sysdate,#{revFilename,jdbcType=VARCHAR},#{revSubject,jdbcType=VARCHAR},#{revContents,jdbcType=VARCHAR},0)
 	</insert>
 	
+	<insert id="insertComm" parameterType="Comm">
+		insert into revcomments
+		values(seq_rev_comment_no.nextval,#{revNo,jdbcType=NUMERIC}, #{revComment,jdbcType=VARCHAR}, #{memId,jdbcType=VARCHAR})
+	</insert>
+	
 	<delete id="deleteProduct" parameterType="int">
 		delete reviews
 		where rev_no = #{revNo}
 	</delete>
+	
+	<update id="updateReview" parameterType="post">
+      update reviews 
+      <set>
+         <if test="revSubject != null">rev_subject = #{revSubject,jdbcType=VARCHAR},</if>
+         <if test="revContents != null">rev_contents = #{revContents,jdbcType=VARCHAR},</if>
+         <if test="revFilename != null">rev_filename = #{revFilename,jdbcType=VARCHAR},</if>
+      </set>
+      where rev_no = #{revNo}
+   </update>
 
 	<resultMap id="postMap" type="post">
 		<id property="revNo" column="rev_no" />
@@ -44,6 +67,13 @@
 		<result property="revContents" column="rev_contents" />
 		<result property="regDate" column="rev_date" />
 		<result property="revView" column="rev_view" />
+	</resultMap>
+	
+	<resultMap id="commMap" type="post">
+		<id property="revNo" column="rev_no" />
+		<result property="revCommentNo" column="rev_comment_no" />
+		<result property="revComment" column="rev_comment" />
+		<result property="memId" column="mem_id" />
 	</resultMap>
 	
 	<!-- <resultMap id="reviewMap" type="post">
